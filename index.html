@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draw Probability Analyzer v2</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface2: #1a1a1a;
+  --border: #242424;
+  --border2: #303030;
+  --text: #e2e2e2;
+  --text2: #888;
+  --text3: #444;
+  --gold: #c8a84b;
+  --gold-dim: #7a6228;
+  --green: #4a9e6a;
+  --amber: #c9792a;
+  --red: #c94a4a;
+  --blue: #4a7ec9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo { font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.logo span { color: var(--text3); font-weight: 400; margin-left: 10px; letter-spacing: 0.05em; }
+.depth-badge { font-size: 10px; padding: 3px 10px; border: 1px solid var(--gold-dim); border-radius: 3px; color: var(--gold); letter-spacing: 0.1em; }
+
+.layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 49px); }
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky;
+  top: 49px;
+  height: calc(100vh - 49px);
+  overflow-y: auto;
+}
+.sidebar-section { margin-bottom: 6px; }
+.sidebar-group-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+  padding: 10px 20px 6px;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text2);
+  border-left: 2px solid transparent;
+}
+.sidebar-item:hover { background: var(--surface2); color: var(--text); }
+.sidebar-item.active { background: var(--surface2); color: var(--gold); border-left-color: var(--gold); }
+.sidebar-badge {
+  font-size: 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 1px 6px;
+  color: var(--text3);
+}
+
+.main { padding: 28px 32px; }
+.league-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.league-title { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+.league-name { font-size: 22px; font-weight: 700; }
+.league-sub { font-size: 12px; color: var(--text2); margin-top: 2px; }
+.league-stats { display: flex; gap: 24px; text-align: right; }
+.stat-val { font-size: 22px; font-weight: 700; color: var(--gold); }
+.stat-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+.day-label {
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+  margin-top: 22px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.day-label:first-child { margin-top: 0; }
+
+.fixture {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  margin-bottom: 7px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.fixture:hover { border-color: var(--border2); }
+.fixture.open { border-color: var(--gold-dim); }
+
+.fixture-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 13px 16px;
+}
+.teams { font-size: 14px; font-weight: 600; }
+.kick-time { font-size: 11px; color: var(--text3); margin-top: 3px; }
+.pct-display { font-size: 20px; font-weight: 700; min-width: 48px; text-align: right; }
+.mini-bar-wrap { width: 70px; height: 3px; background: var(--border2); border-radius: 99px; overflow: hidden; }
+.mini-bar { height: 100%; }
+.vtag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  min-width: 68px;
+  text-align: center;
+}
+.v-low    { color: var(--text3); background: #181818; border: 1px solid #282828; }
+.v-mod    { color: var(--amber); background: #1c1200; border: 1px solid #3a2800; }
+.v-good   { color: var(--green); background: #001508; border: 1px solid #002a10; }
+.v-strong { color: var(--blue);  background: #000e1c; border: 1px solid #001c38; }
+.bar-low    { background: var(--text3); }
+.bar-mod    { background: var(--amber); }
+.bar-good   { background: var(--green); }
+.bar-strong { background: var(--blue);  }
+.chevron { font-size: 11px; color: var(--text3); margin-left: 2px; }
+.fixture.open .chevron { transform: rotate(180deg); }
+
+.analysis {
+  display: none;
+  border-top: 1px solid var(--border);
+  background: var(--surface2);
+  padding: 18px 16px;
+}
+.fixture.open .analysis { display: block; }
+
+.deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.deep-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 14px;
+}
+.deep-label {
+  font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+}
+.deep-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.deep-content { font-size: 12px; color: var(--text); line-height: 1.6; }
+.deep-content ul { list-style: none; padding: 0; }
+.deep-content li {
+  font-size: 11px; color: var(--text2); padding: 3px 0;
+  padding-left: 10px; position: relative;
+}
+.deep-content li::before {
+  content: '•'; color: var(--text3);
+  position: absolute; left: 0;
+}
+.deep-content .out { color: var(--red); font-weight: 500; }
+.deep-content .doubt { color: var(--amber); font-weight: 500; }
+.deep-content .key { color: var(--gold); font-weight: 500; }
+
+.factors-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 16px; }
+.factor {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 11px;
+}
+.fn { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+.fbar-wrap { height: 3px; background: var(--border2); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
+.fbar { height: 100%; background: var(--gold); }
+.fnum { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.fdetail { font-size: 10px; color: var(--text2); line-height: 1.5; }
+
+.summary-grid { display: grid; grid-template-columns: 1fr 140px; gap: 16px; align-items: start; }
+.summary-text { font-size: 13px; color: var(--text2); line-height: 1.7; }
+.odds-box {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 4px; padding: 12px; text-align: center;
+}
+.odds-lbl { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.odds-val { font-size: 17px; font-weight: 700; color: var(--gold); }
+.odds-sub { font-size: 10px; color: var(--text3); margin-top: 3px; }
+
+.research-tag {
+  display: inline-block; font-size: 9px; padding: 2px 6px;
+  background: rgba(74, 126, 201, 0.1); border: 1px solid rgba(74, 126, 201, 0.3);
+  color: var(--blue); border-radius: 3px; letter-spacing: 0.05em;
+  margin-left: 8px; vertical-align: middle;
+}
+.result-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+.result-draw  { background: #1e1a00; color: var(--gold);  border: 1px solid var(--gold-dim); }
+.result-home  { background: #001a08; color: var(--green); border: 1px solid #003018; }
+.result-away  { background: #1a0000; color: var(--red);   border: 1px solid #3a0000; }
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; display: flex; flex-wrap: wrap; gap: 4px; padding: 12px; border-right: none; border-bottom: 1px solid var(--border); }
+  .sidebar-group-label { display: none; }
+  .sidebar-item { border-left: none; border-radius: 4px; border: 1px solid var(--border); padding: 7px 12px; font-size: 12px; }
+  .factors-row { grid-template-columns: repeat(2, 1fr); }
+  .deep-grid { grid-template-columns: 1fr; }
+  .fixture-row { grid-template-columns: 1fr auto auto; }
+  .mini-bar-wrap { display: none; }
+  .summary-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">Draw Analyzer <span>v2 · 2025–26</span></div>
+  <div class="depth-badge">DEEP RESEARCH MODE</div>
+</div>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main" id="main"></main>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// DEEP RESEARCH DATA — Premier League GW36
+// Each fixture researched via news articles, injury
+// reports, team previews. Updated 5 May 2026.
+// ═══════════════════════════════════════════════════
+const LEAGUES = [
+{
+  id: 'pl',
+  name: 'Premier League',
+  country: 'England',
+  round: 'Gameweek 36',
+  drawRate: 26,
+  fixtures: [
+
+    // ───── LIVERPOOL vs CHELSEA ─────
+    {
+      day: 'Saturday 9 May',
+      home: 'Liverpool', away: 'Chelsea', time: '12:30',
+      result: null, drawProbability: 40, verdict: 'Strong', fairOdds: '2.90–3.20',
+      teamNews: {
+        home: [
+          { tag: 'out', text: 'Salah (hamstring)' },
+          { tag: 'out', text: 'Isak (groin)' },
+          { tag: 'out', text: 'Alisson (hamstring)' },
+          { tag: 'out', text: 'Mamardashvili (knee)' },
+          { tag: 'out', text: 'Ekitike (Achilles, season over)' },
+          { tag: 'out', text: 'Endo, Bradley, Leoni, Chiesa' }
+        ],
+        away: [
+          { tag: 'out', text: 'Multiple CB injuries' },
+          { tag: 'key', text: 'Lost 3-1 vs Forest last MD' },
+          { tag: 'doubt', text: 'Form crisis: 1pt from last 9' }
+        ]
+      },
+      context: 'Liverpool decimated by injuries — Slot fielded a lineup with no recognised striker vs Man Utd and lost 3-2. Five teenagers on the bench. Both first-choice strikers (Isak, Ekitike), goalkeepers (Alisson, Mamardashvili) and Salah all out. Chelsea are also depleted with CB injuries and just lost 3-1 to Forest. Both sides arrive low on confidence and attacking firepower.',
+      factors: {
+        formBalance:   { score: 75, detail: 'Both sides in poor form and badly injury-hit — closer than expected.' },
+        drawRates:     { score: 55, detail: 'Neither side typically draw-prone, but injury context shifts things.' },
+        headToHead:    { score: 60, detail: 'Anfield clashes can produce results but injury crisis levels playing field.' },
+        goalTendency:  { score: 70, detail: 'Both attacks compromised — low-scoring grind likely.' },
+        leagueContext: { score: 65, detail: 'Anfield without Salah, Isak and Alisson is a different proposition entirely.' }
+      },
+      summary: 'Significant draw upgrade based on injury news. Liverpool are missing their entire first-choice attack (Salah, Isak, Ekitike) plus both goalkeepers. Chelsea have CB injuries and just got thumped 3-1 by Forest. With both attacks compromised and confidence low, a tight low-scoring affair is genuinely on the cards.'
+    },
+
+    // ───── SUNDERLAND vs MAN UTD ─────
+    {
+      day: 'Saturday 9 May',
+      home: 'Sunderland', away: 'Manchester United', time: '15:00',
+      result: null, drawProbability: 24, verdict: 'Low', fairOdds: '4.00–4.50',
+      teamNews: {
+        home: [
+          { tag: 'out', text: 'Ballard (red card, 3-game ban)' },
+          { tag: 'doubt', text: 'Form: dropped points 3 straight games' },
+          { tag: 'doubt', text: 'Conceded 5 vs Forest, 4 at Villa recently' }
+        ],
+        away: [
+          { tag: 'doubt', text: 'Šeško (shin issue, expected to play)' },
+          { tag: 'key', text: 'Won 3 in a row, qualified UCL' },
+          { tag: 'key', text: 'Won 5 of last 6 vs Sunderland' }
+        ]
+      },
+      context: 'Carrick has transformed United — 10 wins from 14 since taking over in January. Just secured UCL after 3-2 over Liverpool. Beat Sunderland 2-0 in October reverse. Sunderland in poor form and missing Ballard at the back. Stats Insider models give just 23.9% draw probability.',
+      factors: {
+        formBalance:   { score: 35, detail: 'United on 3-game win streak; Sunderland conceding heavily.' },
+        drawRates:     { score: 40, detail: 'Neither standout draw team this season.' },
+        headToHead:    { score: 30, detail: 'United have won 5 of last 6 in this fixture.' },
+        goalTendency:  { score: 35, detail: 'Sunderland leaking goals; United scoring in last 23 PL games.' },
+        leagueContext: { score: 38, detail: 'United firmly in form; Sunderland lacking attacking firepower.' }
+      },
+      summary: 'Reassessed downward after research. United are in superb form under Carrick (10W in 14), have qualified for the Champions League, and won the reverse 2-0. Sunderland have dropped points in 3 straight games and lost Ballard to suspension. United heavily favoured.'
+    },
+
+    // ───── FULHAM vs BOURNEMOUTH ─────
+    {
+      day: 'Saturday 9 May',
+      home: 'Fulham', away: 'AFC Bournemouth', time: '15:00',
+      result: null, drawProbability: 42, verdict: 'Strong', fairOdds: '2.90–3.20',
+      teamNews: {
+        home: [
+          { tag: 'out', text: 'Iwobi (hamstring)' },
+          { tag: 'out', text: 'Sessegnon (hamstring)' },
+          { tag: 'out', text: 'Kevin (metatarsal)' },
+          { tag: 'doubt', text: 'Berge (questionable)' }
+        ],
+        away: [
+          { tag: 'out', text: 'Kluivert (knee surgery)' },
+          { tag: 'out', text: 'Cook (hamstring)' },
+          { tag: 'out', text: 'Akinmboni (muscle)' },
+          { tag: 'key', text: 'Unbeaten in 14 PL games' }
+        ]
+      },
+      context: 'Bournemouth are unbeaten in 14 Premier League games and have drawn their last 5 home matches. They lead the league with 16 draws (47% of fixtures). Both sides similar mid-table positions, both looking at 7th place at most. Last 3 H2H meetings have been drawn.',
+      factors: {
+        formBalance:   { score: 75, detail: 'Both sides level mid-table with similar points totals.' },
+        drawRates:     { score: 88, detail: 'Bournemouth lead PL with 16 draws (47%); Fulham also draw-prone.' },
+        headToHead:    { score: 78, detail: 'Last 3 Bournemouth vs PL mid-table fixtures all drawn.' },
+        goalTendency:  { score: 70, detail: 'Both average 1.3-1.5 goals per game; cautious encounters.' },
+        leagueContext: { score: 75, detail: 'Bournemouth statistically the league\'s biggest draw team.' }
+      },
+      summary: 'The standout draw pick of the weekend. Bournemouth are unbeaten in 14 Premier League games and statistically the most draw-prone side in the division. Both sides similarly placed with limited stakes. Excellent draw credentials.'
+    },
+
+    // ───── BRIGHTON vs WOLVES ─────
+    {
+      day: 'Saturday 9 May',
+      home: 'Brighton', away: 'Wolves', time: '15:00',
+      result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.80–4.20',
+      teamNews: {
+        home: [
+          { tag: 'key', text: 'Pushing for European spots' },
+          { tag: 'key', text: 'Need win to chase top 7' }
+        ],
+        away: [
+          { tag: 'out', text: 'Already relegated' },
+          { tag: 'doubt', text: 'Long winless run' },
+          { tag: 'doubt', text: 'Defensively poor all season' }
+        ]
+      },
+      context: 'Brighton have been one of the draw specialists this season with 11 draws (32%), but they desperately need wins to push for European football. With Wolves already relegated and defensively shambolic all season, this looks more like a Brighton win than the typical Brighton draw.',
+      factors: {
+        formBalance:   { score: 38, detail: 'Brighton motivated for Europe; Wolves relegated, no stakes.' },
+        drawRates:     { score: 55, detail: 'Brighton draw-prone but pushing hard for wins now.' },
+        headToHead:    { score: 50, detail: 'Several recent draws but motivation gap shifts things.' },
+        goalTendency:  { score: 35, detail: 'Brighton attack potent at home; Wolves leak goals.' },
+        leagueContext: { score: 42, detail: 'European push for hosts vs relegated visitors = home win likely.' }
+      },
+      summary: 'Reassessed downward. Brighton need wins for European qualification, and Wolves are already down with the league\'s worst defence. Brighton\'s usual draw tendency is offset by the motivation gap — they\'ll be pushing hard for three points.'
+    },
+
+    // ───── MAN CITY vs BRENTFORD ─────
+    {
+      day: 'Saturday 9 May',
+      home: 'Manchester City', away: 'Brentford', time: '17:30',
+      result: null, drawProbability: 16, verdict: 'Low', fairOdds: '5.50–6.50',
+      teamNews: {
+        home: [
+          { tag: 'doubt', text: 'Rodri (groin, fitness uncertain)' },
+          { tag: 'out', text: 'Dias (thigh), Gvardiol (leg)' },
+          { tag: 'key', text: 'Title race: 5 pts behind Arsenal' },
+          { tag: 'key', text: '6 wins in a row' }
+        ],
+        away: [
+          { tag: 'doubt', text: 'Mid-table, no major stakes' }
+        ]
+      },
+      context: 'City are 5 points behind Arsenal in the title race and on a 6-game winning run. With Haaland fit and the Etihad behind them, they\'ll attack from the start. Brentford are comfortably mid-table with nothing major to play for.',
+      factors: {
+        formBalance:   { score: 25, detail: 'City title chasing on 71pts; Brentford mid-table.' },
+        drawRates:     { score: 30, detail: 'City\'s 6-game win run shows their drive for points.' },
+        headToHead:    { score: 30, detail: 'City have dominated recent meetings convincingly.' },
+        goalTendency:  { score: 18, detail: 'Haaland scoring freely; low-scoring draws very unlikely.' },
+        leagueContext: { score: 25, detail: 'City desperately need 3pts to keep title pressure on Arsenal.' }
+      },
+      summary: 'City need this win to keep the title race alive — they\'re 5 points behind Arsenal with 3 games to go. With Haaland in form and a 6-game winning run, they\'ll dominate Brentford. Strongest avoid for draw betting.'
+    },
+
+    // ───── NOTTINGHAM FOREST vs NEWCASTLE ─────
+    {
+      day: 'Sunday 10 May',
+      home: 'Nottingham Forest', away: 'Newcastle United', time: '14:00',
+      result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.50–3.90',
+      teamNews: {
+        home: [
+          { tag: 'key', text: 'Pushing for European football' },
+          { tag: 'key', text: '5-0 win at Sunderland recent' },
+          { tag: 'key', text: 'Defensively organised under Pereira' }
+        ],
+        away: [
+          { tag: 'key', text: 'Want top 5 finish' },
+          { tag: 'doubt', text: 'PL home form patchy lately' }
+        ]
+      },
+      context: 'Forest had a 5-0 win at Sunderland recently. They\'re chasing European spots and Pereira has them defensively organised. Newcastle want to secure top 5 and Champions League football. Both motivated to win — both push for 3 points.',
+      factors: {
+        formBalance:   { score: 45, detail: 'Both sides motivated to win for European places.' },
+        drawRates:     { score: 45, detail: 'Both teams more focused on wins than draws.' },
+        headToHead:    { score: 50, detail: 'Recent meetings tight but neither side dominant.' },
+        goalTendency:  { score: 50, detail: 'Forest defensively solid; Newcastle decent on the road.' },
+        leagueContext: { score: 50, detail: 'High stakes for both reduce draw probability slightly.' }
+      },
+      summary: 'Both sides have European motivations, which works against the draw narrative. Forest are in good defensive form under Pereira, and Newcastle are pushing for a top-5 finish. A draw is possible but both teams will be going for the win.'
+    },
+
+    // ───── CRYSTAL PALACE vs EVERTON ─────
+    {
+      day: 'Sunday 10 May',
+      home: 'Crystal Palace', away: 'Everton', time: '14:00',
+      result: null, drawProbability: 38, verdict: 'Good', fairOdds: '3.00–3.30',
+      teamNews: {
+        home: [
+          { tag: 'doubt', text: 'Winless in last 8 PL games' },
+          { tag: 'key', text: 'Conference League semi this week' },
+          { tag: 'key', text: 'May rotate for European tie' }
+        ],
+        away: [
+          { tag: 'out', text: 'Branthwaite (hamstring)' },
+          { tag: 'out', text: 'Grealish (foot)' },
+          { tag: 'doubt', text: 'Beto returning from concussion' },
+          { tag: 'doubt', text: 'Successive defeats' }
+        ]
+      },
+      context: 'Palace are winless in 8 PL games and prioritising the Conference League — Glasner could rotate heavily. Everton have lost their last two but won their last away trip to St James\' Park. Both safe from relegation, both comfortably mid-table.',
+      factors: {
+        formBalance:   { score: 65, detail: 'Both safe from relegation; both struggling for form.' },
+        drawRates:     { score: 72, detail: 'Palace 10 draws this season; both draw-prone mid-table sides.' },
+        headToHead:    { score: 62, detail: 'Recent meetings have produced draws regularly.' },
+        goalTendency:  { score: 60, detail: 'Palace winless run; both teams low-scoring lately.' },
+        leagueContext: { score: 65, detail: 'Mid-table neutral fixture; Conference League distracts Palace.' }
+      },
+      summary: 'Solid draw pick. Palace are winless in 8 and likely to rotate for their Conference League semi-final. Everton have nothing significant to play for. Two mid-table sides with no major stakes — a tight, low-scoring stalemate is on the cards.'
+    },
+
+    // ───── BURNLEY vs ASTON VILLA ─────
+    {
+      day: 'Sunday 10 May',
+      home: 'Burnley', away: 'Aston Villa', time: '14:00',
+      result: null, drawProbability: 18, verdict: 'Low', fairOdds: '4.50–5.20',
+      teamNews: {
+        home: [
+          { tag: 'out', text: 'Already relegated' },
+          { tag: 'out', text: 'Manager-less (Parker departed)' },
+          { tag: 'doubt', text: 'Conceding heavily since April' }
+        ],
+        away: [
+          { tag: 'key', text: 'Pushing for European places' },
+          { tag: 'key', text: 'Burnley failed to score 4 of last 5 home' }
+        ]
+      },
+      context: 'Burnley are relegated and managerless after Scott Parker left by mutual consent. Mike Jackson is interim coach. Villa are in the European race and have every reason to push for 3 points. Massive motivation gap.',
+      factors: {
+        formBalance:   { score: 22, detail: 'Burnley relegated, no manager; Villa chasing Europe.' },
+        drawRates:     { score: 30, detail: 'Neither standout draw team; Burnley collapsed since relegation.' },
+        headToHead:    { score: 30, detail: 'Villa have dominated recent meetings.' },
+        goalTendency:  { score: 30, detail: 'Villa attack strong; Burnley conceding heavily.' },
+        leagueContext: { score: 35, detail: 'Vast motivation gap; Villa heavy favourites.' }
+      },
+      summary: 'Burnley are relegated and managerless. Aston Villa are pushing for European football and have every incentive to take 3 points. The motivation gap is enormous — strong avoid for draw betting.'
+    },
+
+    // ───── WEST HAM vs ARSENAL ─────
+    {
+      day: 'Sunday 10 May',
+      home: 'West Ham', away: 'Arsenal', time: '16:30',
+      result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.50–3.90',
+      teamNews: {
+        home: [
+          { tag: 'key', text: 'New manager Nuno (defensive setup)' },
+          { tag: 'key', text: 'None of last 5 vs Arsenal won by home' },
+          { tag: 'key', text: 'Lost just 1 of last 5 PL away games' }
+        ],
+        away: [
+          { tag: 'key', text: 'UCL semi vs Atletico midweek (won)' },
+          { tag: 'doubt', text: 'Gabriel injury concern' },
+          { tag: 'doubt', text: 'Arteta likely to rotate' },
+          { tag: 'key', text: '6 pts clear at top, UCL final pending' }
+        ]
+      },
+      context: 'Major shift in analysis. Arsenal beat Atletico in the UCL semi midweek to reach the final on May 30 — Arteta will rotate heavily. West Ham have new manager Nuno Espirito Santo who plays defensive, compact football. None of the last 5 PL meetings between these sides have been won by the home team. West Ham have lost just 1 of their last 5 PL away games.',
+      factors: {
+        formBalance:   { score: 58, detail: 'Arsenal fatigued from UCL semi; West Ham defensive under Nuno.' },
+        drawRates:     { score: 55, detail: 'Arsenal draw rate 21% but UCL final on horizon means rotation.' },
+        headToHead:    { score: 65, detail: 'Last 5 PL meetings: home side never won; tight matches.' },
+        goalTendency:  { score: 50, detail: 'Arsenal still potent; West Ham defensively organised under Nuno.' },
+        leagueContext: { score: 58, detail: 'Arsenal\'s focus on UCL final could see them not at full intensity.' }
+      },
+      summary: 'Reassessed up significantly. Arsenal played Atletico in the UCL semi 5 days before and have the final on May 30 — Arteta will heavily rotate. New West Ham boss Nuno plays defensive football. None of the last 5 PL meetings here have been won by the home side. A draw is genuinely live.'
+    },
+
+    // ───── TOTTENHAM vs LEEDS ─────
+    {
+      day: 'Monday 11 May',
+      home: 'Tottenham Hotspur', away: 'Leeds United', time: '20:00',
+      result: null, drawProbability: 25, verdict: 'Low', fairOdds: '3.80–4.20',
+      teamNews: {
+        home: [
+          { tag: 'key', text: 'Out of relegation zone' },
+          { tag: 'key', text: 'Won 4 of last 5 under De Zerbi' },
+          { tag: 'key', text: 'Beat Aston Villa 2-1 last MD' },
+          { tag: 'key', text: 'Won last 4 H2H vs Leeds' }
+        ],
+        away: [
+          { tag: 'doubt', text: 'On 43pts, not yet mathematically safe' },
+          { tag: 'key', text: '13 draws (2nd most in PL)' }
+        ]
+      },
+      context: 'Major reassessment. Spurs have escaped the relegation zone after beating Aston Villa 2-1, won 4 of last 5 under De Zerbi. They\'ve also won the last 4 PL meetings with Leeds. Leeds are draw-prone (13 draws this season) but Spurs have momentum and tactical edge.',
+      factors: {
+        formBalance:   { score: 38, detail: 'Spurs in form under De Zerbi; Leeds steady but stagnating.' },
+        drawRates:     { score: 60, detail: 'Leeds draw a lot but Spurs are now in win-mode.' },
+        headToHead:    { score: 30, detail: 'Spurs won last 4 PL meetings vs Leeds.' },
+        goalTendency:  { score: 45, detail: 'De Zerbi\'s Spurs are scoring; Leeds defensively decent.' },
+        leagueContext: { score: 42, detail: 'Spurs momentum + H2H dominance argues against draw.' }
+      },
+      summary: 'Major downward reassessment. Spurs are now out of the drop zone after beating Villa 2-1 and have won 4 of their last 5 under De Zerbi. They\'ve also won the last 4 PL meetings with Leeds. Earlier draw call was wrong — Spurs have momentum and tactical edge here.'
+    }
+  ]
+}
+];
+
+// ═══════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════
+let activeId = LEAGUES[0].id;
+
+function verdictClass(v) {
+  return { Low: 'v-low', Moderate: 'v-mod', Good: 'v-good', Strong: 'v-strong' }[v] || 'v-low';
+}
+function barClass(v) {
+  return { Low: 'bar-low', Moderate: 'bar-mod', Good: 'bar-good', Strong: 'bar-strong' }[v] || 'bar-low';
+}
+
+function renderSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.innerHTML = `
+    <div class="sidebar-section">
+      <div class="sidebar-group-label">Domestic Leagues</div>
+      ${LEAGUES.map(l => `
+        <div class="sidebar-item ${l.id === activeId ? 'active' : ''}" onclick="setLeague('${l.id}')">
+          <span>${l.name}</span>
+          <span class="sidebar-badge">${l.fixtures.length}</span>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+function renderTeamNews(items) {
+  if (!items || !items.length) return '<div class="deep-content"><em style="color:var(--text3);">No notable issues</em></div>';
+  return `<ul class="deep-content">${items.map(i => `
+    <li><span class="${i.tag}">${i.tag === 'out' ? '❌' : i.tag === 'doubt' ? '⚠' : '★'}</span> ${i.text}</li>
+  `).join('')}</ul>`;
+}
+
+function renderMain() {
+  const league = LEAGUES.find(l => l.id === activeId);
+  if (!league) return;
+
+  const grouped = {};
+  league.fixtures.forEach(f => {
+    if (!grouped[f.day]) grouped[f.day] = [];
+    grouped[f.day].push(f);
+  });
+
+  const upcoming = league.fixtures.filter(f => !f.result).length;
+  const topPick = Math.max(...league.fixtures.map(f => f.drawProbability));
+  const strongPicks = league.fixtures.filter(f => f.verdict === 'Strong' || f.verdict === 'Good').length;
+
+  document.getElementById('main').innerHTML = `
+    <div class="league-header">
+      <div>
+        <div class="league-title">${league.country}</div>
+        <div class="league-name">${league.name}</div>
+        <div class="league-sub">${league.round} · Deep research updated 5 May 2026</div>
+      </div>
+      <div class="league-stats">
+        <div><div class="stat-val">${league.drawRate}%</div><div class="stat-label">League draw rate</div></div>
+        <div><div class="stat-val">${strongPicks}</div><div class="stat-label">Strong/Good picks</div></div>
+        <div><div class="stat-val">${topPick}%</div><div class="stat-label">Top pick</div></div>
+      </div>
+    </div>
+    ${Object.entries(grouped).map(([day, fixtures]) => `
+      <div class="day-label">${day}</div>
+      ${fixtures.map((f, idx) => renderFixture(f, day + idx)).join('')}
+    `).join('')}
+  `;
+}
+
+function renderFixture(f, key) {
+  const vc = verdictClass(f.verdict);
+  const bc = barClass(f.verdict);
+  const factorNames = {
+    formBalance: 'Form balance', drawRates: 'Draw rates',
+    headToHead: 'Head to head', goalTendency: 'Goal tendency', leagueContext: 'Context'
+  };
+  const factorsHTML = Object.entries(f.factors).map(([k, v]) => `
+    <div class="factor">
+      <div class="fn">${factorNames[k] || k}</div>
+      <div class="fbar-wrap"><div class="fbar" style="width:${v.score}%"></div></div>
+      <div class="fnum">${v.score}</div>
+      <div class="fdetail">${v.detail}</div>
+    </div>
+  `).join('');
+
+  const teamNewsBlock = f.teamNews ? `
+    <div class="deep-grid">
+      <div class="deep-card">
+        <div class="deep-label">${f.home} — Team News</div>
+        ${renderTeamNews(f.teamNews.home)}
+      </div>
+      <div class="deep-card">
+        <div class="deep-label">${f.away} — Team News</div>
+        ${renderTeamNews(f.teamNews.away)}
+      </div>
+    </div>
+    ${f.context ? `<div class="deep-card" style="margin-bottom:16px;">
+      <div class="deep-label">Context & Tactical Read</div>
+      <div class="deep-content" style="font-size:12px;line-height:1.7;">${f.context}</div>
+    </div>` : ''}
+  ` : '';
+
+  const resultBadge = f.result ? `<span class="result-badge result-${f.result}">${f.result === 'draw' ? 'DRAW' : f.result === 'home' ? 'HOME' : 'AWAY'}</span>` : '';
+  const researchBadge = f.teamNews ? '<span class="research-tag">RESEARCHED</span>' : '';
+
+  return `
+    <div class="fixture" id="fix-${key}" onclick="toggleFixture('fix-${key}')">
+      <div class="fixture-row">
+        <div>
+          <div class="teams">${f.home} vs ${f.away} ${resultBadge}${researchBadge}</div>
+          <div class="kick-time">${f.time} kick-off</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="pct-display" style="color:${f.verdict==='Strong'?'var(--blue)':f.verdict==='Good'?'var(--green)':f.verdict==='Moderate'?'var(--amber)':'var(--text3)'}">${f.drawProbability}%</div>
+          <div class="mini-bar-wrap"><div class="mini-bar ${bc}" style="width:${f.drawProbability}%"></div></div>
+        </div>
+        <div class="vtag ${vc}">${f.verdict}</div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="analysis">
+        ${teamNewsBlock}
+        <div class="factors-row">${factorsHTML}</div>
+        <div class="summary-grid">
+          <div class="summary-text">${f.summary}</div>
+          <div class="odds-box">
+            <div class="odds-lbl">Fair draw odds</div>
+            <div class="odds-val">${f.fairOdds}</div>
+            <div class="odds-sub">researched range</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function toggleFixture(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function setLeague(id) {
+  activeId = id;
+  renderSidebar();
+  renderMain();
+}
+
+renderSidebar();
+renderMain();
+</script>
+
+</body>
+</html>
