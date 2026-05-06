@@ -969,11 +969,15 @@ function renderAll() {
     });
   });
 
-  // Sort by day (preserve insertion order across leagues) then time
-  const dayOrder = {};
-  allFixtures.forEach(f => { if (!(f.day in dayOrder)) dayOrder[f.day] = Object.keys(dayOrder).length; });
+  // Sort by actual date then time
+  const months = {January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11};
+  function dayToTs(dayStr) {
+    const p = dayStr.split(' '); // e.g. ["Thursday", "7", "May"]
+    return new Date(2026, months[p[2]], parseInt(p[1])).getTime();
+  }
   allFixtures.sort((a, b) => {
-    if (dayOrder[a.day] !== dayOrder[b.day]) return dayOrder[a.day] - dayOrder[b.day];
+    const dd = dayToTs(a.day) - dayToTs(b.day);
+    if (dd !== 0) return dd;
     return a.time.localeCompare(b.time);
   });
 
