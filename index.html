@@ -542,7 +542,372 @@ const LEAGUES = [
       summary: 'Major downward reassessment. Spurs are now out of the drop zone after beating Villa 2-1 and have won 4 of their last 5 under De Zerbi. They\'ve also won the last 4 PL meetings with Leeds. Earlier draw call was wrong — Spurs have momentum and tactical edge here.'
     }
   ]
-}
+},
+
+  // ─────────────────────────────────
+  // LA LIGA — Matchday 35
+  // ─────────────────────────────────
+  {
+    id: 'laliga',
+    name: 'La Liga',
+    country: 'Spain',
+    round: 'Matchday 35',
+    drawRate: 24,
+    fixtures: [
+      {
+        day: 'Friday 8 May',
+        home: 'Levante', away: 'Osasuna', time: '21:00',
+        result: null, drawProbability: 34, verdict: 'Moderate', fairOdds: '3.20–3.60',
+        factors: {
+          formBalance:   { score: 55, detail: 'Both sides in the lower-mid table with similar form runs.' },
+          drawRates:     { score: 60, detail: 'La Liga has a 24% draw rate; both teams trend close to that.' },
+          headToHead:    { score: 55, detail: 'Recent H2H between these clubs has been competitive and tight.' },
+          goalTendency:  { score: 50, detail: 'Neither side high-scoring; cautious approach expected.' },
+          leagueContext: { score: 55, detail: 'Spanish football produces more draws than the PL on average.' }
+        },
+        summary: 'Levante vs Osasuna is a classic mid-table La Liga affair with decent draw credentials. Both teams have similar form and limited motivation, which tends to produce cautious, evenly-matched games.'
+      },
+      {
+        day: 'Saturday 9 May',
+        home: 'Sevilla', away: 'Espanyol', time: '14:00',
+        result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.40–3.80',
+        factors: {
+          formBalance:   { score: 48, detail: 'Sevilla inconsistent this season; Espanyol fighting for survival.' },
+          drawRates:     { score: 50, detail: 'Sevilla moderate draw rate; Espanyol defensive in tight games.' },
+          headToHead:    { score: 50, detail: 'Andalusian/Catalan derby — historically competitive.' },
+          goalTendency:  { score: 45, detail: 'Sevilla home attack decent; Espanyol may sit and absorb.' },
+          leagueContext: { score: 52, detail: 'Mid-table vs relegation zone fixture in La Liga often very tight.' }
+        },
+        summary: 'Sevilla host a struggling Espanyol side in a fixture that could easily end level. Espanyol\'s survival instinct may lead to defensive caution, which suits a draw but Sevilla will push at home.'
+      },
+      {
+        day: 'Saturday 9 May',
+        home: 'Atletico Madrid', away: 'Celta Vigo', time: '16:15',
+        result: null, drawProbability: 22, verdict: 'Low', fairOdds: '4.20–4.80',
+        factors: {
+          formBalance:   { score: 35, detail: 'Atletico pushing for Champions League; Celta mid-table.' },
+          drawRates:     { score: 40, detail: 'Atletico\'s UCL semifinal run means full focus on three points at home.' },
+          headToHead:    { score: 40, detail: 'Atletico\'s home record against Celta is dominant in recent years.' },
+          goalTendency:  { score: 35, detail: 'Atletico\'s defensive setup and Simeone\'s winning mentality.' },
+          leagueContext: { score: 38, detail: 'Champions League pressure means Atletico need points here.' }
+        },
+        summary: 'Atletico Madrid are pushing hard for European football and have been in the UCL semifinal. Celta present a beatable opponent at home for Simeone\'s side. Low draw probability — Atletico should dominate this fixture.'
+      },
+      {
+        day: 'Saturday 9 May',
+        home: 'Real Sociedad', away: 'Betis', time: '18:30',
+        result: null, drawProbability: 38, verdict: 'Good', fairOdds: '3.00–3.30',
+        factors: {
+          formBalance:   { score: 62, detail: 'Both sides comfortably mid-table with no major pressure either way.' },
+          drawRates:     { score: 65, detail: 'Both teams draw regularly — Real Sociedad and Betis are draw-prone sides.' },
+          headToHead:    { score: 60, detail: 'Consistently close encounters with multiple draws in recent seasons.' },
+          goalTendency:  { score: 58, detail: 'Both sides play attractive football but tend to share points.' },
+          leagueContext: { score: 62, detail: 'La Liga mid-table fixture above the draw rate average.' }
+        },
+        summary: 'Real Sociedad vs Betis is a tasty draw pick. Both sides are draw-prone, similarly matched, and without serious stakes at this stage of the season. A strong candidate for a share of the spoils.'
+      },
+      {
+        day: 'Sunday 10 May',
+        home: 'Barcelona', away: 'Real Madrid', time: '21:00',
+        result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '4.00–4.50',
+        factors: {
+          formBalance:   { score: 55, detail: 'Barca lead La Liga on 80+pts; Madrid seven points back — title implications.' },
+          drawRates:     { score: 38, detail: 'El Clasico at Camp Nou rarely ends in a draw — one side usually dominates.' },
+          headToHead:    { score: 45, detail: 'Recent Clasicos have been decisive; draws are less common than results.' },
+          goalTendency:  { score: 40, detail: 'Lamine Yamal vs Mbappe — this game has goals written all over it.' },
+          leagueContext: { score: 42, detail: 'Title race stakes mean both sides will go for the win.' }
+        },
+        summary: 'El Clasico at Camp Nou is the marquee fixture of the weekend and a live title race clash. Barcelona lead on points and Madrid need a win. With Yamal and Mbappe both in form, goals are expected. A draw is possible but both teams are motivated to win.'
+      },
+      {
+        day: 'Sunday 10 May',
+        home: 'Mallorca', away: 'Villarreal', time: '14:00',
+        result: null, drawProbability: 36, verdict: 'Good', fairOdds: '3.10–3.50',
+        factors: {
+          formBalance:   { score: 58, detail: 'Both sides in the lower-mid table with similar league positions.' },
+          drawRates:     { score: 62, detail: 'Mallorca and Villarreal both produce draws at above-average frequency.' },
+          headToHead:    { score: 58, detail: 'Recent meetings have been tight and low-scoring.' },
+          goalTendency:  { score: 55, detail: 'Both sides cautious — Mallorca especially solid defensively.' },
+          leagueContext: { score: 60, detail: 'Classic La Liga mid-table draw candidate.' }
+        },
+        summary: 'Mallorca vs Villarreal ticks a lot of draw boxes. Mallorca are defensively sound and Villarreal tend to play controlled football. A tight, cautious affair with solid draw credentials at a good price.'
+      },
+      {
+        day: 'Sunday 10 May',
+        home: 'Athletic Bilbao', away: 'Valencia', time: '16:15',
+        result: null, drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
+        factors: {
+          formBalance:   { score: 52, detail: 'Bilbao pushing for Europe; Valencia inconsistent mid-table.' },
+          drawRates:     { score: 55, detail: 'Both sides produce draws at moderate frequency this season.' },
+          headToHead:    { score: 52, detail: 'Athletic vs Valencia has been competitive in recent seasons.' },
+          goalTendency:  { score: 48, detail: 'San Mames is a tough away trip; Valencia may sit deeper.' },
+          leagueContext: { score: 55, detail: 'European ambitions for Bilbao could push this away from a draw.' }
+        },
+        summary: 'Athletic Bilbao are hunting European football and Valencia are an inconsistent opponent. Bilbao will push for the win at San Mames but Valencia are capable of a backs-against-the-wall draw. Moderate draw credentials.'
+      }
+    ]
+  },
+
+  // ─────────────────────────────────
+  // SERIE A — Matchday 36
+  // ─────────────────────────────────
+  {
+    id: 'seriea',
+    name: 'Serie A',
+    country: 'Italy',
+    round: 'Matchday 36',
+    drawRate: 27,
+    fixtures: [
+      {
+        day: 'Saturday 9 May',
+        home: 'Cagliari', away: 'Udinese', time: '15:00',
+        result: null, drawProbability: 44, verdict: 'Strong', fairOdds: '2.90–3.20',
+        factors: {
+          formBalance:   { score: 68, detail: 'Both sides safe from relegation with near-identical league positions.' },
+          drawRates:     { score: 78, detail: 'Udinese unbeaten in last 8 H2H meetings with 4 draws in that run.' },
+          headToHead:    { score: 75, detail: '5 of the last 6 meetings between these sides ended under 2.5 goals.' },
+          goalTendency:  { score: 70, detail: 'Cagliari drew 0-0 at Bologna last week; both sides defensively stable.' },
+          leagueContext: { score: 68, detail: 'Serie A draws at 27% rate; this fixture type consistently exceeds that.' }
+        },
+        summary: 'Top draw pick of the Serie A weekend. Udinese are unbeaten in 8 H2H meetings, with 5 of the last 6 ending under 2.5 goals. Both sides are safe with no pressure, and the head-to-head history strongly favours a tight, low-scoring affair.'
+      },
+      {
+        day: 'Sunday 10 May',
+        home: 'Lazio', away: 'Roma', time: '18:00',
+        result: null, drawProbability: 35, verdict: 'Good', fairOdds: '3.10–3.50',
+        factors: {
+          formBalance:   { score: 58, detail: 'Both Roman clubs mid-table with European ambitions.' },
+          drawRates:     { score: 60, detail: 'The Derby della Capitale frequently ends level historically.' },
+          headToHead:    { score: 65, detail: 'Roma derbies are notoriously tight — neither side dominates consistently.' },
+          goalTendency:  { score: 55, detail: 'High-stakes local derbies often reduce to cautious, low-scoring games.' },
+          leagueContext: { score: 60, detail: 'Serie A draws 27% overall; Roman derbies trend above average.' }
+        },
+        summary: 'The Derby della Capitale is historically a fertile draw fixture. Both Lazio and Roma are mid-table, neither dominant, and local derbies tend to produce tense, cautious affairs. A draw has solid credentials here.'
+      },
+      {
+        day: 'Sunday 10 May',
+        home: 'Napoli', away: 'Juventus', time: '20:45',
+        result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.50–3.90',
+        factors: {
+          formBalance:   { score: 50, detail: 'Napoli chasing European spots; Juve also in the hunt for Europe.' },
+          drawRates:     { score: 48, detail: 'Both big clubs tend to push for wins rather than settle for draws.' },
+          headToHead:    { score: 52, detail: 'Napoli vs Juventus has produced mixed results — no clear dominant side.' },
+          goalTendency:  { score: 45, detail: 'Top six clash with European stakes — both sides motivated to win.' },
+          leagueContext: { score: 50, detail: 'Big club vs big club in Italy — draws happen but wins are more common.' }
+        },
+        summary: 'Napoli vs Juventus is a tasty Serie A clash with both sides chasing European football. The European stakes make both teams attack-minded and a draw is possible but slightly against the grain for a fixture of this magnitude.'
+      }
+    ]
+  },
+
+  // ─────────────────────────────────
+  // BUNDESLIGA — Matchday 32
+  // ─────────────────────────────────
+  {
+    id: 'bundesliga',
+    name: 'Bundesliga',
+    country: 'Germany',
+    round: 'Matchday 32',
+    drawRate: 22,
+    fixtures: [
+      {
+        day: 'Saturday 9 May',
+        home: 'Borussia Dortmund', away: 'RB Leipzig', time: '15:30',
+        result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '3.80–4.30',
+        factors: {
+          formBalance:   { score: 52, detail: 'Both sides pushing for European qualification.' },
+          drawRates:     { score: 38, detail: 'Bundesliga has a lower draw rate (22%) than most top leagues.' },
+          headToHead:    { score: 48, detail: 'Dortmund vs Leipzig tends to produce open, high-scoring games.' },
+          goalTendency:  { score: 30, detail: 'Both teams are attack-minded — draws are unlikely in open affairs.' },
+          leagueContext: { score: 40, detail: 'German football is known for attacking play rather than stalemates.' }
+        },
+        summary: 'Dortmund vs Leipzig is an attractive fixture but poor draw territory. The Bundesliga has one of the lower draw rates in European football at 22%, and both sides play open, attacking football. Goals expected from both ends.'
+      },
+      {
+        day: 'Saturday 9 May',
+        home: 'Eintracht Frankfurt', away: 'Werder Bremen', time: '15:30',
+        result: null, drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
+        factors: {
+          formBalance:   { score: 55, detail: 'Both sides similarly placed in the mid-Bundesliga table.' },
+          drawRates:     { score: 50, detail: 'Frankfurt and Werder produce draws at a moderate rate relative to the league.' },
+          headToHead:    { score: 52, detail: 'Recent meetings have been competitive with mixed results.' },
+          goalTendency:  { score: 48, detail: 'Frankfurt can be open at home; Werder defensively solid in recent form.' },
+          leagueContext: { score: 45, detail: 'Bundesliga\'s lower draw rate (22%) reduces appeal, but fixture type helps.' }
+        },
+        summary: 'A reasonable draw candidate by Bundesliga standards. Both sides are evenly matched mid-table and there\'s no huge motivation gap. The Bundesliga\'s attacking culture still reduces the overall draw probability but this fixture has more going for it than most.'
+      },
+      {
+        day: 'Sunday 10 May',
+        home: 'Bayern Munich', away: 'Bayer Leverkusen', time: '17:30',
+        result: null, drawProbability: 20, verdict: 'Low', fairOdds: '5.00–6.00',
+        factors: {
+          formBalance:   { score: 35, detail: 'Bayern pushing for the Bundesliga title; Leverkusen in CL form.' },
+          drawRates:     { score: 25, detail: 'Bayern at home almost never draw — one of the lowest home draw rates.' },
+          headToHead:    { score: 38, detail: 'Bayern vs Leverkusen is high-quality but decisive — draws rare.' },
+          goalTendency:  { score: 20, detail: 'Kane, Musiala, Wirtz — this game has goals and a result written all over it.' },
+          leagueContext: { score: 30, detail: 'Bundesliga title implications make both sides desperate for the win.' }
+        },
+        summary: 'Bayern vs Leverkusen is a showpiece fixture but terrible draw territory. Both teams are among the most attack-minded in Europe and title implications make both desperate for three points. Strong avoid.'
+      }
+    ]
+  },
+
+  // ─────────────────────────────────
+  // LIGUE 1 — Matchday 33
+  // ─────────────────────────────────
+  {
+    id: 'ligue1',
+    name: 'Ligue 1',
+    country: 'France',
+    round: 'Matchday 33',
+    drawRate: 25,
+    fixtures: [
+      {
+        day: 'Saturday 9 May',
+        home: 'Marseille', away: 'Lyon', time: '21:05',
+        result: null, drawProbability: 34, verdict: 'Moderate', fairOdds: '3.20–3.60',
+        factors: {
+          formBalance:   { score: 55, detail: 'Both southern/central clubs fighting for European places.' },
+          drawRates:     { score: 58, detail: 'Both sides draw at moderate frequency; competitive across the board.' },
+          headToHead:    { score: 55, detail: 'Marseille vs Lyon is usually a feisty affair — draws do happen.' },
+          goalTendency:  { score: 50, detail: 'Vélodrome is a cauldron; can go either way.' },
+          leagueContext: { score: 55, detail: 'Ligue 1 draws at 25% rate; this fixture sits comfortably in that range.' }
+        },
+        summary: 'Marseille vs Lyon is one of French football\'s most intense fixtures. Both sides are hunting European football and draws happen regularly here. The Vélodrome atmosphere can make it a nervy, balanced game.'
+      },
+      {
+        day: 'Saturday 9 May',
+        home: 'Nantes', away: 'Strasbourg', time: '17:00',
+        result: null, drawProbability: 40, verdict: 'Good', fairOdds: '3.00–3.30',
+        factors: {
+          formBalance:   { score: 65, detail: 'Both sides in the lower-mid table with similar situations.' },
+          drawRates:     { score: 68, detail: 'Nantes and Strasbourg are both draw-prone sides this season in Ligue 1.' },
+          headToHead:    { score: 62, detail: 'Recent meetings have been close and low-scoring.' },
+          goalTendency:  { score: 60, detail: 'Neither side high-scoring; cautious, attritional football likely.' },
+          leagueContext: { score: 65, detail: 'Classic Ligue 1 lower-half draw candidate — this fixture type consistently draws.' }
+        },
+        summary: 'Nantes vs Strasbourg is the best draw pick in Ligue 1 this weekend. Both sides are similarly placed, draw-prone, and playing without major stakes. Attritional, low-scoring football is likely and a draw has excellent credentials here.'
+      },
+      {
+        day: 'Sunday 10 May',
+        home: 'PSG', away: 'Monaco', time: '21:05',
+        result: null, drawProbability: 18, verdict: 'Low', fairOdds: '5.50–7.00',
+        factors: {
+          formBalance:   { score: 25, detail: 'PSG are in the UCL final and the Ligue 1 title race — motivated to win.' },
+          drawRates:     { score: 22, detail: 'PSG at Parc des Princes almost never drop points.' },
+          headToHead:    { score: 30, detail: 'PSG dominate this fixture at home — recent record is very one-sided.' },
+          goalTendency:  { score: 20, detail: 'PSG are free-scoring at home and Monaco concede on the road.' },
+          leagueContext: { score: 25, detail: 'PSG home games are the worst draw bet in Ligue 1.' }
+        },
+        summary: 'PSG at home after their UCL final qualification is about as safe an avoid as it gets. Paris are the most dominant home side in Ligue 1 and will be in high spirits following their European heroics. Monaco are a capable side but this is the wrong fixture for draw backing.'
+      }
+    ]
+  },
+
+  // ─────────────────────────────────
+  // UEFA CHAMPIONS LEAGUE — Semi-Final 2nd Legs
+  // ─────────────────────────────────
+  {
+    id: 'ucl',
+    name: 'Champions League',
+    country: 'UEFA',
+    round: 'Semi-Final 2nd Legs',
+    drawRate: 18,
+    fixtures: [
+      {
+        day: 'Tuesday 5 May',
+        home: 'Arsenal', away: 'Atletico Madrid', time: '20:00',
+        result: 'home', drawProbability: 20, verdict: 'Low', fairOdds: '4.80–5.50',
+        factors: {
+          formBalance:   { score: 38, detail: 'Arsenal at home; Atletico defending a 1-1 first leg draw.' },
+          drawRates:     { score: 25, detail: 'UCL knockouts produce fewer draws — teams push for results.' },
+          headToHead:    { score: 40, detail: 'Arsenal won 2-1 on aggregate — second leg played.' },
+          goalTendency:  { score: 30, detail: 'High stakes UCL semi — one team pushes, other protects.' },
+          leagueContext: { score: 30, detail: 'UCL semi-finals almost always have a decisive outcome.' }
+        },
+        summary: 'Arsenal beat Atletico Madrid 1-0 in the second leg (2-1 on aggregate) to reach the UCL final for the first time in 20 years. Result recorded — Arsenal through to the Budapest final on 30 May.'
+      },
+      {
+        day: 'Wednesday 6 May',
+        home: 'Bayern Munich', away: 'PSG', time: '20:00',
+        result: null, drawProbability: 22, verdict: 'Low', fairOdds: '4.50–5.20',
+        factors: {
+          formBalance:   { score: 40, detail: 'PSG lead 5-4 on aggregate from first leg — defending advantage.' },
+          drawRates:     { score: 28, detail: 'UCL knockout ties rarely end in draws — extra time settles it.' },
+          headToHead:    { score: 42, detail: 'PSG hold narrow first-leg advantage after 5-4 thriller.' },
+          goalTendency:  { score: 35, detail: 'Both sides attack-minded — goals expected but a decisive result more likely.' },
+          leagueContext: { score: 32, detail: 'Bayern need to overturn a 1-goal deficit — they will attack from the off.' }
+        },
+        summary: 'Bayern need to overturn PSG\'s 5-4 first leg advantage at the Allianz Arena. Bayern will push from the start which creates space for PSG on the counter. A draw after 90 minutes is possible but the format incentivises decisive play — extra time awaits if level.'
+      }
+    ]
+  },
+
+  // ─────────────────────────────────
+  // UEFA EUROPA LEAGUE — Semi-Final 2nd Legs
+  // ─────────────────────────────────
+  {
+    id: 'uel',
+    name: 'Europa League',
+    country: 'UEFA',
+    round: 'Semi-Final 2nd Legs',
+    drawRate: 20,
+    fixtures: [
+      {
+        day: 'Thursday 7 May',
+        home: 'Freiburg', away: 'Braga', time: '21:00',
+        result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '3.80–4.40',
+        factors: {
+          formBalance:   { score: 50, detail: 'Braga lead 2-1 from the first leg — Freiburg need to attack.' },
+          drawRates:     { score: 40, detail: 'Europa League knockouts produce moderate draw rates over 90 minutes.' },
+          headToHead:    { score: 48, detail: 'Braga edged the first leg 2-1 — close tie overall.' },
+          goalTendency:  { score: 45, detail: 'Freiburg at home need a goal — open game expected.' },
+          leagueContext: { score: 42, detail: 'UEL semi with tight aggregate — draws after 90 mins do happen here.' }
+        },
+        summary: 'Freiburg need to overturn a 1-goal deficit against Braga at home. They will push forward, creating an open, attacking game. A draw after 90 minutes would take it to extra time — possible but Freiburg are motivated to go for the win.'
+      },
+      {
+        day: 'Thursday 7 May',
+        home: 'Aston Villa', away: 'Nottingham Forest', time: '21:00',
+        result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.50–4.00',
+        factors: {
+          formBalance:   { score: 52, detail: 'Forest lead 1-0 from the first leg — Villa must attack at Villa Park.' },
+          drawRates:     { score: 42, detail: 'UEL semi-final 2nd legs tend to be open and decisive.' },
+          headToHead:    { score: 48, detail: 'Forest edged the first leg 1-0 — tight tie with roles reversed.' },
+          goalTendency:  { score: 45, detail: 'Villa Park will be rocking — Villa will push hard for the early goal.' },
+          leagueContext: { score: 48, detail: 'All-English European semi-final — rare and highly competitive.' }
+        },
+        summary: 'Aston Villa need to overturn Forest\'s 1-0 first leg lead in this all-English Europa League semi. Villa Park will be electric and Villa will push from the start. A draw after 90 minutes would send Forest through, which could lead to cautious play from Forest in the second half.'
+      }
+    ]
+  },
+
+  // ─────────────────────────────────
+  // UEFA CONFERENCE LEAGUE — Semi-Final 2nd Legs
+  // ─────────────────────────────────
+  {
+    id: 'uecl',
+    name: 'Conference League',
+    country: 'UEFA',
+    round: 'Semi-Final 2nd Legs',
+    drawRate: 22,
+    fixtures: [
+      {
+        day: 'Thursday 7 May',
+        home: 'Rapid Vienna', away: 'Gent', time: '21:00',
+        result: null, drawProbability: 35, verdict: 'Good', fairOdds: '3.10–3.50',
+        factors: {
+          formBalance:   { score: 58, detail: 'Closely matched European sides at a similar level of competition.' },
+          drawRates:     { score: 60, detail: 'UECL semi-finals produce competitive, tight two-legged affairs.' },
+          headToHead:    { score: 55, detail: 'Limited recent meetings but both sides play structured football.' },
+          goalTendency:  { score: 55, detail: 'Neither team prolific; tight, organised football expected.' },
+          leagueContext: { score: 58, detail: 'Conference League produces more evenly-matched ties than UCL or UEL.' }
+        },
+        summary: 'Conference League semi-finals tend to be tight and competitive. Rapid Vienna and Gent are evenly matched and a draw over 90 minutes is a real possibility, especially if one side holds a first leg lead and looks to preserve it.'
+      }
+    ]
+  }
+
 ];
 
 // ═══════════════════════════════════════════════════
@@ -558,17 +923,25 @@ function barClass(v) {
 }
 
 function renderSidebar() {
+  const groups = [
+    { label: 'Domestic Leagues', ids: ['pl','laliga','seriea','bundesliga','ligue1'] },
+    { label: 'European',         ids: ['ucl','uel','uecl'] }
+  ];
   const sidebar = document.getElementById('sidebar');
-  sidebar.innerHTML = `
-    <div class="sidebar-section">
-      <div class="sidebar-group-label">Domestic Leagues</div>
-      ${LEAGUES.map(l => `
-        <div class="sidebar-item ${l.id === activeId ? 'active' : ''}" onclick="setLeague('${l.id}')">
-          <span>${l.name}</span>
-          <span class="sidebar-badge">${l.fixtures.length}</span>
-        </div>
-      `).join('')}
-    </div>`;
+  sidebar.innerHTML = groups.map(g => {
+    const items = LEAGUES.filter(l => g.ids.includes(l.id));
+    if (!items.length) return '';
+    return `
+      <div class="sidebar-section">
+        <div class="sidebar-group-label">${g.label}</div>
+        ${items.map(l => `
+          <div class="sidebar-item ${l.id === activeId ? 'active' : ''}" onclick="setLeague('${l.id}')">
+            <span>${l.name}</span>
+            <span class="sidebar-badge">${l.fixtures.length}</span>
+          </div>
+        `).join('')}
+      </div>`;
+  }).join('');
 }
 
 function renderTeamNews(items) {
