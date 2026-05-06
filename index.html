@@ -215,6 +215,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
   margin-left: 8px; vertical-align: middle;
 }
 .result-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+.league-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; background: #1a1a2e; color: #6a8fc8; border: 1px solid #2a3a5a; letter-spacing: 0.04em; }
 .result-draw  { background: #1e1a00; color: var(--gold);  border: 1px solid var(--gold-dim); }
 .result-home  { background: #001a08; color: var(--green); border: 1px solid #003018; }
 .result-away  { background: #1a0000; color: var(--red);   border: 1px solid #3a0000; }
@@ -913,7 +914,7 @@ const LEAGUES = [
 // ═══════════════════════════════════════════════════
 // RENDER
 // ═══════════════════════════════════════════════════
-let activeId = LEAGUES[0].id;
+let activeId = 'all';
 
 function verdictClass(v) {
   return { Low: 'v-low', Moderate: 'v-mod', Good: 'v-good', Strong: 'v-strong' }[v] || 'v-low';
@@ -927,8 +928,16 @@ function renderSidebar() {
     { label: 'Domestic Leagues', ids: ['pl','laliga','seriea','bundesliga','ligue1'] },
     { label: 'European',         ids: ['ucl','uel','uecl'] }
   ];
+  const totalUpcoming = LEAGUES.reduce((n, l) => n + l.fixtures.filter(f => !f.result).length, 0);
   const sidebar = document.getElementById('sidebar');
-  sidebar.innerHTML = groups.map(g => {
+  sidebar.innerHTML = `
+    <div class="sidebar-section">
+      <div class="sidebar-item ${activeId === 'all' ? 'active' : ''}" onclick="setLeague('all')" style="font-weight:600;">
+        <span>All Fixtures</span>
+        <span class="sidebar-badge">${totalUpcoming}</span>
+      </div>
+    </div>` +
+  groups.map(g => {
     const items = LEAGUES.filter(l => g.ids.includes(l.id));
     if (!items.length) return '';
     return `
@@ -951,7 +960,53 @@ function renderTeamNews(items) {
   `).join('')}</ul>`;
 }
 
+function renderAll() {
+  // Collect all fixtures with league info attached
+  const allFixtures = [];
+  LEAGUES.forEach(league => {
+    league.fixtures.forEach(f => {
+      allFixtures.push(Object.assign({}, f, { _leagueName: league.name, _leagueId: league.id }));
+    });
+  });
+
+  // Sort by day (preserve insertion order across leagues) then time
+  const dayOrder = {};
+  allFixtures.forEach(f => { if (!(f.day in dayOrder)) dayOrder[f.day] = Object.keys(dayOrder).length; });
+  allFixtures.sort((a, b) => {
+    if (dayOrder[a.day] !== dayOrder[b.day]) return dayOrder[a.day] - dayOrder[b.day];
+    return a.time.localeCompare(b.time);
+  });
+
+  // Group by day
+  const grouped = {};
+  allFixtures.forEach(f => { if (!grouped[f.day]) grouped[f.day] = []; grouped[f.day].push(f); });
+
+  const upcoming  = allFixtures.filter(f => !f.result).length;
+  const topPick   = Math.max(...allFixtures.map(f => f.drawProbability));
+  const strongPicks = allFixtures.filter(f => f.verdict === 'Strong' || f.verdict === 'Good').length;
+
+  document.getElementById('main').innerHTML = `
+    <div class="league-header">
+      <div>
+        <div class="league-title">All Competitions</div>
+        <div class="league-name">This Weekend</div>
+        <div class="league-sub">PL · La Liga · Serie A · Bundesliga · Ligue 1 · UCL · UEL · UECL</div>
+      </div>
+      <div class="league-stats">
+        <div><div class="stat-val">${upcoming}</div><div class="stat-label">Upcoming</div></div>
+        <div><div class="stat-val">${strongPicks}</div><div class="stat-label">Good/Strong picks</div></div>
+        <div><div class="stat-val">${topPick}%</div><div class="stat-label">Top pick</div></div>
+      </div>
+    </div>
+    ${Object.entries(grouped).map(([day, fixtures]) => `
+      <div class="day-label">${day}</div>
+      ${fixtures.map((f, idx) => renderFixture(f, day + idx, f._leagueName)).join('')}
+    `).join('')}
+  `;
+}
+
 function renderMain() {
+  if (activeId === 'all') { renderAll(); return; }
   const league = LEAGUES.find(l => l.id === activeId);
   if (!league) return;
 
@@ -985,7 +1040,7 @@ function renderMain() {
   `;
 }
 
-function renderFixture(f, key) {
+function renderFixture(f, key, leagueName) {
   const vc = verdictClass(f.verdict);
   const bc = barClass(f.verdict);
   const factorNames = {
@@ -1020,12 +1075,13 @@ function renderFixture(f, key) {
 
   const resultBadge = f.result ? `<span class="result-badge result-${f.result}">${f.result === 'draw' ? 'DRAW' : f.result === 'home' ? 'HOME' : 'AWAY'}</span>` : '';
   const researchBadge = f.teamNews ? '<span class="research-tag">RESEARCHED</span>' : '';
+  const leagueTag = leagueName ? `<span class="league-tag">${leagueName}</span>` : '';
 
   return `
     <div class="fixture" id="fix-${key}" onclick="toggleFixture('fix-${key}')">
       <div class="fixture-row">
         <div>
-          <div class="teams">${f.home} vs ${f.away} ${resultBadge}${researchBadge}</div>
+          <div class="teams">${f.home} vs ${f.away} ${resultBadge}${researchBadge}${leagueTag}</div>
           <div class="kick-time">${f.time} kick-off</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
