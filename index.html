@@ -558,93 +558,187 @@ const LEAGUES = [
       {
         day: 'Friday 8 May',
         home: 'Levante', away: 'Osasuna', time: '21:00',
-        result: null, drawProbability: 34, verdict: 'Moderate', fairOdds: '3.20–3.60',
-        factors: {
-          formBalance:   { score: 55, detail: 'Both sides in the lower-mid table with similar form runs.' },
-          drawRates:     { score: 60, detail: 'La Liga has a 24% draw rate; both teams trend close to that.' },
-          headToHead:    { score: 55, detail: 'Recent H2H between these clubs has been competitive and tight.' },
-          goalTendency:  { score: 50, detail: 'Neither side high-scoring; cautious approach expected.' },
-          leagueContext: { score: 55, detail: 'Spanish football produces more draws than the PL on average.' }
+        result: null, drawProbability: 36, verdict: 'Good', fairOdds: '3.10–3.50',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Elgezabal (knee)' },
+            { tag: 'out', text: 'Arriaga (suspended)' },
+            { tag: 'out', text: 'de la Fuente (muscle), Primo (shoulder), Romero (knee)' },
+            { tag: 'key', text: '19th — in relegation zone, desperate for points' },
+            { tag: 'key', text: 'Strong home form: W4 D1 in last 5 at home' }
+          ],
+          away: [
+            { tag: 'out', text: 'Munoz (muscle)' },
+            { tag: 'key', text: '10th — no pressure, comfortable mid-table' },
+            { tag: 'key', text: 'Awful away form: 4th-worst road record in La Liga' }
+          ]
         },
-        summary: 'Levante vs Osasuna is a classic mid-table La Liga affair with decent draw credentials. Both teams have similar form and limited motivation, which tends to produce cautious, evenly-matched games.'
+        context: 'A relegation six-pointer for Levante. They sit 19th with injuries to five first-team players but have been strong at home — 4 wins and 1 draw in their last 5 at the Ciutat de Valencia. Osasuna lost 2-1 to Barcelona last time out but have nothing to play for. Crucially, Osasuna have the 4th worst away record in La Liga, picking up just 2 wins and 10 points on the road all season. Multiple models predict 1-1. Levante\'s desperation at home vs Osasuna\'s travel aversion makes a draw very live.',
+        factors: {
+          formBalance:   { score: 62, detail: 'Levante strong at home despite poor season; Osasuna inconsistent on road.' },
+          drawRates:     { score: 65, detail: 'Osasuna among the worst away teams in La Liga; cautious visitors expected.' },
+          headToHead:    { score: 58, detail: 'Recent H2H between these clubs has been tight and competitive.' },
+          goalTendency:  { score: 60, detail: 'Levante missing attacking options; Osasuna defensive away from home.' },
+          leagueContext: { score: 62, detail: 'Relegated team at home vs comfortable visitors — nervy, attritional game likely.' }
+        },
+        summary: 'Better draw pick than initially assessed. Levante are in the relegation zone with five players out but have excellent home form (4W 1D last 5). Osasuna have the 4th worst away record in La Liga all season. Multiple prediction models land on a 1-1. A nervy, attritional game that could easily end level.'
       },
       {
         day: 'Saturday 9 May',
         home: 'Sevilla', away: 'Espanyol', time: '14:00',
-        result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.40–3.80',
-        factors: {
-          formBalance:   { score: 48, detail: 'Sevilla inconsistent this season; Espanyol fighting for survival.' },
-          drawRates:     { score: 50, detail: 'Sevilla moderate draw rate; Espanyol defensive in tight games.' },
-          headToHead:    { score: 50, detail: 'Andalusian/Catalan derby — historically competitive.' },
-          goalTendency:  { score: 45, detail: 'Sevilla home attack decent; Espanyol may sit and absorb.' },
-          leagueContext: { score: 52, detail: 'Mid-table vs relegation zone fixture in La Liga often very tight.' }
+        result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '3.60–4.00',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Teixeira (injury)' },
+            { tag: 'key', text: 'Just outside relegation zone — fighting for survival' },
+            { tag: 'key', text: '2 consecutive home wins, 1 loss in last 6 at home' }
+          ],
+          away: [
+            { tag: 'out', text: 'Puado (injury)' },
+            { tag: 'key', text: '17 La Liga games without a win — worst run in Spain' },
+            { tag: 'key', text: '0 wins in last 9 away games' }
+          ]
         },
-        summary: 'Sevilla host a struggling Espanyol side in a fixture that could easily end level. Espanyol\'s survival instinct may lead to defensive caution, which suits a draw but Sevilla will push at home.'
+        context: 'Sevilla are fighting relegation and have been improving at home with two consecutive wins. Espanyol are in historically dire form — 17 La Liga games without a win and no away wins in 9 attempts. This is effectively a relegation battle with huge stakes for Sevilla. Sevilla\'s improving home form argues against a draw, but Espanyol\'s survival instinct may lead to cautious, defensive play. Sevilla win is most likely but a draw is possible given the nerves.',
+        factors: {
+          formBalance:   { score: 45, detail: 'Sevilla improving with 2 home wins; Espanyol in crisis (17 without a win).' },
+          drawRates:     { score: 48, detail: 'Sevilla picking up wins now; Espanyol too weak to force draws on road.' },
+          headToHead:    { score: 50, detail: 'Sevilla hold historical edge in this fixture (82 wins in 171 meetings).' },
+          goalTendency:  { score: 45, detail: 'Sevilla motivated to score; Espanyol will park the bus in desperation.' },
+          leagueContext: { score: 48, detail: 'Relegation battle at home; pressure on Sevilla to win, Espanyol to survive.' }
+        },
+        summary: 'Sevilla need points to escape relegation and have been picking up wins at home. Espanyol are in historically bad form — 17 games without a win, 0 away wins in 9. The incentive gap is large. A Sevilla win is most likely but Espanyol may grind out a draw through sheer defensive desperation.'
       },
       {
         day: 'Saturday 9 May',
         home: 'Atletico Madrid', away: 'Celta Vigo', time: '16:15',
-        result: null, drawProbability: 22, verdict: 'Low', fairOdds: '4.20–4.80',
-        factors: {
-          formBalance:   { score: 35, detail: 'Atletico pushing for Champions League; Celta mid-table.' },
-          drawRates:     { score: 40, detail: 'Atletico\'s UCL semifinal run means full focus on three points at home.' },
-          headToHead:    { score: 40, detail: 'Atletico\'s home record against Celta is dominant in recent years.' },
-          goalTendency:  { score: 35, detail: 'Atletico\'s defensive setup and Simeone\'s winning mentality.' },
-          leagueContext: { score: 38, detail: 'Champions League pressure means Atletico need points here.' }
+        result: null, drawProbability: 20, verdict: 'Low', fairOdds: '4.50–5.20',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Barrios (injury), Gimenez (injury)' },
+            { tag: 'key', text: 'Just lost UCL semi to Arsenal (2-1 aggregate) — focused on La Liga now' },
+            { tag: 'key', text: 'Beat Valencia 2-0 away with a rotated lineup recently' }
+          ],
+          away: [
+            { tag: 'out', text: 'Aidoo, Swedberg, Vecino, Starfelt, Miguel Roman — all injured' },
+            { tag: 'key', text: 'Have not beaten Atletico in Madrid since 2007' }
+          ]
         },
-        summary: 'Atletico Madrid are pushing hard for European football and have been in the UCL semifinal. Celta present a beatable opponent at home for Simeone\'s side. Low draw probability — Atletico should dominate this fixture.'
+        context: 'Atletico were eliminated from the UCL semi by Arsenal (2-1 on aggregate) and now refocus on the league. Despite losing Barrios and Gimenez to injury, they beat Valencia 2-0 away with a reserve lineup showing squad depth. Celta are travelling to the Metropolitano with 5 players out injured and haven\'t won there in nearly 20 years. Strong Atletico win probability.',
+        factors: {
+          formBalance:   { score: 32, detail: 'Atletico refocused on league after UCL exit; Celta travelling depleted.' },
+          drawRates:     { score: 28, detail: 'Atletico dominate this fixture at home — draws are rare.' },
+          headToHead:    { score: 25, detail: 'Celta have not won at the Metropolitano since 2007.' },
+          goalTendency:  { score: 30, detail: 'Atletico attacking with European pressure removed; Celta travel injury-hit.' },
+          leagueContext: { score: 30, detail: 'Atletico need league points post-UCL exit; Celta have nothing to play for.' }
+        },
+        summary: 'Strong avoid. Atletico refocus on La Liga after their UCL exit to Arsenal and travel to the Metropolitano buoyed. Celta are missing five players and haven\'t won here since 2007. Atletico recently beat Valencia 2-0 with a rotated lineup showing their depth. Low draw probability.'
       },
       {
         day: 'Saturday 9 May',
         home: 'Real Sociedad', away: 'Betis', time: '18:30',
-        result: null, drawProbability: 38, verdict: 'Good', fairOdds: '3.00–3.30',
-        factors: {
-          formBalance:   { score: 62, detail: 'Both sides comfortably mid-table with no major pressure either way.' },
-          drawRates:     { score: 65, detail: 'Both teams draw regularly — Real Sociedad and Betis are draw-prone sides.' },
-          headToHead:    { score: 60, detail: 'Consistently close encounters with multiple draws in recent seasons.' },
-          goalTendency:  { score: 58, detail: 'Both sides play attractive football but tend to share points.' },
-          leagueContext: { score: 62, detail: 'La Liga mid-table fixture above the draw rate average.' }
+        result: null, drawProbability: 40, verdict: 'Strong', fairOdds: '2.90–3.20',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Herrera (injury), Odriozola (injury), Kubo (injury), Aramburu (injury)' },
+            { tag: 'doubt', text: 'Guedes (doubt)' },
+            { tag: 'key', text: 'Copa del Rey winners — European football secured, no pressure' },
+            { tag: 'key', text: 'Winless in last 4 La Liga games (relaxed mode)' }
+          ],
+          away: [
+            { tag: 'out', text: 'Ortiz (injury), Bartra (injury)' },
+            { tag: 'key', text: 'Unbeaten in last 5 — won just once away in last 4 (3 draws)' },
+            { tag: 'key', text: '3-0 win vs Real Oviedo last time; 5th place secured' }
+          ]
         },
-        summary: 'Real Sociedad vs Betis is a tasty draw pick. Both sides are draw-prone, similarly matched, and without serious stakes at this stage of the season. A strong candidate for a share of the spoils.'
+        context: 'Real Sociedad have already secured European football via their Copa del Rey triumph and are visibly in holiday mode — winless in 4 La Liga games with four key players out. Betis are unbeaten in 5 but have drawn 3 of their last 4 away games. Both teams are without pressure and several key players. Betis\' away draw pattern combined with a relaxed Sociedad make this the best La Liga draw pick of the weekend.',
+        factors: {
+          formBalance:   { score: 72, detail: 'Sociedad in "holiday mode" post-Copa win; Betis comfortable in 5th.' },
+          drawRates:     { score: 78, detail: 'Betis drew 3 of last 4 away; Sociedad winless in 4 with no pressure.' },
+          headToHead:    { score: 65, detail: 'Consistently tight encounters with draws historically.' },
+          goalTendency:  { score: 68, detail: 'Sociedad missing four players; low-intensity game very likely.' },
+          leagueContext: { score: 70, detail: 'Both teams with nothing to play for — classic end-of-season stalemate setup.' }
+        },
+        summary: 'Best La Liga draw pick of the weekend. Real Sociedad have Copa del Rey glory secured and are clearly in holiday mode — winless in 4 and missing four first-teamers. Betis have drawn 3 of their last 4 away games and are comfortable in 5th. Both teams without pressure, both missing players. A stalemate is the most natural outcome here.'
       },
       {
         day: 'Sunday 10 May',
         home: 'Barcelona', away: 'Real Madrid', time: '21:00',
-        result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 55, detail: 'Barca lead La Liga on 80+pts; Madrid seven points back — title implications.' },
-          drawRates:     { score: 38, detail: 'El Clasico at Camp Nou rarely ends in a draw — one side usually dominates.' },
-          headToHead:    { score: 45, detail: 'Recent Clasicos have been decisive; draws are less common than results.' },
-          goalTendency:  { score: 40, detail: 'Lamine Yamal vs Mbappe — this game has goals written all over it.' },
-          leagueContext: { score: 42, detail: 'Title race stakes mean both sides will go for the win.' }
+        result: null, drawProbability: 36, verdict: 'Good', fairOdds: '3.10–3.50',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Lamine Yamal (muscle — season over)' },
+            { tag: 'out', text: 'Gavi (knee), ter Stegen (injury), Christensen (knee)' },
+            { tag: 'key', text: '11 points clear — Barcelona are La Liga champions' }
+          ],
+          away: [
+            { tag: 'out', text: 'Militao (hamstring surgery — 5 months), Rodrygo (ACL — 6 months+)' },
+            { tag: 'out', text: 'Carvajal (fractured toe), Mendy (thigh — season), Guler (hamstring — season)' },
+            { tag: 'doubt', text: 'Mbappe (hamstring — fitness test required)' },
+            { tag: 'key', text: 'Courtois may return from thigh injury' }
+          ]
         },
-        summary: 'El Clasico at Camp Nou is the marquee fixture of the weekend and a live title race clash. Barcelona lead on points and Madrid need a win. With Yamal and Mbappe both in form, goals are expected. A draw is possible but both teams are motivated to win.'
+        context: 'El Clasico with a twist — Barcelona are already La Liga champions (11-point lead, 3 games left). They are playing for a home celebration, not a title. Madrid are catastrophically injury-hit: Militao, Rodrygo, Carvajal, Mendy and Guler are all out for the season, and Mbappe is a fitness doubt with a hamstring issue. Without their key attackers and defenders, Madrid cannot mount their usual threat. Barcelona missing Yamal (season over) reduces their own attacking edge. A low-key Clasico with a genuine draw angle.',
+        factors: {
+          formBalance:   { score: 65, detail: 'Barca champions and relaxed; Madrid decimated by injuries across all areas.' },
+          drawRates:     { score: 62, detail: 'Neither side at full strength; both have reason to settle for a point.' },
+          headToHead:    { score: 55, detail: 'Clasicos are rarely dull but injury context dampens both attacks.' },
+          goalTendency:  { score: 60, detail: 'Yamal (Barca) and Mbappe/Rodrygo (Madrid) all absent — goals reduced.' },
+          leagueContext: { score: 65, detail: 'Barca already crowned champions — a draw is entirely acceptable for them.' }
+        },
+        summary: 'Significant draw upgrade. Barcelona are already champions and have no pressure, while Madrid are missing Militao, Rodrygo, Carvajal, Mendy and Guler (all season-ending injuries) with Mbappe a fitness doubt. Yamal is also out for Barca. Both attacks are compromised, Barca will be happy with a draw to celebrate at home. The most injury-hit Clasico in years — draw has real credentials.'
       },
       {
         day: 'Sunday 10 May',
         home: 'Mallorca', away: 'Villarreal', time: '14:00',
-        result: null, drawProbability: 36, verdict: 'Good', fairOdds: '3.10–3.50',
-        factors: {
-          formBalance:   { score: 58, detail: 'Both sides in the lower-mid table with similar league positions.' },
-          drawRates:     { score: 62, detail: 'Mallorca and Villarreal both produce draws at above-average frequency.' },
-          headToHead:    { score: 58, detail: 'Recent meetings have been tight and low-scoring.' },
-          goalTendency:  { score: 55, detail: 'Both sides cautious — Mallorca especially solid defensively.' },
-          leagueContext: { score: 60, detail: 'Classic La Liga mid-table draw candidate.' }
+        result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.80–4.20',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Salas (cruciate), Raillo (ankle surgery), Joseph (cruciate)' },
+            { tag: 'key', text: '15th — safe from relegation, no major stakes' },
+            { tag: 'key', text: 'Won last game 1-0 vs Girona' }
+          ],
+          away: [
+            { tag: 'out', text: 'Foyth (cruciate), Cabanes (cruciate)' },
+            { tag: 'doubt', text: 'Mouriño (doubt)' },
+            { tag: 'key', text: '3rd place — pushing hard for Champions League football' },
+            { tag: 'key', text: 'Won 5-1 vs Levante last time; 68 points from 34 games' }
+          ]
         },
-        summary: 'Mallorca vs Villarreal ticks a lot of draw boxes. Mallorca are defensively sound and Villarreal tend to play controlled football. A tight, cautious affair with solid draw credentials at a good price.'
+        context: 'The context here has changed significantly from initial assessment. Villarreal sit 3rd with 68 points and are pushing for Champions League qualification — they desperately need points and arrive in brilliant form (5-1 win vs Levante). Mallorca are a comfortable 15th with nothing to play for and three key defenders injured. The motivation gap is large. Villarreal win is most likely.',
+        factors: {
+          formBalance:   { score: 35, detail: 'Villarreal 3rd and in brilliant form; Mallorca safe with nothing at stake.' },
+          drawRates:     { score: 40, detail: 'Villarreal need a win for UCL — will not settle for a draw.' },
+          headToHead:    { score: 45, detail: 'Villarreal won the reverse fixture 2-1; strong recent record here.' },
+          goalTendency:  { score: 38, detail: 'Villarreal scored 5-1 last game; Mallorca missing three key defenders.' },
+          leagueContext: { score: 40, detail: 'Huge motivation gap — Champions League chasing side vs safe, inert home team.' }
+        },
+        summary: 'Reassessed downward. Villarreal are 3rd with 68 points and chasing Champions League football — they arrive in tremendous form (5-1 last game) and will not settle for a draw. Mallorca are safe in 15th with three defenders injured. The motivation gap is stark. Avoid for draw betting.'
       },
       {
         day: 'Sunday 10 May',
         home: 'Athletic Bilbao', away: 'Valencia', time: '16:15',
         result: null, drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
-        factors: {
-          formBalance:   { score: 52, detail: 'Bilbao pushing for Europe; Valencia inconsistent mid-table.' },
-          drawRates:     { score: 55, detail: 'Both sides produce draws at moderate frequency this season.' },
-          headToHead:    { score: 52, detail: 'Athletic vs Valencia has been competitive in recent seasons.' },
-          goalTendency:  { score: 48, detail: 'San Mames is a tough away trip; Valencia may sit deeper.' },
-          leagueContext: { score: 55, detail: 'European ambitions for Bilbao could push this away from a draw.' }
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Lekue (injury), Sannadi (injury), Prados (injury)' },
+            { tag: 'key', text: '8th — 3 points behind 6th; European qualification battle' },
+            { tag: 'key', text: 'Won 4-2 at Alaves last time out' }
+          ],
+          away: [
+            { tag: 'key', text: 'Fighting to stay clear of relegation zone' },
+            { tag: 'key', text: 'Failed to win in 4 of last 5 La Liga games' }
+          ]
         },
-        summary: 'Athletic Bilbao are hunting European football and Valencia are an inconsistent opponent. Bilbao will push for the win at San Mames but Valencia are capable of a backs-against-the-wall draw. Moderate draw credentials.'
+        context: 'Athletic Bilbao are three points off 6th and fighting hard for European football — they need points and won 4-2 at Alaves recently. Valencia are struggling in the lower reaches of the table, winless in 4 of their last 5. San Mames is a fortress and the crowd will drive Athletic forward. Valencia may sit deep and grind, making a 1-0 home win the most likely outcome. A draw is possible if Valencia defend well but Athletic have momentum and incentive.',
+        factors: {
+          formBalance:   { score: 52, detail: 'Athletic in form (4-2 win) and motivated for Europe; Valencia winless in 4 of 5.' },
+          drawRates:     { score: 55, detail: 'Valencia may sit deep; Athletic typically push forward at San Mames.' },
+          headToHead:    { score: 52, detail: 'Athletic vs Valencia has been competitive historically.' },
+          goalTendency:  { score: 48, detail: 'Valencia can be dogged defensively; Athletic playing open football.' },
+          leagueContext: { score: 55, detail: 'European push vs relegation fight — both have skin in the game.' }
+        },
+        summary: 'Athletic Bilbao are three points off a European spot and arrived in fine form (4-2 away win). Valencia are battling to stay clear of the drop and will likely park the bus at San Mames. A nervy home win is most probable but Valencia\'s defensive resilience keeps a draw in play. Moderate credentials.'
       }
     ]
   },
