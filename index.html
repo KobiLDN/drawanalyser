@@ -1136,6 +1136,13 @@ function verdictClass(v) {
 function barClass(v) {
   return { Low: 'bar-low', Moderate: 'bar-mod', Good: 'bar-good', Strong: 'bar-strong' }[v] || 'bar-low';
 }
+const MONTHS = {January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11};
+function dayToTs(dayStr) {
+  const p = dayStr.split(' '); // ["Thursday", "7", "May"]
+  return new Date(2026, MONTHS[p[2]], parseInt(p[1])).getTime();
+}
+const todayTs = new Date(new Date().setHours(0,0,0,0)).getTime();
+
 function parseFairMid(str) {
   if (!str) return null;
   const parts = str.split('–').map(s => parseFloat(s.trim()));
@@ -1194,13 +1201,9 @@ function renderAll() {
     });
   });
 
-  // Sort by actual date then time
-  const months = {January:0,February:1,March:2,April:3,May:4,June:5,July:6,August:7,September:8,October:9,November:10,December:11};
-  function dayToTs(dayStr) {
-    const p = dayStr.split(' '); // e.g. ["Thursday", "7", "May"]
-    return new Date(2026, months[p[2]], parseInt(p[1])).getTime();
-  }
-  allFixtures.sort((a, b) => {
+  // Filter to today and forward, then sort
+  const filtered = allFixtures.filter(f => dayToTs(f.day) >= todayTs);
+  filtered.sort((a, b) => {
     const dd = dayToTs(a.day) - dayToTs(b.day);
     if (dd !== 0) return dd;
     return a.time.localeCompare(b.time);
@@ -1208,11 +1211,11 @@ function renderAll() {
 
   // Group by day
   const grouped = {};
-  allFixtures.forEach(f => { if (!grouped[f.day]) grouped[f.day] = []; grouped[f.day].push(f); });
+  filtered.forEach(f => { if (!grouped[f.day]) grouped[f.day] = []; grouped[f.day].push(f); });
 
-  const upcoming  = allFixtures.filter(f => !f.result).length;
-  const topPick   = Math.max(...allFixtures.map(f => f.drawProbability));
-  const strongPicks = allFixtures.filter(f => f.verdict === 'Strong' || f.verdict === 'Good').length;
+  const upcoming    = filtered.filter(f => !f.result).length;
+  const topPick     = filtered.length ? Math.max(...filtered.map(f => f.drawProbability)) : 0;
+  const strongPicks = filtered.filter(f => f.verdict === 'Strong' || f.verdict === 'Good').length;
 
   document.getElementById('main').innerHTML = `
     <div class="league-header">
@@ -1227,10 +1230,10 @@ function renderAll() {
         <div><div class="stat-val">${topPick}%</div><div class="stat-label">Top pick</div></div>
       </div>
     </div>
-    ${Object.entries(grouped).map(([day, fixtures]) => `
+    ${Object.keys(grouped).length ? Object.entries(grouped).map(([day, fixtures]) => `
       <div class="day-label">${day}</div>
       ${fixtures.map((f, idx) => renderFixture(f, day + idx, f._leagueName)).join('')}
-    `).join('')}
+    `).join('') : '<div class="no-fixtures">No upcoming fixtures — check back when the next gameweek is loaded.</div>'}
   `;
 }
 
@@ -1239,15 +1242,17 @@ function renderMain() {
   const league = LEAGUES.find(l => l.id === activeId);
   if (!league) return;
 
+  const filtered = league.fixtures.filter(f => dayToTs(f.day) >= todayTs);
+
   const grouped = {};
-  league.fixtures.forEach(f => {
+  filtered.forEach(f => {
     if (!grouped[f.day]) grouped[f.day] = [];
     grouped[f.day].push(f);
   });
 
-  const upcoming = league.fixtures.filter(f => !f.result).length;
-  const topPick = Math.max(...league.fixtures.map(f => f.drawProbability));
-  const strongPicks = league.fixtures.filter(f => f.verdict === 'Strong' || f.verdict === 'Good').length;
+  const upcoming    = filtered.filter(f => !f.result).length;
+  const topPick     = filtered.length ? Math.max(...filtered.map(f => f.drawProbability)) : 0;
+  const strongPicks = filtered.filter(f => f.verdict === 'Strong' || f.verdict === 'Good').length;
 
   document.getElementById('main').innerHTML = `
     <div class="league-header">
@@ -1262,10 +1267,10 @@ function renderMain() {
         <div><div class="stat-val">${topPick}%</div><div class="stat-label">Top pick</div></div>
       </div>
     </div>
-    ${Object.entries(grouped).map(([day, fixtures]) => `
+    ${Object.keys(grouped).length ? Object.entries(grouped).map(([day, fixtures]) => `
       <div class="day-label">${day}</div>
       ${fixtures.map((f, idx) => renderFixture(f, day + idx)).join('')}
-    `).join('')}
+    `).join('') : '<div class="no-fixtures">No upcoming fixtures — check back when the next gameweek is loaded.</div>'}
   `;
 }
 
