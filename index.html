@@ -216,6 +216,15 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 }
 .result-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
 .league-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; background: #1a1a2e; color: #6a8fc8; border: 1px solid #2a3a5a; letter-spacing: 0.04em; }
+.value-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-left: 6px; vertical-align: middle; background: #001a08; color: var(--green); border: 1px solid #003018; letter-spacing: 0.08em; animation: pulse-value 2s ease-in-out infinite; }
+@keyframes pulse-value { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
+.book-row { display: flex; gap: 12px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.book-cell { flex: 1; }
+.book-lbl { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.book-num { font-size: 16px; font-weight: 700; }
+.edge-pos { color: var(--green); }
+.edge-neg { color: var(--red); }
+.edge-nil { color: var(--text3); }
 .result-draw  { background: #1e1a00; color: var(--gold);  border: 1px solid var(--gold-dim); }
 .result-home  { background: #001a08; color: var(--green); border: 1px solid #003018; }
 .result-away  { background: #1a0000; color: var(--red);   border: 1px solid #3a0000; }
@@ -323,7 +332,7 @@ const LEAGUES = [
     {
       day: 'Saturday 9 May',
       home: 'Fulham', away: 'AFC Bournemouth', time: '15:00',
-      result: null, drawProbability: 42, verdict: 'Strong', fairOdds: '2.90–3.20',
+      result: null, drawProbability: 42, verdict: 'Strong', fairOdds: '2.90–3.20', bookOdds: 3.75,
       teamNews: {
         home: [
           { tag: 'out', text: 'Iwobi (hamstring)' },
@@ -756,7 +765,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Cagliari', away: 'Udinese', time: '15:00',
-        result: null, drawProbability: 44, verdict: 'Strong', fairOdds: '2.90–3.20',
+        result: null, drawProbability: 44, verdict: 'Strong', fairOdds: '2.90–3.20', bookOdds: 3.25,
         teamNews: {
           home: [
             { tag: 'out', text: 'Borrelli, Mazzitelli, Pavoletti, Idrissi, Felici — all injured' },
@@ -1127,6 +1136,17 @@ function verdictClass(v) {
 function barClass(v) {
   return { Low: 'bar-low', Moderate: 'bar-mod', Good: 'bar-good', Strong: 'bar-strong' }[v] || 'bar-low';
 }
+function parseFairMid(str) {
+  if (!str) return null;
+  const parts = str.split('–').map(s => parseFloat(s.trim()));
+  if (parts.length !== 2 || isNaN(parts[0]) || isNaN(parts[1])) return null;
+  return (parts[0] + parts[1]) / 2;
+}
+function calcEdge(fairOddsStr, bookOdds) {
+  const mid = parseFairMid(fairOddsStr);
+  if (!mid || !bookOdds) return null;
+  return ((bookOdds / mid) - 1) * 100;
+}
 
 function renderSidebar() {
   const groups = [
@@ -1285,12 +1305,14 @@ function renderFixture(f, key, leagueName) {
   const resultBadge = f.result ? `<span class="result-badge result-${f.result}">${f.result === 'draw' ? 'DRAW' : f.result === 'home' ? 'HOME' : 'AWAY'}</span>` : '';
   const researchBadge = f.teamNews ? '<span class="research-tag">RESEARCHED</span>' : '';
   const leagueTag = leagueName ? `<span class="league-tag">${leagueName}</span>` : '';
+  const edge = calcEdge(f.fairOdds, f.bookOdds);
+  const valueBadge = (f.bookOdds && edge !== null && edge >= 5) ? `<span class="value-badge">VALUE ${f.bookOdds.toFixed(2)}</span>` : (f.bookOdds && edge !== null && edge > 0) ? `<span class="value-badge" style="opacity:0.7;">EDGE ${f.bookOdds.toFixed(2)}</span>` : '';
 
   return `
     <div class="fixture" id="fix-${key}" onclick="toggleFixture('fix-${key}')">
       <div class="fixture-row">
         <div>
-          <div class="teams">${f.home} vs ${f.away} ${resultBadge}${researchBadge}${leagueTag}</div>
+          <div class="teams">${f.home} vs ${f.away} ${resultBadge}${researchBadge}${leagueTag}${valueBadge}</div>
           <div class="kick-time">${f.time} kick-off</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
@@ -1309,6 +1331,17 @@ function renderFixture(f, key, leagueName) {
             <div class="odds-lbl">Fair draw odds</div>
             <div class="odds-val">${f.fairOdds}</div>
             <div class="odds-sub">researched range</div>
+            ${f.bookOdds && edge !== null ? `
+            <div class="book-row">
+              <div class="book-cell">
+                <div class="book-lbl">Book price</div>
+                <div class="book-num ${edge >= 5 ? 'edge-pos' : edge > 0 ? 'edge-pos' : 'edge-neg'}">${f.bookOdds.toFixed(2)}</div>
+              </div>
+              <div class="book-cell" style="text-align:right">
+                <div class="book-lbl">Edge</div>
+                <div class="book-num ${edge >= 5 ? 'edge-pos' : edge > 0 ? 'edge-pos' : 'edge-neg'}">${edge >= 0 ? '+' : ''}${edge.toFixed(1)}%</div>
+              </div>
+            </div>` : `<div class="odds-sub" style="margin-top:6px;font-style:italic;">Add bookOdds to fixture</div>`}
           </div>
         </div>
       </div>
