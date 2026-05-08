@@ -599,7 +599,34 @@ const LEAGUES = [
       },
       {
         day: 'Saturday 9 May',
-        home: 'Sevilla', away: 'Espanyol', time: '14:00',
+        home: 'Elche', away: 'Alavés', time: '14:00',
+        result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.30–3.70',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Boayar (muscle)' },
+            { tag: 'doubt', text: 'Yago Santiago (physical discomfort)' },
+            { tag: 'key', text: '14th — 2pts above relegation zone' },
+            { tag: 'key', text: 'Lost just twice at home all season — fortress' }
+          ],
+          away: [
+            { tag: 'out', text: 'Garcés (suspension), Toni Martínez (injury)' },
+            { tag: 'out', text: 'Boyé (injury), Protesoni (injury)' },
+            { tag: 'key', text: '18th — relegation zone, 1pt behind 17th Sevilla' }
+          ]
+        },
+        context: 'A relegation six-pointer at the Martinez Valero. Elche have been excellent at home — losing just twice all season — and sit 14th, two points clear of relegation. Alavés are 18th in the drop zone and travel without their top scorer Toni Martínez (11 goals) plus Boyé and Protesoni. Garcés is suspended. Elche should win at home given their home form and Alavés\' depleted attack.',
+        factors: {
+          formBalance:   { score: 50, detail: 'Both fighting relegation; Elche stronger at home, Alavés depleted upfront.' },
+          drawRates:     { score: 55, detail: 'Tense relegation battle — both desperate but cautious.' },
+          headToHead:    { score: 50, detail: 'Tight historical matchups between these clubs.' },
+          goalTendency:  { score: 50, detail: 'Alavés missing 4 attackers including top scorer T. Martínez.' },
+          leagueContext: { score: 52, detail: 'Relegation six-pointer — usually decisive but can produce nervy draws.' }
+        },
+        summary: 'Relegation six-pointer between 14th vs 18th. Elche have lost just twice at home all season, while Alavés travel without top scorer Toni Martínez (11 goals), Boyé, Protesoni and suspended Garcés. Elche should win — Alavés\' depleted attack makes a draw less likely than the tense fixture suggests.'
+      },
+      {
+        day: 'Saturday 9 May',
+        home: 'Sevilla', away: 'Espanyol', time: '16:15',
         result: null, drawProbability: 26, verdict: 'Low', fairOdds: '3.70–4.20',
         teamNews: {
           home: [
@@ -625,7 +652,7 @@ const LEAGUES = [
       },
       {
         day: 'Saturday 9 May',
-        home: 'Atletico Madrid', away: 'Celta Vigo', time: '16:15',
+        home: 'Atletico Madrid', away: 'Celta Vigo', time: '18:30',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '3.80–4.20',
         teamNews: {
           home: [
@@ -654,7 +681,7 @@ const LEAGUES = [
       },
       {
         day: 'Saturday 9 May',
-        home: 'Real Sociedad', away: 'Betis', time: '18:30',
+        home: 'Real Sociedad', away: 'Betis', time: '21:00',
         result: null, drawProbability: 38, verdict: 'Good', fairOdds: '3.00–3.30',
         teamNews: {
           home: [
@@ -679,6 +706,32 @@ const LEAGUES = [
           leagueContext: { score: 68, detail: 'Both teams without major stakes — typical late-season cautious football.' }
         },
         summary: 'Solid draw pick. Sociedad have just 1 point from their last 3 games and are 9th with nothing major to play for. Betis are unbeaten in 5 with 5th place secured. Both sides missing players. Classic end-of-season fixture where neither team has serious incentive to push for a win.'
+      },
+      {
+        day: 'Sunday 10 May',
+        home: 'Real Oviedo', away: 'Getafe', time: '18:30',
+        result: null, drawProbability: 24, verdict: 'Low', fairOdds: '4.00–4.50',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Dendoncker (injury), Jaime Vázquez (injury)' },
+            { tag: 'key', text: '20th (28pts) — bottom of the table, basically relegated' },
+            { tag: 'key', text: 'Lost 3-0 at Betis last time out' }
+          ],
+          away: [
+            { tag: 'out', text: 'Juanmi (injury)' },
+            { tag: 'key', text: '7th (44pts) — comfortable mid-table' },
+            { tag: 'key', text: 'Lost 0-2 to Rayo Vallecano last time' }
+          ]
+        },
+        context: 'Oviedo are bottom of the table at 28 points — virtually impossible to escape relegation now. Getafe are 7th and safe with no European hopes either. Both lost their last games. Getafe are the better team and should win, though both teams have limited motivation. Low draw probability.',
+        factors: {
+          formBalance:   { score: 38, detail: 'Oviedo bottom of table; Getafe comfortable in 7th.' },
+          drawRates:     { score: 45, detail: 'Limited motivation but Getafe quality should tell.' },
+          headToHead:    { score: 40, detail: 'Last meeting Getafe won 2-0.' },
+          goalTendency:  { score: 42, detail: 'Both lost last games; Getafe stronger attacking output.' },
+          leagueContext: { score: 40, detail: 'Almost-relegated home side vs comfortable mid-table visitors.' }
+        },
+        summary: 'Oviedo are bottom of La Liga and effectively relegated. Getafe sit safely in 7th with nothing major to play for. Getafe won the reverse 2-0 and are the stronger side. Low draw probability — Getafe should win comfortably.'
       },
       {
         day: 'Sunday 10 May',
@@ -800,55 +853,86 @@ const LEAGUES = [
         summary: 'Reaffirmed top Serie A draw pick. Cagliari are winless in their last 6 home games against Udinese — extraordinary H2H record. Udinese unbeaten in 4 away. Both sides depleted by injuries. At Betfair\'s 21/10 (3.10) the value is marginal, but the bet remains sound based on the H2H pattern.'
       },
       {
-        day: 'Sunday 10 May',
-        home: 'Lazio', away: 'Roma', time: '18:00',
-        result: null, drawProbability: 36, verdict: 'Good', fairOdds: '3.00–3.40',
+        day: 'Saturday 9 May',
+        home: 'Lazio', away: 'Inter Milan', time: '18:00',
+        result: null, drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
         teamNews: {
           home: [
-            { tag: 'key', text: 'Rovella returning from two operations — rusty but available' },
-            { tag: 'key', text: 'Sarri publicly frustrated about derby timing (security/Italian Open clash)' }
+            { tag: 'out', text: 'Cataldi, Gila, Furlanetto, Provedel — all injured' },
+            { tag: 'key', text: 'Coppa Italia finalists — recovered from Atalanta penalties' },
+            { tag: 'key', text: 'Sarri\'s side won come-from-behind vs Cremonese on Mon' },
+            { tag: 'key', text: 'Cancellieri back from ban; Zaccagni recently returned' }
           ],
           away: [
-            { tag: 'out', text: 'Dovbyk (injury) — top scorer absent' },
-            { tag: 'out', text: 'Pellegrini (injury) — captain out' },
-            { tag: 'out', text: 'Ferguson (injury), Zaragoza (injury)' }
+            { tag: 'out', text: 'Calhanoglu (thigh)' },
+            { tag: 'doubt', text: 'Pio Esposito (back)' },
+            { tag: 'key', text: 'CHAMPIONS — 21st Scudetto secured (12 pts clear)' },
+            { tag: 'key', text: 'Lautaro and Thuram are Serie A\'s top 2 scorers' },
+            { tag: 'key', text: 'Coppa Italia final dress rehearsal vs Lazio' }
           ]
         },
-        context: 'The Derby della Capitale comes with unusual tensions — Sarri has publicly complained about the scheduling (clashing with the Italian Open at the same Olimpico complex, requiring security arrangements). Roma arrive missing their top scorer Dovbyk, captain Pellegrini, and two other attackers. Lazio have Rovella back but he\'s been out for months with two operations. Roma\'s depleted attack reduces goal threat and increases draw likelihood.',
+        context: 'Inter were crowned Serie A champions last weekend — they have nothing left to play for in the league and this is a "dress rehearsal" for the upcoming Coppa Italia final between the same two sides. Lazio are pushing for European places while preserving energy for the cup final. Both teams might rotate or play with reduced intensity. With Inter relaxed (champions) and both sides eyeing the cup final, draw probability bumps up.',
         factors: {
-          formBalance:   { score: 60, detail: 'Roma missing Dovbyk, Pellegrini, Ferguson, Zaragoza — attack badly hit.' },
-          drawRates:     { score: 65, detail: 'Derby della Capitale historically tight; Roma decimated upfront.' },
-          headToHead:    { score: 65, detail: 'Current H2H: Roma 16W, Lazio 12W, 8 draws — draws not uncommon.' },
-          goalTendency:  { score: 62, detail: 'Roma missing their key attackers — low-scoring game highly probable.' },
-          leagueContext: { score: 62, detail: 'Derbies with injury-hit visitors and distracted hosts lean towards draws.' }
+          formBalance:   { score: 55, detail: 'Inter champions and relaxed; Lazio preparing for Coppa final.' },
+          drawRates:     { score: 60, detail: 'Inter rotation likely; Lazio cautious — favours a tight game.' },
+          headToHead:    { score: 55, detail: 'Lazio vs Inter often tight, especially with Coppa final pending.' },
+          goalTendency:  { score: 52, detail: 'Inter still has firepower (Lautaro/Thuram); Lazio missing keeper Provedel.' },
+          leagueContext: { score: 60, detail: 'Coppa final dress rehearsal — neither side wants to show their hand.' }
         },
-        summary: 'Good draw pick. Roma travel to the Olimpico missing their top scorer Dovbyk, captain Pellegrini, and two more attackers. Lazio have Rovella back but rusty. Sarri distracted by scheduling row. With Roma\'s attack gutted, a low-scoring or goalless derby is the natural outcome.'
+        summary: 'Inter are already champions and this is a dress rehearsal for the Coppa Italia final between these two sides. Both will likely rotate or play at reduced intensity to preserve energy for the cup. Inter missing Calhanoglu; Lazio with multiple injuries. Moderate draw credentials.'
+      },
+      {
+        day: 'Saturday 9 May',
+        home: 'Lecce', away: 'Juventus', time: '20:45',
+        result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.70–4.20',
+        teamNews: {
+          home: [
+            { tag: 'out', text: 'Fofana, Sottil, Gaspar, Berisha — all injured' },
+            { tag: 'key', text: 'Fighting relegation — desperately need points' }
+          ],
+          away: [
+            { tag: 'out', text: 'Milik (season), Cabal (season)' },
+            { tag: 'key', text: 'One yellow from suspension: Bremer, Kelly, Locatelli' },
+            { tag: 'key', text: '4th, chasing Champions League — 3 games left' },
+            { tag: 'key', text: 'Vlahovic likely starts alongside Yildiz and Conceição' }
+          ]
+        },
+        context: 'Juventus need wins for Champions League qualification with just 3 games to go. Lecce are battling relegation. Juve\'s squad is fitter than Napoli\'s right now (only Milik and Cabal long-term out) but they have three players one yellow card away from suspension — slight caution required. Lecce are home and desperate but missing 4 players. Juve favoured.',
+        factors: {
+          formBalance:   { score: 38, detail: 'Juve in form chasing CL; Lecce fighting relegation but injury-hit.' },
+          drawRates:     { score: 42, detail: 'Juve typically decisive vs lower table; Lecce\'s home form patchy.' },
+          headToHead:    { score: 45, detail: 'Recent meetings have been tight (Juve 1-1 Lecce earlier this season).' },
+          goalTendency:  { score: 42, detail: 'Vlahovic potentially starting; Lecce missing key creators.' },
+          leagueContext: { score: 45, detail: 'Massive motivation gap but Lecce home is desperate.' }
+        },
+        summary: 'Juventus need wins for Champions League. Lecce desperate at home but missing 4 players. Three Juve players one yellow from suspension which may make Juve cautious in challenges. Most likely a Juve win but Lecce\'s home desperation could keep it tight. Moderate draw credentials.'
       },
       {
         day: 'Sunday 10 May',
-        home: 'Napoli', away: 'Juventus', time: '20:45',
-        result: null, drawProbability: 34, verdict: 'Moderate', fairOdds: '3.20–3.60',
+        home: 'Parma', away: 'Roma', time: '18:00',
+        result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '3.50–3.90',
         teamNews: {
           home: [
-            { tag: 'out', text: 'Neres (thigh), Meret (hand), Gilmour (groin), Anguissa (thigh)' },
-            { tag: 'out', text: 'De Bruyne (long-term)' },
-            { tag: 'key', text: '2nd (70pts) — 9 pts behind Inter (champions), 3 ahead of Milan' },
-            { tag: 'key', text: 'Drew 0-0 with Como last time — off-form' }
+            { tag: 'out', text: 'Cremaschi (injury), Frigan (long-term)' },
+            { tag: 'key', text: '12th — top-flight survival sealed (back-to-back wins to nil)' },
+            { tag: 'key', text: 'Lost 0-2 at Inter last time (ended 4-game unbeaten run)' }
           ],
           away: [
-            { tag: 'out', text: 'Vlahovic (long-term), Gatti, Bremer, Rugani — all out' },
-            { tag: 'key', text: '4th (65pts) — chasing Napoli for UCL spot' }
+            { tag: 'out', text: 'Dovbyk (injury), Pellegrini (injury), Çelik (injury)' },
+            { tag: 'out', text: 'Koné (injury), Ferguson (injury)' },
+            { tag: 'key', text: '6 wins from last 7 — beat Fiorentina 4-0 last time' },
+            { tag: 'key', text: 'Battling Juve and Como for final UCL spot — 1pt off top 4' }
           ]
         },
-        context: 'Massive UCL-race clash. Inter are champions but 2nd, 3rd and 4th are being contested with Napoli (70pts) ahead of Milan and Juventus (65pts). Both need wins. However, both carry significant injury absences — Napoli missing De Bruyne, Neres, Anguissa, Gilmour and Meret, while Juve are without Vlahovic (long-term), Bremer, Gatti and Rugani. Napoli drew 0-0 with Como last time — their form is patchy. With both attacks and defences depleted, a tight, tense match that ends level is a real possibility despite the stakes.',
+        context: 'Roma are flying — 6 wins from last 7 with a 4-0 demolition of Fiorentina last time. Just 1 point off top 4 with 3 games left. However, they are missing top scorer Dovbyk, captain Pellegrini, plus Koné, Ferguson and Çelik. Parma have sealed survival and with nothing major at stake. Roma\'s injury list opens a small draw window but their form is too good to ignore.',
         factors: {
-          formBalance:   { score: 52, detail: 'Napoli 0-0 last time out; Juve in form but missing key players throughout.' },
-          drawRates:     { score: 55, detail: 'Both sides decimated by injury — neither can field full-strength XI.' },
-          headToHead:    { score: 52, detail: 'Napoli vs Juve produces mixed results; no dominant side in recent seasons.' },
-          goalTendency:  { score: 55, detail: 'Napoli missing De Bruyne, Neres, Anguissa; Juve without Vlahovic and Bremer.' },
-          leagueContext: { score: 55, detail: 'High stakes pushes both sides towards caution — neither can afford to lose.' }
+          formBalance:   { score: 45, detail: 'Roma in fine form (6W in 7); Parma comfortable post-survival.' },
+          drawRates:     { score: 50, detail: 'Roma without Dovbyk, Pellegrini and 3 others — attack threat reduced.' },
+          headToHead:    { score: 35, detail: 'Roma have won 8 of last 10; on a 3-match winning H2H streak.' },
+          goalTendency:  { score: 50, detail: 'Roma still scoring (4-0 last) but missing key players.' },
+          leagueContext: { score: 48, detail: 'Roma chasing UCL — wins critical; Parma relaxed in survival mode.' }
         },
-        summary: 'More interesting draw pick than it appears. Both sides are injury-ravaged: Napoli without De Bruyne, Neres, Anguissa, Gilmour and Meret; Juve without Vlahovic, Bremer, Gatti and Rugani. Napoli drew 0-0 last time. The UCL stakes mean neither side can afford to lose, which often produces tense, cautious stalemates at the Maradona.'
+        summary: 'Roma are flying (6W in 7) but missing five key players including Dovbyk and Pellegrini. Parma are safe and relaxed after sealing survival. Roma should still win given their form and Parma\'s lack of motivation, but the injury list keeps a draw mildly interesting. Moderate credentials.'
       }
     ]
   },
@@ -955,78 +1039,31 @@ const LEAGUES = [
     drawRate: 25,
     fixtures: [
       {
-        day: 'Saturday 9 May',
-        home: 'Marseille', away: 'Lyon', time: '21:05',
-        result: null, drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
-        teamNews: {
-          home: [
-            { tag: 'key', text: 'Winless in last 4 Ligue 1 games' },
-            { tag: 'key', text: 'Won only once at home in last 3; Balerdi fit' }
-          ],
-          away: [
-            { tag: 'out', text: 'Nuamah, Sulc, Fofana — all injured' },
-            { tag: 'doubt', text: 'Moreira, Hateboer, Mangala — doubts' },
-            { tag: 'key', text: '5 wins in last 6, W3 in last 4 away — in excellent form' },
-            { tag: 'key', text: '5 points above Marseille in the table' }
-          ]
-        },
-        context: 'Lyon arrive in much better form — 5 wins from their last 6 — and sit 5 points above a struggling Marseille who are winless in 4. However, Marseille have won the last three home meetings between these sides and Lyon\'s last away win here came in 2022. Lyon are also missing three attackers (Nuamah, Sulc, Fofana). The Vélodrome creates a hostile atmosphere that can neutralise form advantages. A Lyon away win looks most likely on paper but Marseille\'s home H2H record softens that view.',
-        factors: {
-          formBalance:   { score: 45, detail: 'Lyon in excellent form (5W in 6); Marseille winless in 4.' },
-          drawRates:     { score: 55, detail: 'Marseille have won last 3 home meetings — H2H neutralises Lyon\'s form edge.' },
-          headToHead:    { score: 60, detail: 'Lyon haven\'t won at Vélodrome since 2022; Marseille home record strong.' },
-          goalTendency:  { score: 50, detail: 'Lyon missing 3 attackers; Marseille poor form reduces goal output.' },
-          leagueContext: { score: 52, detail: 'Vélodrome atmosphere makes this fixture unpredictable regardless of form.' }
-        },
-        summary: 'Lyon are in better form and higher in the table but haven\'t won at the Vélodrome since 2022 — Marseille have won the last three home meetings. Lyon are also missing Nuamah, Sulc and Fofana. A Lyon win is the form pick but the home H2H record keeps a draw firmly in play. Moderate credentials.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'Nantes', away: 'Strasbourg', time: '17:00',
-        result: null, drawProbability: 40, verdict: 'Good', fairOdds: '3.00–3.30',
-        teamNews: {
-          home: [
-            { tag: 'key', text: 'Lower-table side; limited European ambitions' }
-          ],
-          away: [
-            { tag: 'out', text: 'Gabriel, Sahi Dion, Sylla (all groin), Fila, Mothiba (both knee), Deminguet (calf)' },
-            { tag: 'key', text: 'Six players out injured — squad heavily depleted' },
-            { tag: 'key', text: 'Both teams been fighting relegation — cautious approach expected' }
-          ]
-        },
-        context: 'Strasbourg travel with an extraordinary six players out injured covering every position. Earlier in the season when these sides met, both were battling relegation and producing attritional, low-scoring draws. Nantes are a similarly placed lower-table side with nothing major at stake. With Strasbourg badly depleted and neither side in the European picture, this is a classic end-of-season stalemate candidate at the Beaujoire.',
-        factors: {
-          formBalance:   { score: 65, detail: 'Both lower-table sides with limited stakes — Strasbourg badly depleted.' },
-          drawRates:     { score: 70, detail: 'Both sides draw-prone; attritional football from lower-table teams.' },
-          headToHead:    { score: 62, detail: 'Recent meetings between these clubs have been tight and low-scoring.' },
-          goalTendency:  { score: 65, detail: 'Strasbourg missing 6 players including forwards — goal threat severely reduced.' },
-          leagueContext: { score: 65, detail: 'Classic Ligue 1 lower-table draw — neither side with enough quality to dominate.' }
-        },
-        summary: 'Good draw pick. Strasbourg travel with six injury absentees covering every area of the pitch. Both sides have been involved in relegation battles this season and these games produce attritional, low-scoring encounters. Nothing major at stake for either team — a stalemate at the Beaujoire has strong credentials.'
-      },
-      {
         day: 'Sunday 10 May',
-        home: 'PSG', away: 'Monaco', time: '21:05',
-        result: null, drawProbability: 20, verdict: 'Low', fairOdds: '5.00–6.50',
+        home: 'PSG', away: 'Brest', time: '21:05',
+        result: null, drawProbability: 18, verdict: 'Low', fairOdds: '5.50–7.00',
         teamNews: {
           home: [
-            { tag: 'key', text: 'IN UCL FINAL vs Arsenal on May 30 — may rotate key players' },
-            { tag: 'key', text: 'Beat Bayern 1-1 on Wednesday (6-5 agg) — just played midweek' },
-            { tag: 'key', text: 'Dembélé returned from calf injury for UCL semi' }
+            { tag: 'out', text: 'Chevalier (injury), Hakimi (injury), Ndjantou (injury)' },
+            { tag: 'key', text: 'IN UCL FINAL vs Arsenal on May 30 — heavy rotation expected' },
+            { tag: 'key', text: 'Goncalo Ramos returns from suspension to lead attack' },
+            { tag: 'key', text: 'Win clinches 5th successive Ligue 1 title' }
           ],
           away: [
-            { tag: 'key', text: 'Strong Ligue 1 season; UCL play-off opponents earlier in season' }
+            { tag: 'out', text: 'Kenny Lala (suspended)' },
+            { tag: 'key', text: 'Daouda Guindo back from muscle injury' },
+            { tag: 'key', text: '12th — drew blanks in 3 of last 4 away games' }
           ]
         },
-        context: 'PSG are in the Champions League final against Arsenal on May 30 and played 90 minutes vs Bayern on Wednesday. They may rotate several first-teamers here to protect fitness. However, PSG\'s squad depth is such that even a rotated lineup is dominant at the Parc. A draw from rotation is the only realistic scenario — the chance of Monaco winning here is very low. Even so, a PSG draw is rare even when rotating.',
+        context: 'PSG are 1st and victory mathematically clinches a 5th successive Ligue 1 title. With the UCL final vs Arsenal on May 30, Luis Enrique is expected to heavily rotate — likely starting Barcola, Mbaye and Ramos with younger players (Zaire-Emery, Mayulu, Dro Fernandez). Despite rotation, PSG have kept clean sheets in their last 3 H2H meetings vs Brest, who have struggled badly for goals away (drew blanks in 3 of last 4 road outings).',
         factors: {
-          formBalance:   { score: 30, detail: 'PSG dominant all season; UCL final rotation risk is the only draw factor.' },
-          drawRates:     { score: 28, detail: 'PSG almost never drop home points — rotation a minor risk only.' },
-          headToHead:    { score: 32, detail: 'PSG dominate this fixture at the Parc — Monaco rarely take points here.' },
-          goalTendency:  { score: 25, detail: 'PSG free-scoring even with rotation; Monaco concede away from home.' },
-          leagueContext: { score: 28, detail: 'UCL final rotation is real but PSG depth is exceptional at every level.' }
+          formBalance:   { score: 30, detail: 'PSG champions-elect; Brest 12th and toothless away from home.' },
+          drawRates:     { score: 32, detail: 'PSG kept clean sheets in last 3 H2H — Brest struggle to score on road.' },
+          headToHead:    { score: 30, detail: 'PSG dominant H2H; Brest haven\'t threatened Paris recently.' },
+          goalTendency:  { score: 28, detail: 'Brest scored in only 1 of last 4 away games; PSG depth still scores.' },
+          leagueContext: { score: 32, detail: 'Even rotated PSG are too strong for an away-shy Brest.' }
         },
-        summary: 'PSG are in the UCL final (May 30 vs Arsenal) and played midweek — some rotation is likely. But even a rotated PSG at the Parc is formidable. The only real draw scenario is heavy rotation but their squad depth makes even that unlikely. Firm avoid for draw betting.'
+        summary: 'PSG can clinch the Ligue 1 title with a win and will heavily rotate ahead of the UCL final. Brest are 12th and have failed to score in 3 of their last 4 away games. PSG kept 3 clean sheets in last 3 H2H meetings. Even a rotated PSG should comfortably win. Strong avoid.'
       }
     ]
   },
