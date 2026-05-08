@@ -273,31 +273,31 @@ const LEAGUES = [
     {
       day: 'Saturday 9 May',
       home: 'Liverpool', away: 'Chelsea', time: '12:30',
-      result: null, drawProbability: 40, verdict: 'Strong', fairOdds: '2.90–3.20',
+      result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.50–3.90', bookOdds: 3.50,
       teamNews: {
         home: [
-          { tag: 'out', text: 'Salah (hamstring)' },
-          { tag: 'out', text: 'Isak (groin)' },
-          { tag: 'out', text: 'Alisson (hamstring)' },
-          { tag: 'out', text: 'Mamardashvili (knee)' },
-          { tag: 'out', text: 'Ekitike (Achilles, season over)' },
-          { tag: 'out', text: 'Endo, Bradley, Leoni, Chiesa' }
+          { tag: 'out', text: 'Salah, Endo, Leoni, Bradley, Ekitike (Achilles, season)' },
+          { tag: 'doubt', text: 'Isak (groin), Wirtz, Konate, Alisson, Mamardashvili — all missed training' },
+          { tag: 'key', text: '4th, only 4pts from confirming UCL' },
+          { tag: 'key', text: 'Lost 3-2 at Man Utd last MD; 3-game win run ended' }
         ],
         away: [
-          { tag: 'out', text: 'Multiple CB injuries' },
-          { tag: 'key', text: 'Lost 3-1 vs Forest last MD' },
-          { tag: 'doubt', text: 'Form crisis: 1pt from last 9' }
+          { tag: 'out', text: 'Jesse Derry (head injury)' },
+          { tag: 'doubt', text: 'Robert Sanchez (head injury vs Forest)' },
+          { tag: 'key', text: 'SIX consecutive PL defeats — full crisis mode' },
+          { tag: 'key', text: '9th place; lost 3-1 to Forest last time' },
+          { tag: 'key', text: 'Garnacho and Neto returning from minor injuries' }
         ]
       },
-      context: 'Liverpool decimated by injuries — Slot fielded a lineup with no recognised striker vs Man Utd and lost 3-2. Five teenagers on the bench. Both first-choice strikers (Isak, Ekitike), goalkeepers (Alisson, Mamardashvili) and Salah all out. Chelsea are also depleted with CB injuries and just lost 3-1 to Forest. Both sides arrive low on confidence and attacking firepower.',
+      context: 'Reassessed downward significantly. Models give Liverpool 55.6% win probability vs 20.4% draw. Liverpool injury crisis is severe but Chelsea are in their own crisis (6 consecutive PL defeats, 1 point from last 9). At Anfield, even a depleted Liverpool side should be too strong for a Chelsea team with collapsed confidence. Liverpool are 4 points from securing UCL and need the win.',
       factors: {
-        formBalance:   { score: 75, detail: 'Both sides in poor form and badly injury-hit — closer than expected.' },
-        drawRates:     { score: 55, detail: 'Neither side typically draw-prone, but injury context shifts things.' },
-        headToHead:    { score: 60, detail: 'Anfield clashes can produce results but injury crisis levels playing field.' },
-        goalTendency:  { score: 70, detail: 'Both attacks compromised — low-scoring grind likely.' },
-        leagueContext: { score: 65, detail: 'Anfield without Salah, Isak and Alisson is a different proposition entirely.' }
+        formBalance:   { score: 35, detail: 'Liverpool 4pts off UCL spot; Chelsea on 6-game losing streak.' },
+        drawRates:     { score: 38, detail: 'Models give just 20.4% draw probability — Liverpool clear favs.' },
+        headToHead:    { score: 40, detail: 'Anfield typically produces decisive results, not stalemates.' },
+        goalTendency:  { score: 45, detail: 'Both attacks compromised but Liverpool have superior backups.' },
+        leagueContext: { score: 38, detail: 'Liverpool need points for UCL; Chelsea desperate to stop the bleeding.' }
       },
-      summary: 'Significant draw upgrade based on injury news. Liverpool are missing their entire first-choice attack (Salah, Isak, Ekitike) plus both goalkeepers. Chelsea have CB injuries and just got thumped 3-1 by Forest. With both attacks compromised and confidence low, a tight low-scoring affair is genuinely on the cards.'
+      summary: 'Reassessed sharply downward. Liverpool injury crisis is real but Chelsea are in even worse form — six consecutive PL defeats and just one point from their last nine. At Anfield, Liverpool should win comfortably even with backups. Models give 20.4% draw probability — significantly lower than initially assessed.'
     },
 
     // ───── SUNDERLAND vs MAN UTD ─────
@@ -307,17 +307,19 @@ const LEAGUES = [
       result: null, drawProbability: 24, verdict: 'Low', fairOdds: '4.00–4.50',
       teamNews: {
         home: [
-          { tag: 'out', text: 'Ballard (red card, 3-game ban)' },
-          { tag: 'doubt', text: 'Form: dropped points 3 straight games' },
-          { tag: 'doubt', text: 'Conceded 5 vs Forest, 4 at Villa recently' }
+          { tag: 'out', text: 'Ballard (3-game ban — FA appeal rejected)' },
+          { tag: 'out', text: 'Mundle (hamstring), Moore (injury)' },
+          { tag: 'key', text: 'Angulo and Traore back in training but late call' }
         ],
         away: [
-          { tag: 'doubt', text: 'Šeško (shin issue, expected to play)' },
-          { tag: 'key', text: 'Won 3 in a row, qualified UCL' },
+          { tag: 'out', text: 'De Ligt (back — missed last 22 PL games)' },
+          { tag: 'doubt', text: 'Šeško (shin from Liverpool clash)' },
+          { tag: 'key', text: 'Bruno Fernandes back (was tactical sub)' },
+          { tag: 'key', text: 'Carrick: 10W in 14; UCL secured after 3-2 vs Liverpool' },
           { tag: 'key', text: 'Won 5 of last 6 vs Sunderland' }
         ]
       },
-      context: 'Carrick has transformed United — 10 wins from 14 since taking over in January. Just secured UCL after 3-2 over Liverpool. Beat Sunderland 2-0 in October reverse. Sunderland in poor form and missing Ballard at the back. Stats Insider models give just 23.9% draw probability.',
+      context: 'Confirmed assessment. Carrick has transformed United and just beat Liverpool 3-2 to secure UCL. Sunderland missing Ballard (suspended) and Mundle. United are in superb form and have dominated this fixture historically. Models give 23.9% draw probability — confirmed Low.',
       factors: {
         formBalance:   { score: 35, detail: 'United on 3-game win streak; Sunderland conceding heavily.' },
         drawRates:     { score: 40, detail: 'Neither standout draw team this season.' },
@@ -332,84 +334,87 @@ const LEAGUES = [
     {
       day: 'Saturday 9 May',
       home: 'Fulham', away: 'AFC Bournemouth', time: '15:00',
-      result: null, drawProbability: 42, verdict: 'Strong', fairOdds: '2.90–3.20', bookOdds: 3.75,
+      result: null, drawProbability: 44, verdict: 'Strong', fairOdds: '2.85–3.10', bookOdds: 3.10,
       teamNews: {
         home: [
-          { tag: 'out', text: 'Iwobi (hamstring)' },
-          { tag: 'out', text: 'Sessegnon (hamstring)' },
-          { tag: 'out', text: 'Kevin (metatarsal)' },
-          { tag: 'doubt', text: 'Berge (questionable)' }
+          { tag: 'out', text: 'Sessegnon (thigh), Iwobi (thigh), Kevin (toe)' },
+          { tag: 'key', text: 'Berge back (was illness vs Arsenal)' },
+          { tag: 'key', text: 'Smith Rowe expected fit (cramp at Emirates)' },
+          { tag: 'key', text: 'Comprehensively beaten by Arsenal last MD' }
         ],
         away: [
-          { tag: 'out', text: 'Kluivert (knee surgery)' },
-          { tag: 'out', text: 'Cook (hamstring)' },
-          { tag: 'out', text: 'Akinmboni (muscle)' },
-          { tag: 'key', text: 'Unbeaten in 14 PL games' }
+          { tag: 'out', text: 'Kluivert (knee), Soler (thigh), Cook (thigh)' },
+          { tag: 'key', text: 'UNBEATEN IN 15 PL GAMES — strongest run in the league' },
+          { tag: 'key', text: 'Just beat Crystal Palace; in control of own destiny' }
         ]
       },
-      context: 'Bournemouth are unbeaten in 14 Premier League games and have drawn their last 5 home matches. They lead the league with 16 draws (47% of fixtures). Both sides similar mid-table positions, both looking at 7th place at most. Last 3 H2H meetings have been drawn.',
+      context: 'Even stronger draw signal than last week. Bournemouth are now unbeaten in 15 Premier League games — the longest current unbeaten run in the league. They lead the PL with 16 draws (47% of fixtures). Fulham are mid-table without major stakes. Bournemouth\'s no fresh injury concerns means they arrive at full strength relative to last week. The draw at the right price remains the standout pick.',
       factors: {
-        formBalance:   { score: 75, detail: 'Both sides level mid-table with similar points totals.' },
-        drawRates:     { score: 88, detail: 'Bournemouth lead PL with 16 draws (47%); Fulham also draw-prone.' },
-        headToHead:    { score: 78, detail: 'Last 3 Bournemouth vs PL mid-table fixtures all drawn.' },
-        goalTendency:  { score: 70, detail: 'Both average 1.3-1.5 goals per game; cautious encounters.' },
-        leagueContext: { score: 75, detail: 'Bournemouth statistically the league\'s biggest draw team.' }
+        formBalance:   { score: 78, detail: 'Bournemouth unbeaten in 15; Fulham steady mid-table.' },
+        drawRates:     { score: 90, detail: 'Bournemouth lead PL with 16 draws (47%); the most draw-prone side.' },
+        headToHead:    { score: 78, detail: 'Last 3 H2H meetings between these sides all drawn.' },
+        goalTendency:  { score: 72, detail: 'Both teams average 1.3-1.5 goals per game; cautious encounters.' },
+        leagueContext: { score: 78, detail: 'Bournemouth\'s 15-game unbeaten run is built on draws and tight wins.' }
       },
-      summary: 'The standout draw pick of the weekend. Bournemouth are unbeaten in 14 Premier League games and statistically the most draw-prone side in the division. Both sides similarly placed with limited stakes. Excellent draw credentials.'
+      summary: 'Standout draw pick of the weekend reaffirmed. Bournemouth are now UNBEATEN IN 15 PL games (longest current run in the league) and statistically the most draw-prone team with 16 draws. Last 3 H2H all drawn. Both sides similar mid-table positions, no major stakes. Excellent value at 3.10+ on Betfair.'
     },
 
     // ───── BRIGHTON vs WOLVES ─────
     {
       day: 'Saturday 9 May',
       home: 'Brighton', away: 'Wolves', time: '15:00',
-      result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.80–4.20',
+      result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '3.40–3.80',
       teamNews: {
         home: [
-          { tag: 'key', text: 'Pushing for European spots' },
-          { tag: 'key', text: 'Need win to chase top 7' }
+          { tag: 'out', text: 'Wieffer (ankle), Webster (knee), Tzimas (knee)' },
+          { tag: 'out', text: 'Diego Gomez (knee), Solly March, Milner (muscle)' },
+          { tag: 'key', text: 'Pushing for European football' }
         ],
         away: [
-          { tag: 'out', text: 'Already relegated' },
-          { tag: 'doubt', text: 'Long winless run' },
-          { tag: 'doubt', text: 'Defensively poor all season' }
+          { tag: 'out', text: 'José Sá (ankle), Johnstone (shoulder), E. Gonzalez (knee)' },
+          { tag: 'doubt', text: 'Krejci (neck — late call)' },
+          { tag: 'key', text: 'Already relegated, nothing to play for' }
         ]
       },
-      context: 'Brighton have been one of the draw specialists this season with 11 draws (32%), but they desperately need wins to push for European football. With Wolves already relegated and defensively shambolic all season, this looks more like a Brighton win than the typical Brighton draw.',
+      context: 'Brighton injuries are mounting — six players out including Wieffer, Webster, Tzimas, Gomez, March and Milner. Wolves are already relegated, missing both senior goalkeepers (Sá, Johnstone) plus Gonzalez. Brighton need wins for Europe but their depleted squad combined with Wolves having no pressure (and possibly playing more freely with relegation confirmed) keeps the draw in play. Slight upgrade based on Brighton\'s injury list.',
       factors: {
-        formBalance:   { score: 38, detail: 'Brighton motivated for Europe; Wolves relegated, no stakes.' },
-        drawRates:     { score: 55, detail: 'Brighton draw-prone but pushing hard for wins now.' },
-        headToHead:    { score: 50, detail: 'Several recent draws but motivation gap shifts things.' },
-        goalTendency:  { score: 35, detail: 'Brighton attack potent at home; Wolves leak goals.' },
-        leagueContext: { score: 42, detail: 'European push for hosts vs relegated visitors = home win likely.' }
+        formBalance:   { score: 45, detail: 'Brighton injury-hit (6 out); Wolves relegated, playing for pride.' },
+        drawRates:     { score: 58, detail: 'Brighton draw-prone (32%); Wolves often draw end-of-season games.' },
+        headToHead:    { score: 52, detail: 'Several recent draws between these sides.' },
+        goalTendency:  { score: 48, detail: 'Brighton missing key creators; Wolves missing both keepers.' },
+        leagueContext: { score: 50, detail: 'Brighton motivated but depleted; Wolves relaxed but hopeless defensively.' }
       },
-      summary: 'Reassessed downward. Brighton need wins for European qualification, and Wolves are already down with the league\'s worst defence. Brighton\'s usual draw tendency is offset by the motivation gap — they\'ll be pushing hard for three points.'
+      summary: 'Slight upgrade. Brighton are missing 6 players to injury (Wieffer, Webster, Tzimas, Gomez, March, Milner). Wolves are already relegated and missing both first-choice goalkeepers. Brighton still favoured but the squad depletion narrows the gap. Worth a small interest at 3.40+.'
     },
 
     // ───── MAN CITY vs BRENTFORD ─────
     {
       day: 'Saturday 9 May',
       home: 'Manchester City', away: 'Brentford', time: '17:30',
-      result: null, drawProbability: 16, verdict: 'Low', fairOdds: '5.50–6.50',
+      result: null, drawProbability: 18, verdict: 'Low', fairOdds: '5.00–5.80',
       teamNews: {
         home: [
-          { tag: 'doubt', text: 'Rodri (groin, fitness uncertain)' },
-          { tag: 'out', text: 'Dias (thigh), Gvardiol (leg)' },
-          { tag: 'key', text: 'Title race: 5 pts behind Arsenal' },
-          { tag: 'key', text: '6 wins in a row' }
+          { tag: 'out', text: 'Gvardiol (tibial fracture)' },
+          { tag: 'doubt', text: 'Dias (hamstring) — back in training' },
+          { tag: 'doubt', text: 'Rodri — not in matchday squad vs Everton' },
+          { tag: 'key', text: 'Just drew 3-3 at Everton — title race blow' },
+          { tag: 'key', text: '5 points behind Arsenal in title race' }
         ],
         away: [
-          { tag: 'doubt', text: 'Mid-table, no major stakes' }
+          { tag: 'out', text: 'Milambo (ACL, long-term)' },
+          { tag: 'out', text: 'Carvalho (ACL, long-term)' },
+          { tag: 'out', text: 'Henry (hamstring)' }
         ]
       },
-      context: 'City are 5 points behind Arsenal in the title race and on a 6-game winning run. With Haaland fit and the Etihad behind them, they\'ll attack from the start. Brentford are comfortably mid-table with nothing major to play for.',
+      context: 'City just dropped two points in a 3-3 thriller at Everton, leaving them 5 behind Arsenal with limited games left. Rodri remains a doubt (not in squad vs Everton). Brentford have major long-term injury issues (two ACLs). City need to win at all costs — but the 3-3 draw at Everton shows they\'re not invincible. Brentford likely sit deep but City\'s firepower at home should prevail.',
       factors: {
-        formBalance:   { score: 25, detail: 'City title chasing on 71pts; Brentford mid-table.' },
-        drawRates:     { score: 30, detail: 'City\'s 6-game win run shows their drive for points.' },
+        formBalance:   { score: 28, detail: 'City stunned by 3-3 at Everton — title race nearly over.' },
+        drawRates:     { score: 32, detail: 'City missing Rodri/Gvardiol; Etihad still strong but uncertain.' },
         headToHead:    { score: 30, detail: 'City have dominated recent meetings convincingly.' },
-        goalTendency:  { score: 18, detail: 'Haaland scoring freely; low-scoring draws very unlikely.' },
-        leagueContext: { score: 25, detail: 'City desperately need 3pts to keep title pressure on Arsenal.' }
+        goalTendency:  { score: 22, detail: 'Haaland scoring freely; low-scoring draws very unlikely.' },
+        leagueContext: { score: 28, detail: 'City must win to keep slim title hopes alive.' }
       },
-      summary: 'City need this win to keep the title race alive — they\'re 5 points behind Arsenal with 3 games to go. With Haaland in form and a 6-game winning run, they\'ll dominate Brentford. Strongest avoid for draw betting.'
+      summary: 'City need this win desperately after their 3-3 at Everton. Rodri remains a doubt. Brentford have two ACL injuries. The Etihad firepower should win out but the Everton draw shows City are vulnerable — slight upgrade from previous assessment, but still a strong avoid.'
     },
 
     // ───── NOTTINGHAM FOREST vs NEWCASTLE ─────
@@ -595,80 +600,85 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Sevilla', away: 'Espanyol', time: '14:00',
-        result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '3.60–4.00',
+        result: null, drawProbability: 26, verdict: 'Low', fairOdds: '3.70–4.20',
         teamNews: {
           home: [
-            { tag: 'out', text: 'Teixeira (injury)' },
-            { tag: 'key', text: 'Just outside relegation zone — fighting for survival' },
-            { tag: 'key', text: '2 consecutive home wins, 1 loss in last 6 at home' }
+            { tag: 'out', text: 'Marcao (out for season)' },
+            { tag: 'doubt', text: 'Isaac Romero, Manu Bueno — late fitness tests' },
+            { tag: 'key', text: '17th, 37 pts — in relegation zone' },
+            { tag: 'key', text: '2 consecutive home wins; UNBEATEN at home vs Espanyol since 2011' }
           ],
           away: [
-            { tag: 'out', text: 'Puado (injury)' },
-            { tag: 'key', text: '17 La Liga games without a win — worst run in Spain' },
-            { tag: 'key', text: '0 wins in last 9 away games' }
+            { tag: 'key', text: '17 consecutive matches without a win' },
+            { tag: 'key', text: '13th, but no 2026 win at all' }
           ]
         },
-        context: 'Sevilla are fighting relegation and have been improving at home with two consecutive wins. Espanyol are in historically dire form — 17 La Liga games without a win and no away wins in 9 attempts. This is effectively a relegation battle with huge stakes for Sevilla. Sevilla\'s improving home form argues against a draw, but Espanyol\'s survival instinct may lead to cautious, defensive play. Sevilla win is most likely but a draw is possible given the nerves.',
+        context: 'Sevilla are unbeaten at home vs Espanyol since 2011 and on a 2-game home winning streak. Espanyol are in historic form — 17 consecutive matches without a win and zero wins in 2026. Even with Marcao out for the season, Sevilla should win comfortably at home. Down to 26% — Sevilla win is the strong play.',
         factors: {
-          formBalance:   { score: 45, detail: 'Sevilla improving with 2 home wins; Espanyol in crisis (17 without a win).' },
-          drawRates:     { score: 48, detail: 'Sevilla picking up wins now; Espanyol too weak to force draws on road.' },
-          headToHead:    { score: 50, detail: 'Sevilla hold historical edge in this fixture (82 wins in 171 meetings).' },
-          goalTendency:  { score: 45, detail: 'Sevilla motivated to score; Espanyol will park the bus in desperation.' },
-          leagueContext: { score: 48, detail: 'Relegation battle at home; pressure on Sevilla to win, Espanyol to survive.' }
+          formBalance:   { score: 35, detail: 'Sevilla picking up wins; Espanyol in 17-game winless run.' },
+          drawRates:     { score: 40, detail: 'Sevilla unbeaten at home vs Espanyol since 2011 — fixture is one-sided.' },
+          headToHead:    { score: 35, detail: 'Sevilla 14 years unbeaten at home in this fixture.' },
+          goalTendency:  { score: 42, detail: 'Sevilla scoring at home; Espanyol struggling to keep clean sheets.' },
+          leagueContext: { score: 38, detail: 'Sevilla need points for survival; Espanyol unable to win in 2026.' }
         },
-        summary: 'Sevilla need points to escape relegation and have been picking up wins at home. Espanyol are in historically bad form — 17 games without a win, 0 away wins in 9. The incentive gap is large. A Sevilla win is most likely but Espanyol may grind out a draw through sheer defensive desperation.'
+        summary: 'Sevilla unbeaten at home vs Espanyol since 2011 and on a 2-game home winning streak. Espanyol have not won in 17 matches and have zero 2026 wins. Sevilla should comfortably take 3 points. Reduced to Low — avoid the draw here.'
       },
       {
         day: 'Saturday 9 May',
         home: 'Atletico Madrid', away: 'Celta Vigo', time: '16:15',
-        result: null, drawProbability: 20, verdict: 'Low', fairOdds: '4.50–5.20',
+        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '3.80–4.20',
         teamNews: {
           home: [
-            { tag: 'out', text: 'Barrios (injury), Gimenez (injury)' },
-            { tag: 'key', text: 'Just lost UCL semi to Arsenal (2-1 aggregate) — focused on La Liga now' },
-            { tag: 'key', text: 'Beat Valencia 2-0 away with a rotated lineup recently' }
+            { tag: 'out', text: 'Cardoso (NEW muscular injury), Barrios (thigh), N. Gonzalez (thigh)' },
+            { tag: 'out', text: 'Julián Álvarez (unavailable)' },
+            { tag: 'key', text: '4th, 63 pts — needs to mathematically secure UCL' },
+            { tag: 'key', text: 'UCL semi exit to Arsenal; Betis 10 pts back' }
           ],
           away: [
-            { tag: 'out', text: 'Aidoo, Swedberg, Vecino, Starfelt, Miguel Roman — all injured' },
-            { tag: 'key', text: 'Have not beaten Atletico in Madrid since 2007' }
+            { tag: 'out', text: 'Starfelt, Vecino, Miguel Román — injured' },
+            { tag: 'out', text: 'Javi Rueda — suspended' },
+            { tag: 'key', text: '6th — fighting for European football' },
+            { tag: 'key', text: 'Halted 5-game losing streak with 3-1 vs Elche' },
+            { tag: 'key', text: 'Have not won in Madrid since 2007' }
           ]
         },
-        context: 'Atletico were eliminated from the UCL semi by Arsenal (2-1 on aggregate) and now refocus on the league. Despite losing Barrios and Gimenez to injury, they beat Valencia 2-0 away with a reserve lineup showing squad depth. Celta are travelling to the Metropolitano with 5 players out injured and haven\'t won there in nearly 20 years. Strong Atletico win probability.',
+        context: 'Atletico have a midfield crisis — Cardoso injured this week joins Barrios and Gonzalez out, plus Álvarez. They\'re unbeaten in 14 vs Celta. However, with Atletico\'s midfield significantly depleted and Celta in 6th fighting for Europe (just halted 5-game losing streak), this isn\'t the cake walk it appeared. Models give 25% draw probability — slight bump.',
         factors: {
-          formBalance:   { score: 32, detail: 'Atletico refocused on league after UCL exit; Celta travelling depleted.' },
-          drawRates:     { score: 28, detail: 'Atletico dominate this fixture at home — draws are rare.' },
-          headToHead:    { score: 25, detail: 'Celta have not won at the Metropolitano since 2007.' },
-          goalTendency:  { score: 30, detail: 'Atletico attacking with European pressure removed; Celta travel injury-hit.' },
-          leagueContext: { score: 30, detail: 'Atletico need league points post-UCL exit; Celta have nothing to play for.' }
+          formBalance:   { score: 42, detail: 'Atletico midfield crisis (Cardoso, Barrios, Gonzalez out); Celta improving.' },
+          drawRates:     { score: 40, detail: 'Models give 25% draw — Atletico still favoured but less convincingly.' },
+          headToHead:    { score: 32, detail: 'Atletico unbeaten in 14 H2H; Celta haven\'t won here since 2007.' },
+          goalTendency:  { score: 40, detail: 'Atletico without Álvarez and key midfielders; Celta\'s defensive injuries help them.' },
+          leagueContext: { score: 38, detail: 'Both pushing for Europe — Atletico CL spot, Celta European place.' }
         },
-        summary: 'Strong avoid. Atletico refocus on La Liga after their UCL exit to Arsenal and travel to the Metropolitano buoyed. Celta are missing five players and haven\'t won here since 2007. Atletico recently beat Valencia 2-0 with a rotated lineup showing their depth. Low draw probability.'
+        summary: 'Slight upgrade. Atletico\'s midfield is in crisis — Cardoso\'s new injury joins Barrios, Gonzalez and Álvarez. Celta have just halted a 5-game losing streak. The 17-year H2H record at the Metropolitano keeps Atletico favoured but the injury context and Celta\'s European push lifts the draw probability to 25%.'
       },
       {
         day: 'Saturday 9 May',
         home: 'Real Sociedad', away: 'Betis', time: '18:30',
-        result: null, drawProbability: 40, verdict: 'Strong', fairOdds: '2.90–3.20',
+        result: null, drawProbability: 38, verdict: 'Good', fairOdds: '3.00–3.30',
         teamNews: {
           home: [
-            { tag: 'out', text: 'Herrera (injury), Odriozola (injury), Kubo (injury), Aramburu (injury)' },
-            { tag: 'doubt', text: 'Guedes (doubt)' },
-            { tag: 'key', text: 'Copa del Rey winners — European football secured, no pressure' },
-            { tag: 'key', text: 'Winless in last 4 La Liga games (relaxed mode)' }
+            { tag: 'out', text: 'Odriozola (knee — season over), Zubeldia, Karrikaburu (injuries)' },
+            { tag: 'doubt', text: 'Ruperez, Guedes (fitness doubts)' },
+            { tag: 'out', text: 'Aramburu (suspended — yellow card accumulation)' },
+            { tag: 'key', text: 'Just 1 point from last 3 league games (1-0 loss at Sevilla)' },
+            { tag: 'key', text: '9th — no major stakes' }
           ],
           away: [
             { tag: 'out', text: 'Ortiz (injury), Bartra (injury)' },
-            { tag: 'key', text: 'Unbeaten in last 5 — won just once away in last 4 (3 draws)' },
-            { tag: 'key', text: '3-0 win vs Real Oviedo last time; 5th place secured' }
+            { tag: 'key', text: 'Unbeaten in last 5; 5th place secured (6 pts ahead of 6th)' },
+            { tag: 'key', text: 'Beat Sociedad 3-1 in reverse fixture (September)' }
           ]
         },
-        context: 'Real Sociedad have already secured European football via their Copa del Rey triumph and are visibly in holiday mode — winless in 4 La Liga games with four key players out. Betis are unbeaten in 5 but have drawn 3 of their last 4 away games. Both teams are without pressure and several key players. Betis\' away draw pattern combined with a relaxed Sociedad make this the best La Liga draw pick of the weekend.',
+        context: 'Sociedad in poor form — just 1 point from their last 3 league games and beaten 1-0 at Sevilla. They\'re 9th with nothing major at stake. Betis are unbeaten in 5 and 5th place is secured (6 points clear of 6th). Both teams have multiple absentees. The motivation is reduced for both — classic end-of-season stalemate territory.',
         factors: {
-          formBalance:   { score: 72, detail: 'Sociedad in "holiday mode" post-Copa win; Betis comfortable in 5th.' },
-          drawRates:     { score: 78, detail: 'Betis drew 3 of last 4 away; Sociedad winless in 4 with no pressure.' },
-          headToHead:    { score: 65, detail: 'Consistently tight encounters with draws historically.' },
-          goalTendency:  { score: 68, detail: 'Sociedad missing four players; low-intensity game very likely.' },
-          leagueContext: { score: 70, detail: 'Both teams with nothing to play for — classic end-of-season stalemate setup.' }
+          formBalance:   { score: 68, detail: 'Sociedad in poor form (1pt from 3); Betis comfortable in 5th.' },
+          drawRates:     { score: 72, detail: 'Both sides at end of season with multiple absentees and no pressure.' },
+          headToHead:    { score: 60, detail: 'Betis won the reverse fixture 3-1 in September.' },
+          goalTendency:  { score: 65, detail: 'Sociedad missing 5+ players; low-intensity affair likely.' },
+          leagueContext: { score: 68, detail: 'Both teams without major stakes — typical late-season cautious football.' }
         },
-        summary: 'Best La Liga draw pick of the weekend. Real Sociedad have Copa del Rey glory secured and are clearly in holiday mode — winless in 4 and missing four first-teamers. Betis have drawn 3 of their last 4 away games and are comfortable in 5th. Both teams without pressure, both missing players. A stalemate is the most natural outcome here.'
+        summary: 'Solid draw pick. Sociedad have just 1 point from their last 3 games and are 9th with nothing major to play for. Betis are unbeaten in 5 with 5th place secured. Both sides missing players. Classic end-of-season fixture where neither team has serious incentive to push for a win.'
       },
       {
         day: 'Sunday 10 May',
@@ -765,29 +775,29 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Cagliari', away: 'Udinese', time: '15:00',
-        result: null, drawProbability: 44, verdict: 'Strong', fairOdds: '2.90–3.20', bookOdds: 3.25,
+        result: null, drawProbability: 44, verdict: 'Strong', fairOdds: '2.90–3.20', bookOdds: 3.10,
         teamNews: {
           home: [
             { tag: 'out', text: 'Borrelli, Mazzitelli, Pavoletti, Idrissi, Felici — all injured' },
-            { tag: 'key', text: '15th (37pts) — can seal Serie A survival with a win today' },
-            { tag: 'key', text: '2 consecutive home wins; 9 points clear of drop zone' }
+            { tag: 'doubt', text: 'Deiola, Rodriguez, Liteta on treatment table' },
+            { tag: 'key', text: 'Need win to mathematically seal survival' },
+            { tag: 'key', text: '2 consecutive home wins; recently beat Atalanta 3-2, drew 0-0 at Bologna' }
           ],
           away: [
             { tag: 'out', text: 'Bertola, Davis, Zemura, Zanoli — all injured' },
-            { tag: 'out', text: 'Kabasele (suspended — yellow card accumulation)' },
-            { tag: 'key', text: '11th (47pts) — safe and comfortable, nothing at stake' },
-            { tag: 'key', text: 'Unbeaten in last 4 away games' }
+            { tag: 'key', text: 'Mid-table, no pressure' },
+            { tag: 'key', text: 'Unbeaten in 4 away games — scoring 2+ in each' }
           ]
         },
-        context: 'Cagliari can mathematically seal their Serie A survival today — they\'re 9 points clear of the drop with two games left. Despite five injury absentees, they\'ve won their last two at home. Udinese travel with no pressure and four players missing plus Kabasele suspended, but they\'re unbeaten in 4 away. A comfortable Udinese is a classic draw visitor and the H2H history is extraordinary — 5 of the last 6 meetings ended under 2.5 goals.',
+        context: 'Reaffirmed analysis. Cagliari need a win to mathematically seal survival and have won 2 in a row at home. However, they\'ve failed to win any of their last 6 home fixtures vs Udinese (H2H lopsided: Udinese 13W vs Cagliari 7W, 8 draws). Udinese travel unbeaten in 4 away games scoring 2+ in each, but with 4 first-teamers out. The H2H pattern of tight, low-scoring games combined with the safe-vs-safe context keeps this as the top draw pick.',
         factors: {
-          formBalance:   { score: 68, detail: 'Cagliari fighting to seal survival at home; Udinese comfortable away visitors.' },
-          drawRates:     { score: 80, detail: 'Udinese unbeaten in 8 H2H; 5 of last 6 meetings under 2.5 goals.' },
-          headToHead:    { score: 78, detail: 'Extraordinary H2H draw record — this fixture consistently produces stalemates.' },
+          formBalance:   { score: 68, detail: 'Cagliari needing win for survival; Udinese unbeaten in 4 away.' },
+          drawRates:     { score: 80, detail: 'Cagliari winless in last 6 home vs Udinese; H2H heavily favours stalemates.' },
+          headToHead:    { score: 78, detail: 'Cagliari winless in last 6 home meetings vs Udinese — extraordinary record.' },
           goalTendency:  { score: 72, detail: 'Both sides depleted; Cagliari drew 0-0 at Bologna last week.' },
-          leagueContext: { score: 70, detail: 'Safe vs safe — Cagliari want survival confirmed, Udinese happy to travel quietly.' }
+          leagueContext: { score: 70, detail: 'Safe vs safe with Cagliari just needing the point for survival.' }
         },
-        summary: 'Top draw pick of the Serie A weekend. The H2H record is remarkable — Udinese unbeaten in 8 meetings, 5 of the last 6 under 2.5 goals. Both sides carry multiple injuries, Udinese have nothing to play for and are unbeaten away in 4. Cagliari want to seal survival but may settle for a cautious point.'
+        summary: 'Reaffirmed top Serie A draw pick. Cagliari are winless in their last 6 home games against Udinese — extraordinary H2H record. Udinese unbeaten in 4 away. Both sides depleted by injuries. At Betfair\'s 21/10 (3.10) the value is marginal, but the bet remains sound based on the H2H pattern.'
       },
       {
         day: 'Sunday 10 May',
@@ -855,79 +865,81 @@ const LEAGUES = [
     fixtures: [
       {
         day: 'Saturday 9 May',
-        home: 'Borussia Dortmund', away: 'RB Leipzig', time: '15:30',
-        result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '3.80–4.30',
+        home: 'Stuttgart', away: 'Bayer Leverkusen', time: '15:30',
+        result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.50–3.90',
         teamNews: {
           home: [
-            { tag: 'out', text: 'Süle, Can, Mane, Schlotterbeck, Bensebaini — all injured' },
-            { tag: 'key', text: 'Young Reggiani forced into lineup due to defensive injuries' },
-            { tag: 'key', text: 'Won UCL match vs Atlanta midweek; lost 0-1 to Gladbach last Bundesliga game' }
+            { tag: 'out', text: 'Karazor (suspended) — Chema Andres deputises' },
+            { tag: 'key', text: '5th, 58pts — defeat almost certainly costs CL spot' },
+            { tag: 'key', text: 'Winless in 3 (3-3 vs Hoffenheim last)' },
+            { tag: 'key', text: 'Undav has not scored in 4 league games' }
           ],
           away: [
-            { tag: 'key', text: 'Hammered 4-1 by Leverkusen last matchday — confidence low' },
-            { tag: 'key', text: 'Gruda salvaged a point vs Wolfsburg before that' },
-            { tag: 'key', text: 'Bayern are champions — both sides fighting for European qualification' }
+            { tag: 'key', text: '4th, 58pts (level with Stuttgart) — defeat almost certainly costs CL' },
+            { tag: 'key', text: 'Schick scored hat-trick in 4-1 win vs Leipzig last MD' },
+            { tag: 'key', text: 'Maza, Tella, Schick all available' }
           ]
         },
-        context: 'Bayern are already crowned champions (won April 19 with 4 games to spare), so both sides are now fighting for European places. Dortmund are badly hit by injuries — five players out, with 18-year-old Reggiani deputising in defence. They won a UCL match midweek but lost their last Bundesliga game 0-1 to Gladbach. Leipzig were hammered 4-1 by Leverkusen last time and are in poor league form. Both sides are inconsistent and injury-hit. The Bundesliga\'s low draw rate (22%) works against it but the circumstances create draw conditions.',
+        context: 'Massive Champions League decider — both 4th and 5th on 58 points each, with defeat almost certainly costing the loser their CL spot. Stuttgart winless in 3 and Karazor suspended. Leverkusen at full strength after Schick\'s hat-trick last week. Both teams need the win which usually compresses draw probability — but if both play cautiously to avoid losing, a draw is possible.',
         factors: {
-          formBalance:   { score: 50, detail: 'Both sides lost their last Bundesliga games and carry form concerns.' },
-          drawRates:     { score: 40, detail: 'Bundesliga 22% draw rate is the lowest in Europe\'s top leagues.' },
-          headToHead:    { score: 48, detail: 'Dortmund vs Leipzig historically open and high-scoring — draws less common.' },
-          goalTendency:  { score: 45, detail: 'Dortmund missing 5 players including defenders; Leipzig attack-minded.' },
-          leagueContext: { score: 48, detail: 'European qualification race with both sides in inconsistent form.' }
+          formBalance:   { score: 50, detail: 'Stuttgart winless in 3; Leverkusen in form (4-1 last game).' },
+          drawRates:     { score: 42, detail: 'Both desperately need win for CL — typically reduces draw chance.' },
+          headToHead:    { score: 50, detail: 'Bundesliga 22% draw rate; CL stakes mean both push for win.' },
+          goalTendency:  { score: 45, detail: 'Schick on form, Undav out of form; goals expected from Leverkusen.' },
+          leagueContext: { score: 48, detail: 'CL playoff-style match — fear of losing may cancel attacking intent.' }
         },
-        summary: 'Dortmund are missing five players and had to field a teenager in defence. Leipzig were hammered 4-1 last time. Both sides are fighting for European spots but carrying poor recent form. The Bundesliga\'s 22% draw rate still suppresses appeal but this is more open than a typical Dortmund-Leipzig clash.'
+        summary: 'Champions League decider — both teams 4th and 5th on 58 points. Defeat almost certainly costs the loser CL football. Stuttgart winless in 3, Leverkusen flying with Schick on a hat-trick. High stakes typically reduce draws but this could equally go to a cautious, point-taking conclusion. Worth a small interest.'
       },
       {
         day: 'Saturday 9 May',
-        home: 'Eintracht Frankfurt', away: 'Werder Bremen', time: '15:30',
-        result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.50–3.90',
+        home: 'RB Leipzig', away: 'St. Pauli', time: '15:30',
+        result: null, drawProbability: 18, verdict: 'Low', fairOdds: '5.00–6.00',
         teamNews: {
           home: [
-            { tag: 'key', text: 'Lost 1-2 to Hamburg last matchday' },
-            { tag: 'key', text: 'Fighting for European qualification spots' }
+            { tag: 'out', text: 'Bakayoko, Lukeba (knee), Gebel (cruciate), Ouedraogo (knee)' },
+            { tag: 'key', text: 'Pushing for Champions League football' },
+            { tag: 'key', text: 'Lost 4-1 to Leverkusen last MD — needs response' }
           ],
           away: [
-            { tag: 'key', text: 'Lost 1-3 to Augsburg last matchday' },
-            { tag: 'key', text: 'Both sides dropped points on MD32' }
+            { tag: 'out', text: 'Dzwigala (suspended), Spari (syndesmotic), Hountondji (foot)' },
+            { tag: 'out', text: 'Pereira Lage (knee), Sands (ankle), Nemeth (muscle), Metcalfe (knock)' },
+            { tag: 'key', text: 'In automatic relegation zone after 2-1 loss to Mainz' }
           ]
         },
-        context: 'Both sides lost their last Bundesliga games on matchday 32 — Frankfurt fell 1-2 to Hamburg and Bremen were beaten 1-3 by Augsburg. Bayern are already champions so there is nothing at the very top to play for, but European places are still contested in the lower half. Both sides are in similar mid-table positions after disappointing results. A bounce-back is expected from both but neither is in great form.',
+        context: 'Leipzig\'s final home game — pushing hard for Champions League football after being humiliated 4-1 by Leverkusen last week. St. Pauli are in the automatic relegation zone with seven players unavailable through injury or suspension. Leipzig at home should win comfortably. Low draw probability.',
         factors: {
-          formBalance:   { score: 55, detail: 'Both sides lost last matchday — similarly placed and similarly frustrated.' },
-          drawRates:     { score: 52, detail: 'Frankfurt and Werder draw at above-average rates for the Bundesliga.' },
-          headToHead:    { score: 52, detail: 'Previous meetings have been competitive; reverse fixture was 3-3.' },
-          goalTendency:  { score: 50, detail: 'Frankfurt can be open at home; Bremen defensively brittle recently.' },
-          leagueContext: { score: 48, detail: 'Mid-table Bundesliga encounter with both sides needing a response.' }
+          formBalance:   { score: 28, detail: 'Leipzig at home pushing for CL; St. Pauli in relegation crisis.' },
+          drawRates:     { score: 30, detail: 'Bundesliga 22% draw rate; massive motivation gap reduces it further.' },
+          headToHead:    { score: 32, detail: 'Leipzig clear favourites at home vs depleted St. Pauli.' },
+          goalTendency:  { score: 25, detail: 'St. Pauli missing 7 players; Leipzig scoring at home.' },
+          leagueContext: { score: 30, detail: 'Massive motivation gap with Leipzig in much stronger position.' }
         },
-        summary: 'Both sides arrive stung from poor results last matchday. Frankfurt lost to Hamburg, Bremen were beaten 3-1 by Augsburg. The reverse fixture earlier this season ended 3-3. Two similarly placed sides looking to bounce back — a tight, evenly contested game with moderate draw credentials by Bundesliga standards.'
+        summary: 'Strong avoid for the draw. Leipzig push hard at home for CL after embarrassing 4-1 loss at Leverkusen. St. Pauli have SEVEN players out and sit in the automatic relegation zone. Leipzig should comfortably win their final home game.'
       },
       {
-        day: 'Sunday 10 May',
-        home: 'Bayern Munich', away: 'Bayer Leverkusen', time: '17:30',
-        result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.70–4.20',
+        day: 'Saturday 9 May',
+        home: 'VfL Wolfsburg', away: 'Bayern Munich', time: '18:30',
+        result: null, drawProbability: 22, verdict: 'Low', fairOdds: '4.20–4.80',
         teamNews: {
           home: [
-            { tag: 'out', text: 'Neuer (muscle tear), Ulreich (thigh), Urbig (concussion) — all 3 keepers out' },
-            { tag: 'key', text: 'Already CHAMPIONS — won title April 19 with 4 games to spare' },
-            { tag: 'key', text: '3-game winless streak following PSG UCL exit (lost 5-6 aggregate)' }
+            { tag: 'out', text: 'Wind, Arnold, Dardai, Seelt, Cleiton, Rogerio, Fischer — long-term' },
+            { tag: 'key', text: '17th — fighting to escape relegation playoff' }
           ],
           away: [
-            { tag: 'out', text: 'Tillman, Tape + 3 others — five absentees' },
-            { tag: 'key', text: 'Won 4-1 vs Leipzig last time — in excellent Bundesliga form' },
-            { tag: 'key', text: 'Fighting for European qualification places' }
+            { tag: 'out', text: 'Gnabry (adductor), Davies (hamstring)' },
+            { tag: 'key', text: 'CHAMPIONS — title clinched (final away fixture)' },
+            { tag: 'key', text: 'Urbig in goal due to Neuer/Ulreich injuries' }
           ]
         },
-        context: 'Extraordinary context. Bayern were crowned champions on April 19 with four games to spare and have nothing to play for. They are in a 3-game winless run after their crushing UCL exit to PSG (6-5 aggregate) and face a goalkeeper crisis — all three senior keepers (Neuer, Ulreich, Urbig) are unavailable. Leverkusen meanwhile are in brilliant form (4-1 vs Leipzig) and fighting for European places. Bayern will heavily rotate and may field youth. A Leverkusen win is the likely outcome but Bayern\'s unpredictability at home creates draw possibilities.',
+        context: 'Bayern are champions and have nothing to play for in their final away fixture. Wolfsburg are 17th and fighting desperately to escape relegation playoff. Bayern\'s goalkeeping situation remains delicate (Urbig starting). Despite Bayern\'s relaxed motivation, Wolfsburg\'s many long-term injuries leave them weak. Bayern likely wins comfortably.',
         factors: {
-          formBalance:   { score: 55, detail: 'Bayern have nothing to play for and a goalkeeper crisis; Leverkusen in excellent form.' },
-          drawRates:     { score: 48, detail: 'Bayern champions, rotating heavily — less motivated to push forward.' },
-          headToHead:    { score: 45, detail: 'Bayern at home usually dominant but not when fielding youth team keepers.' },
-          goalTendency:  { score: 50, detail: 'Goalkeeping crisis creates uncertainty; Leverkusen sharp in front of goal.' },
-          leagueContext: { score: 52, detail: 'Motivated Leverkusen vs title-won, rotating, goalkeeper-less Bayern.' }
+          formBalance:   { score: 35, detail: 'Bayern champions, relaxed; Wolfsburg in relegation playoff fight.' },
+          drawRates:     { score: 35, detail: 'Bayern away games rarely draws even when relaxed.' },
+          headToHead:    { score: 32, detail: 'Bayern dominant in this fixture historically.' },
+          goalTendency:  { score: 30, detail: 'Wolfsburg defensively vulnerable; Bayern still attacks.' },
+          leagueContext: { score: 35, detail: 'Wolfsburg desperate but missing 7 players to long-term injury.' }
         },
-        summary: 'Significant context update. Bayern are already champions, on a 3-game winless run post-CL exit, and have ALL THREE senior goalkeepers injured. They will rotate heavily with nothing at stake. Leverkusen won 4-1 last game and need European points. A Leverkusen win is most likely but heavy Bayern rotation creates draw possibilities. Not a strong avoid anymore.'
+        summary: 'Bayern champions and relaxed but still too strong for a Wolfsburg side missing 7 long-term injured. Bayern are likely to dominate even with rotation. Strong avoid for draw betting.'
       }
     ]
   },
