@@ -250,11 +250,11 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 <body>
 
 <div class="topbar">
-  <div class="logo">Draw Analyzer <span>v2.6 · 2025–26</span></div>
+  <div class="logo">Draw Analyzer <span>v2.7 · 2025–26</span></div>
   <div class="topbar-right">
     <div class="updated-stack">
       <div class="updated-tag">Page · 09 May 2026 18:47 BST</div>
-      <div class="updated-tag">Data · 09 May 2026 21:08 BST</div>
+      <div class="updated-tag">Data · 09 May 2026 21:10 BST</div>
     </div>
     <div class="depth-badge">DEEP RESEARCH MODE</div>
   </div>
@@ -284,7 +284,7 @@ const LEAGUES = [
     {
       day: 'Saturday 9 May',
       home: 'Liverpool', away: 'Chelsea', time: '12:30',
-      result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.50–3.90', bookOdds: 3.50,
+      result: 'draw', drawProbability: 26, verdict: 'Moderate', fairOdds: '3.50–3.90', bookOdds: 3.50,
       teamNews: {
         home: [
           { tag: 'out', text: 'Salah, Endo, Leoni, Bradley, Ekitike (Achilles, season)' },
@@ -315,7 +315,7 @@ const LEAGUES = [
     {
       day: 'Saturday 9 May',
       home: 'Sunderland', away: 'Manchester United', time: '15:00',
-      result: null, drawProbability: 24, verdict: 'Low', fairOdds: '4.00–4.50',
+      result: 'draw', drawProbability: 24, verdict: 'Low', fairOdds: '4.00–4.50',
       teamNews: {
         home: [
           { tag: 'out', text: 'Ballard (3-game ban — FA appeal rejected)' },
@@ -345,7 +345,7 @@ const LEAGUES = [
     {
       day: 'Saturday 9 May',
       home: 'Fulham', away: 'AFC Bournemouth', time: '15:00',
-      result: null, drawProbability: 44, verdict: 'Strong', fairOdds: '2.85–3.10', bookOdds: 3.10,
+      result: 'away', drawProbability: 44, verdict: 'Strong', fairOdds: '2.85–3.10', bookOdds: 3.10,
       teamNews: {
         home: [
           { tag: 'out', text: 'Sessegnon (thigh), Iwobi (thigh), Kevin (toe)' },
@@ -374,7 +374,7 @@ const LEAGUES = [
     {
       day: 'Saturday 9 May',
       home: 'Brighton', away: 'Wolves', time: '15:00',
-      result: null, drawProbability: 28, verdict: 'Moderate', fairOdds: '3.40–3.80',
+      result: 'home', drawProbability: 28, verdict: 'Moderate', fairOdds: '3.40–3.80',
       teamNews: {
         home: [
           { tag: 'out', text: 'Wieffer (ankle), Webster (knee), Tzimas (knee)' },
@@ -402,7 +402,7 @@ const LEAGUES = [
     {
       day: 'Saturday 9 May',
       home: 'Manchester City', away: 'Brentford', time: '17:30',
-      result: null, drawProbability: 18, verdict: 'Low', fairOdds: '5.00–5.80',
+      result: 'home', drawProbability: 18, verdict: 'Low', fairOdds: '5.00–5.80',
       teamNews: {
         home: [
           { tag: 'out', text: 'Gvardiol (tibial fracture)' },
@@ -737,7 +737,7 @@ const LEAGUES = [
       {
         day: 'Friday 8 May',
         home: 'Levante', away: 'Osasuna', time: '21:00',
-        result: null, drawProbability: 36, verdict: 'Good', fairOdds: '3.10–3.50',
+        result: 'home', drawProbability: 36, verdict: 'Good', fairOdds: '3.10–3.50',
         teamNews: {
           home: [
             { tag: 'out', text: 'Elgezabal (knee)' },
@@ -765,7 +765,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Elche', away: 'Alavés', time: '14:00',
-        result: null, drawProbability: 30, verdict: 'Moderate', fairOdds: '3.30–3.70',
+        result: 'draw', drawProbability: 30, verdict: 'Moderate', fairOdds: '3.30–3.70',
         teamNews: {
           home: [
             { tag: 'out', text: 'Boayar (muscle)' },
@@ -792,7 +792,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Sevilla', away: 'Espanyol', time: '16:15',
-        result: null, drawProbability: 26, verdict: 'Low', fairOdds: '3.70–4.20',
+        result: 'home', drawProbability: 26, verdict: 'Low', fairOdds: '3.70–4.20',
         teamNews: {
           home: [
             { tag: 'out', text: 'Marcao (out for season)' },
@@ -818,7 +818,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Atletico Madrid', away: 'Celta Vigo', time: '18:30',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '3.80–4.20',
+        result: 'away', drawProbability: 25, verdict: 'Low', fairOdds: '3.80–4.20',
         teamNews: {
           home: [
             { tag: 'out', text: 'Cardoso (NEW muscular injury), Barrios (thigh), N. Gonzalez (thigh)' },
@@ -1315,7 +1315,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Cagliari', away: 'Udinese', time: '15:00',
-        result: null, drawProbability: 44, verdict: 'Strong', fairOdds: '2.90–3.20', bookOdds: 3.10,
+        result: 'away', drawProbability: 44, verdict: 'Strong', fairOdds: '2.90–3.20', bookOdds: 3.10,
         teamNews: {
           home: [
             { tag: 'out', text: 'Borrelli, Mazzitelli, Pavoletti, Idrissi, Felici — all injured' },
@@ -1342,7 +1342,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Lazio', away: 'Inter Milan', time: '18:00',
-        result: null, drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
+        result: 'away', drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
         teamNews: {
           home: [
             { tag: 'out', text: 'Cataldi, Gila, Furlanetto, Provedel — all injured' },
@@ -1647,7 +1647,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'Stuttgart', away: 'Bayer Leverkusen', time: '15:30',
-        result: null, drawProbability: 26, verdict: 'Moderate', fairOdds: '3.50–3.90',
+        result: 'home', drawProbability: 26, verdict: 'Moderate', fairOdds: '3.50–3.90',
         teamNews: {
           home: [
             { tag: 'out', text: 'Karazor (suspended) — Chema Andres deputises' },
@@ -1674,7 +1674,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'RB Leipzig', away: 'St. Pauli', time: '15:30',
-        result: null, drawProbability: 18, verdict: 'Low', fairOdds: '5.00–6.00',
+        result: 'home', drawProbability: 18, verdict: 'Low', fairOdds: '5.00–6.00',
         teamNews: {
           home: [
             { tag: 'out', text: 'Bakayoko, Lukeba (knee), Gebel (cruciate), Ouedraogo (knee)' },
@@ -1700,7 +1700,7 @@ const LEAGUES = [
       {
         day: 'Saturday 9 May',
         home: 'VfL Wolfsburg', away: 'Bayern Munich', time: '18:30',
-        result: null, drawProbability: 22, verdict: 'Low', fairOdds: '4.20–4.80',
+        result: 'away', drawProbability: 22, verdict: 'Low', fairOdds: '4.20–4.80',
         teamNews: {
           home: [
             { tag: 'out', text: 'Wind, Arnold, Dardai, Seelt, Cleiton, Rogerio, Fischer — long-term' },
