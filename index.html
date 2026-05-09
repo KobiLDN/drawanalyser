@@ -39,6 +39,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .logo span { color: var(--text3); font-weight: 400; margin-left: 10px; letter-spacing: 0.05em; }
 .depth-badge { font-size: 10px; padding: 3px 10px; border: 1px solid var(--gold-dim); border-radius: 3px; color: var(--gold); letter-spacing: 0.1em; }
 .topbar-right { display: flex; align-items: center; gap: 14px; }
+.updated-stack { display: flex; flex-direction: column; gap: 2px; align-items: flex-end; }
 .updated-tag { font-size: 10px; color: var(--text2); letter-spacing: 0.05em; text-transform: uppercase; }
 .toggle-pill { font-size: 9px; padding: 2px 7px; border-radius: 99px; border: 1px solid var(--border2); color: var(--text3); letter-spacing: 0.08em; }
 .toggle-pill.on { color: var(--gold); border-color: var(--gold-dim); background: rgba(200, 168, 75, 0.08); }
@@ -249,9 +250,12 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 <body>
 
 <div class="topbar">
-  <div class="logo">Draw Analyzer <span>v2.4 · 2025–26</span></div>
+  <div class="logo">Draw Analyzer <span>v2.5 · 2025–26</span></div>
   <div class="topbar-right">
-    <div class="updated-tag">Updated 09 May 2026 18:47 BST</div>
+    <div class="updated-stack">
+      <div class="updated-tag">Page · 09 May 2026 18:47 BST</div>
+      <div class="updated-tag">Data · 09 May 2026 18:47 BST</div>
+    </div>
     <div class="depth-badge">DEEP RESEARCH MODE</div>
   </div>
 </div>

@@ -4,7 +4,6 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Backlog
 
-- **Auto-fetch upcoming fixtures** — pull next gameweek's basic fixtures (teams, kick-off times, dates) from the API instead of hand-curating; deep research stays manual.
 - **Prediction-accuracy tracker** — for fixtures that have a `result`, compute hit-rate per verdict tier (Strong/Good/Moderate/Low) and show it in the header.
 - **Filter UI** — sidebar toggles to show only Strong/Good picks, or only fixtures with edge > 5%.
 - **CSV export** — download this weekend's picks as a spreadsheet.
@@ -14,6 +13,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.5** — Split topbar timestamp into Page (last code change) and Data (last fixture/results update). Auto-fetch fixtures workflow (`fetch-fixtures.js` + `fetch-fixtures.yml`) pulls upcoming stubs from football-data.org every Monday. Auto-mark schedule updated to 5pm + 11pm BST.
 - **v2.4** — Auto-mark results workflow. Daily action queries football-data.org for finished matches and patches `result:` in `index.html`, then auto-commits. Works alongside the existing verify-fixtures workflow without retriggering it.
 - **v2.3** — `CLAUDE.md` added with the after-every-edit convention (bump version, update FEATURES, refresh README if user-visible). Auto-loaded into every Claude session.
 - **v2.2** — "Past fixtures" toggle in the sidebar (Display section). Default is upcoming-only; toggle ON to include played fixtures with their result badges.

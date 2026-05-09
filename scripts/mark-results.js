@@ -86,7 +86,7 @@ function bumpVersion(html) {
   };
 }
 
-function refreshTimestamp(html) {
+function refreshDataTimestamp(html) {
   const parts = new Intl.DateTimeFormat('en-GB', {
     timeZone: 'Europe/London',
     day: '2-digit', month: 'short', year: 'numeric',
@@ -94,7 +94,7 @@ function refreshTimestamp(html) {
   }).formatToParts(new Date());
   const get = t => parts.find(p => p.type === t).value;
   const ts = `${get('day')} ${get('month')} ${get('year')} ${get('hour')}:${get('minute')} BST`;
-  return html.replace(/<div class="updated-tag">Updated [^<]+<\/div>/, `<div class="updated-tag">Updated ${ts}</div>`);
+  return html.replace(/<div class="updated-tag">Data · [^<]+<\/div>/, `<div class="updated-tag">Data · ${ts}</div>`);
 }
 
 function addFeaturesEntry(features, version, marked) {
@@ -162,7 +162,7 @@ function addFeaturesEntry(features, version, marked) {
   }
 
   const bumped = bumpVersion(html);
-  html = refreshTimestamp(bumped.html);
+  html = refreshDataTimestamp(bumped.html);
   features = addFeaturesEntry(features, bumped.version, marked);
 
   fs.writeFileSync(indexPath, html);
