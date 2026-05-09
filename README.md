@@ -39,7 +39,9 @@ Requires `FOOTBALL_DATA_API_KEY` to be set as a repo secret.
 
 ## Marking results
 
-After matches are played, add `result: 'draw' | 'home' | 'away'` to each fixture object to display result badges.
+A second GitHub Action (`.github/workflows/mark-results.yml`) runs daily at 23:30 UTC, queries football-data.org for finished matches, and writes `result: 'home' | 'draw' | 'away'` back into the `LEAGUES` array — then auto-commits as `github-actions[bot]`. The toggle in the sidebar's Display section lets you flip between "upcoming only" and "include past fixtures" so you can see the result badges (DRAW / HOME / AWAY) once they're populated.
+
+Manual fallback: edit the fixture object directly to set `result:` if the workflow misses one.
 
 ## Local development
 
