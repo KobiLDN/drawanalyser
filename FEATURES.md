@@ -15,6 +15,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.2** — "Past fixtures" toggle in the sidebar (Display section). Default is upcoming-only; toggle ON to include played fixtures with their result badges.
 - **v2.1** — Page-updated timestamp in the topbar; version display bumped from v2.
 - **v2.1** — `FEATURES.md` (this file).
 - **v2.0** — Kick-off time colour fixed (was `--text3` on a near-identical surface, now `--text2`).

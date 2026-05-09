@@ -40,6 +40,8 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .depth-badge { font-size: 10px; padding: 3px 10px; border: 1px solid var(--gold-dim); border-radius: 3px; color: var(--gold); letter-spacing: 0.1em; }
 .topbar-right { display: flex; align-items: center; gap: 14px; }
 .updated-tag { font-size: 10px; color: var(--text2); letter-spacing: 0.05em; text-transform: uppercase; }
+.toggle-pill { font-size: 9px; padding: 2px 7px; border-radius: 99px; border: 1px solid var(--border2); color: var(--text3); letter-spacing: 0.08em; }
+.toggle-pill.on { color: var(--gold); border-color: var(--gold-dim); background: rgba(200, 168, 75, 0.08); }
 
 .layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 49px); }
 .sidebar {
@@ -247,9 +249,9 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 <body>
 
 <div class="topbar">
-  <div class="logo">Draw Analyzer <span>v2.1 · 2025–26</span></div>
+  <div class="logo">Draw Analyzer <span>v2.2 · 2025–26</span></div>
   <div class="topbar-right">
-    <div class="updated-tag">Updated 09 May 2026 17:52 BST</div>
+    <div class="updated-tag">Updated 09 May 2026 18:24 BST</div>
     <div class="depth-badge">DEEP RESEARCH MODE</div>
   </div>
 </div>
@@ -1183,6 +1185,7 @@ const LEAGUES = [
 // RENDER
 // ═══════════════════════════════════════════════════
 let activeId = 'all';
+let showPast = false;
 
 function verdictClass(v) {
   return { Low: 'v-low', Moderate: 'v-mod', Good: 'v-good', Strong: 'v-strong' }[v] || 'v-low';
@@ -1236,7 +1239,14 @@ function renderSidebar() {
           </div>
         `).join('')}
       </div>`;
-  }).join('');
+  }).join('') + `
+    <div class="sidebar-section">
+      <div class="sidebar-group-label">Display</div>
+      <div class="sidebar-item" onclick="togglePast()">
+        <span>Past fixtures</span>
+        <span class="toggle-pill ${showPast ? 'on' : ''}">${showPast ? 'ON' : 'OFF'}</span>
+      </div>
+    </div>`;
 }
 
 function renderTeamNews(items) {
@@ -1255,8 +1265,8 @@ function renderAll() {
     });
   });
 
-  // Filter to today and forward, then sort
-  const filtered = allFixtures.filter(f => dayToTs(f.day) >= todayTs);
+  // Filter to today and forward (or include past if toggled), then sort
+  const filtered = showPast ? allFixtures.slice() : allFixtures.filter(f => dayToTs(f.day) >= todayTs);
   filtered.sort((a, b) => {
     const dd = dayToTs(a.day) - dayToTs(b.day);
     if (dd !== 0) return dd;
@@ -1296,7 +1306,7 @@ function renderMain() {
   const league = LEAGUES.find(l => l.id === activeId);
   if (!league) return;
 
-  const filtered = league.fixtures.filter(f => dayToTs(f.day) >= todayTs);
+  const filtered = showPast ? league.fixtures.slice() : league.fixtures.filter(f => dayToTs(f.day) >= todayTs);
 
   const grouped = {};
   filtered.forEach(f => {
@@ -1413,6 +1423,12 @@ function toggleFixture(id) {
 
 function setLeague(id) {
   activeId = id;
+  renderSidebar();
+  renderMain();
+}
+
+function togglePast() {
+  showPast = !showPast;
   renderSidebar();
   renderMain();
 }
