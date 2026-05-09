@@ -58,9 +58,7 @@ async function fetchFinished(comp, dateFrom, dateTo) {
 }
 
 function calcResult(home, away) {
-  if (home > away) return 'home';
-  if (home < away) return 'away';
-  return 'draw';
+  return `${home}-${away}`;
 }
 
 function patchFixture(html, fixture, result) {
@@ -148,8 +146,8 @@ function addFeaturesEntry(features, version, marked) {
       const result = calcResult(hs, as);
       try {
         html = patchFixture(html, f, result);
-        marked.push({ home: f.home, away: f.away, score: `${hs}-${as}`, result });
-        console.log(`✓ ${f.home} ${hs}-${as} ${f.away} → ${result}`);
+        marked.push({ home: f.home, away: f.away, score: result });
+        console.log(`✓ ${f.home} ${result} ${f.away}`);
       } catch (e) {
         console.error(`✗ ${e.message}`);
       }
