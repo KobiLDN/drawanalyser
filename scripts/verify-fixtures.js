@@ -54,21 +54,28 @@ function partsDateEqual(a, b) {
 }
 
 function normTeam(s) {
-  return s.toLowerCase()
-    .replace(/\bfc\b/g, '')
-    .replace(/\bafc\b/g, '')
-    .replace(/\bcf\b/g, '')
-    .replace(/\bsc\b/g, '')
-    .replace(/\bbk\b/g, '')
-    .replace(/\bclub\b/g, '')
-    .replace(/[^a-z0-9 ]/g, '')
+  let n = s.toLowerCase().trim().replace(/&/g, ' and ');
+  // Expand common abbreviations to canonical long forms
+  if (/^man united$|^man utd$/.test(n)) n = 'manchester united';
+  else if (/^man city$/.test(n)) n = 'manchester city';
+  else if (/^wolves$/.test(n)) n = 'wolverhampton';
+  else if (/^spurs$/.test(n)) n = 'tottenham';
+  // Strip noise words and punctuation
+  n = n
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .replace(/\b(fc|afc|cf|sc|bk|club|wanderers|hotspur|albion|hove|and)\b/g, '')
     .replace(/\s+/g, ' ').trim();
+  return n;
 }
 
-function teamMatch(a, b) {
-  const na = normTeam(a), nb = normTeam(b);
-  if (na === nb) return true;
-  return na.includes(nb) || nb.includes(na);
+function teamMatch(apiTeam, repoName) {
+  const cands = [apiTeam.shortName, apiTeam.name].filter(Boolean);
+  const nb = normTeam(repoName);
+  if (!nb) return false;
+  return cands.some(c => {
+    const na = normTeam(c);
+    return na && (na === nb || na.includes(nb) || nb.includes(na));
+  });
 }
 
 async function fetchMatches(comp, dateFrom, dateTo) {
@@ -102,8 +109,9 @@ async function fetchMatches(comp, dateFrom, dateTo) {
 
     const year = new Date().getFullYear();
     const dates = upcoming.map(f => fixtureLocalDate(f.day, f.time, year));
-    const minD = new Date(Date.UTC(year, Math.min(...dates.map(d => d.m)), Math.min(...dates.map(d => d.d))));
-    const maxD = new Date(Date.UTC(year, Math.max(...dates.map(d => d.m)), Math.max(...dates.map(d => d.d))));
+    // Widen by ±1 day so fixtures rescheduled by a day are caught as date mismatches not "not found"
+    const minD = new Date(Date.UTC(year, Math.min(...dates.map(d => d.m)), Math.min(...dates.map(d => d.d)) - 1));
+    const maxD = new Date(Date.UTC(year, Math.max(...dates.map(d => d.m)), Math.max(...dates.map(d => d.d)) + 1));
     const dateFrom = minD.toISOString().slice(0, 10);
     const dateTo = maxD.toISOString().slice(0, 10);
 
@@ -121,8 +129,7 @@ async function fetchMatches(comp, dateFrom, dateTo) {
     for (const f of upcoming) {
       checked++;
       const expected = fixtureLocalDate(f.day, f.time, year);
-      const candidates = api.filter(m => teamMatch(m.homeTeam.shortName || m.homeTeam.name, f.home) &&
-                                          teamMatch(m.awayTeam.shortName || m.awayTeam.name, f.away));
+      const candidates = api.filter(m => teamMatch(m.homeTeam, f.home) && teamMatch(m.awayTeam, f.away));
 
       if (!candidates.length) {
         const msg = `${f.home} vs ${f.away} — not found in API for ${f.day}`;
