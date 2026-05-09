@@ -1,18 +1,21 @@
-name: Auto-mark results
+name: Auto-fetch fixtures
 
 on:
   schedule:
-    # Weekend afternoon — 5pm BST (16:00 UTC) catches afternoon kickoffs
-    - cron: '0 16 * * 6,0'
-    # Daily 11pm BST (22:00 UTC) — catches all evening kickoffs
-    - cron: '0 22 * * *'
+    # Every Monday at 08:00 UTC — picks up the following week's schedule
+    - cron: '0 8 * * 1'
   workflow_dispatch:
+    inputs:
+      days_ahead:
+        description: 'How many days ahead to fetch (default: 8)'
+        required: false
+        default: '8'
 
 permissions:
   contents: write
 
 jobs:
-  mark:
+  fetch:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -21,10 +24,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Mark finished results
+      - name: Fetch upcoming fixtures
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
-        run: node scripts/mark-results.js
+          DAYS_AHEAD: ${{ github.event.inputs.days_ahead || '8' }}
+        run: node scripts/fetch-fixtures.js
       - name: Commit and push
         run: |
           git config user.name 'github-actions[bot]'
@@ -34,5 +38,5 @@ jobs:
             exit 0
           fi
           git add index.html FEATURES.md
-          git commit -m "auto-mark: results"
+          git commit -m "auto-fetch: upcoming fixture stubs"
           git push
