@@ -15,6 +15,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.3** — `CLAUDE.md` added with the after-every-edit convention (bump version, update FEATURES, refresh README if user-visible). Auto-loaded into every Claude session.
 - **v2.2** — "Past fixtures" toggle in the sidebar (Display section). Default is upcoming-only; toggle ON to include played fixtures with their result badges.
 - **v2.1** — Page-updated timestamp in the topbar; version display bumped from v2.
 - **v2.1** — `FEATURES.md` (this file).
