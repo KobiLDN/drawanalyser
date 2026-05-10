@@ -2,6 +2,14 @@
 
 Running list of ideas, things in progress, and things shipped. Pick from the Backlog when there's time, move to Done with the version it shipped in.
 
+## Collaboration process
+
+- Read `AGENTS.md` first, then `CHANGELOG.md`, before making edits.
+- Before editing, run: `git checkout main` then `git pull --rebase`.
+- After editing, prepend one row to `CHANGELOG.md` directly under the table header (**`YYYY-MM-DD HH:MM BST`**, AI Name, Changed) — **newest first**.
+- If user-visible behavior changed, add a **Done** entry below with version/date context.
+- Keep each AI session focused on one intent where possible (smaller diffs, easier merges).
+
 ## Backlog
 
 - **Prediction-accuracy tracker** — for fixtures that have a `result`, compute hit-rate per verdict tier (Strong/Good/Moderate/Low) and show it in the header.
@@ -13,6 +21,9 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.13** — `CHANGELOG.md` first column uses **date + time** (`YYYY-MM-DD HH:MM BST`); docs updated for prepend workflow field.
+- **v2.12** — `CHANGELOG.md` reordered **newest-first** with the column format line at the top; prepend workflow documented in `AGENTS.md`, `README.md`, `FEATURES.md`.
+- **v2.11** — Improved readability of low-contrast labels by making `Fair draw odds` white and updating shared `--text3` color token to white in `index.html`. Added table-based `CHANGELOG.md` and multi-AI workflow guidance in docs.
 - **v2.10** — Auto-marked 13 results (Nottingham Forest 1-1 Newcastle United; Crystal Palace 2-2 Everton; Burnley 2-2 Aston Villa, +10 more).
 - **v2.9** — Backfilled 16 legacy results with actual scorelines (replaced `'home'`/`'draw'`/`'away'` with `'X-Y'`).
 - **v2.8** — Replaced DRAW/HOME/AWAY result badges with actual scorelines. Past fixtures now show "Final Score: X – X" (with "· DRAW" in gold for draws) where the kick-off time used to be.
@@ -20,7 +31,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 - **v2.6** — Auto-fetched 79 upcoming fixture stubs (Premier League 11, La Liga 23, Serie A 15, Bundesliga 12, Ligue 1 18). Pending deep research.
 - **v2.5** — Split topbar timestamp into Page (last code change) and Data (last fixture/results update). Auto-fetch fixtures workflow (`fetch-fixtures.js` + `fetch-fixtures.yml`) pulls upcoming stubs from football-data.org every Monday. Auto-mark schedule updated to 5pm + 11pm BST.
 - **v2.4** — Auto-mark results workflow. Daily action queries football-data.org for finished matches and patches `result:` in `index.html`, then auto-commits. Works alongside the existing verify-fixtures workflow without retriggering it.
-- **v2.3** — `CLAUDE.md` added with the after-every-edit convention (bump version, update FEATURES, refresh README if user-visible). Auto-loaded into every Claude session.
+- **v2.3** — `AGENTS.md` guide introduced (originally `CLAUDE.md`) with the after-every-edit convention (bump version, update docs for user-visible changes, keep commits focused).
 - **v2.2** — "Past fixtures" toggle in the sidebar (Display section). Default is upcoming-only; toggle ON to include played fixtures with their result badges.
 - **v2.1** — Page-updated timestamp in the topbar; version display bumped from v2.
 - **v2.1** — `FEATURES.md` (this file).

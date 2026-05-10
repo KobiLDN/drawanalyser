@@ -13,7 +13,7 @@
   --border2: #303030;
   --text: #e2e2e2;
   --text2: #888;
-  --text3: #444;
+  --text3: #fff;
   --gold: #c8a84b;
   --gold-dim: #7a6228;
   --green: #4a9e6a;
@@ -210,6 +210,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
   border-radius: 4px; padding: 12px; text-align: center;
 }
 .odds-lbl { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.fair-odds-lbl { color: #fff; }
 .odds-val { font-size: 17px; font-weight: 700; color: var(--gold); }
 .odds-sub { font-size: 10px; color: var(--text3); margin-top: 3px; }
 
@@ -249,10 +250,10 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 <body>
 
 <div class="topbar">
-  <div class="logo">Draw Analyzer <span>v2.10 · 2025–26</span></div>
+  <div class="logo">Draw Analyzer <span>v2.13 · 2025–26</span></div>
   <div class="topbar-right">
     <div class="updated-stack">
-      <div class="updated-tag">Page · 09 May 2026 19:35 BST</div>
+      <div class="updated-tag">Page · 10 May 2026 19:05 BST</div>
       <div class="updated-tag">Data · 10 May 2026 17:58 BST</div>
     </div>
     <div class="depth-badge">DEEP RESEARCH MODE</div>
@@ -2519,7 +2520,7 @@ function renderFixture(f, key, leagueName) {
         <div class="summary-grid">
           <div class="summary-text">${f.summary}</div>
           <div class="odds-box">
-            <div class="odds-lbl">Fair draw odds</div>
+            <div class="odds-lbl fair-odds-lbl">Fair draw odds</div>
             <div class="odds-val">${f.fairOdds}</div>
             <div class="odds-sub">researched range</div>
             ${f.bookOdds && edge !== null ? `

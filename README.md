@@ -50,3 +50,28 @@ A third GitHub Action (`.github/workflows/fetch-fixtures.yml`) runs every Monday
 ## Local development
 
 Just open `index.html` in a browser. No build step, no dependencies.
+
+## Multi-AI workflow (important)
+
+If you use multiple AI tools (Cursor/Codex, Claude, ChatGPT, etc.), follow this on every session:
+
+1. Read docs in this order before editing:
+   - `AGENTS.md`
+   - `CHANGELOG.md`
+   - `FEATURES.md`
+2. Pull latest changes first:
+   - `git checkout main`
+   - `git pull --rebase`
+3. Make your changes.
+4. Update `CHANGELOG.md` by **prepending** one new table row right under the header (**newest first**), with:
+   - Date and time in **`YYYY-MM-DD HH:MM BST`**
+   - AI name/tool
+   - What changed and why (include primary file paths in backticks)
+5. Update `FEATURES.md`:
+   - Add shipped user-visible changes to **Done**
+   - Add new ideas to **Backlog**
+6. Commit with a clear AI-prefixed message, e.g.:
+   - `ai-codex: improve odds-label readability`
+   - `ai-claude: add fixture verification notes`
+
+This keeps handoffs clean and prevents duplicate or conflicting edits.
