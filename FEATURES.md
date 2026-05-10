@@ -21,6 +21,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.16** — Auto-marked 16 results (West Ham 1-1 Arsenal; Real Oviedo 0-0 Getafe; Barcelona 2-0 Real Madrid, +13 more).
 - **v2.15** — Fixture list now has aligned headings for Fixture, League, Research, Draw Probability, and Draw Signal; table width, expanded details, and small text sizing were tuned for readability.
 - **v2.14** — Verdict colours now follow a traffic-light scale: Low red, Moderate amber, Good green, Strong blue; matching percentage text and mini-bars improve scanability.
 - **v2.13** — `CHANGELOG.md` first column uses **date + time** (`YYYY-MM-DD HH:MM BST`); docs updated for prepend workflow field.
