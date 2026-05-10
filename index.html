@@ -145,11 +145,11 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
   min-width: 68px;
   text-align: center;
 }
-.v-low    { color: var(--text3); background: #181818; border: 1px solid #282828; }
+.v-low    { color: var(--red);   background: #1c0505; border: 1px solid #3a1010; }
 .v-mod    { color: var(--amber); background: #1c1200; border: 1px solid #3a2800; }
 .v-good   { color: var(--green); background: #001508; border: 1px solid #002a10; }
 .v-strong { color: var(--blue);  background: #000e1c; border: 1px solid #001c38; }
-.bar-low    { background: var(--text3); }
+.bar-low    { background: var(--red); }
 .bar-mod    { background: var(--amber); }
 .bar-good   { background: var(--green); }
 .bar-strong { background: var(--blue);  }
@@ -250,10 +250,10 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 <body>
 
 <div class="topbar">
-  <div class="logo">Draw Analyzer <span>v2.13 · 2025–26</span></div>
+  <div class="logo">Draw Analyzer <span>v2.14 · 2025–26</span></div>
   <div class="topbar-right">
     <div class="updated-stack">
-      <div class="updated-tag">Page · 10 May 2026 19:05 BST</div>
+      <div class="updated-tag">Page · 10 May 2026 20:26 BST</div>
       <div class="updated-tag">Data · 10 May 2026 17:58 BST</div>
     </div>
     <div class="depth-badge">DEEP RESEARCH MODE</div>
@@ -2508,7 +2508,7 @@ function renderFixture(f, key, leagueName) {
           ${bottomLine}
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
-          <div class="pct-display" style="color:${f.verdict==='Strong'?'var(--blue)':f.verdict==='Good'?'var(--green)':f.verdict==='Moderate'?'var(--amber)':'var(--text3)'}">${f.drawProbability}%</div>
+          <div class="pct-display" style="color:${f.verdict==='Strong'?'var(--blue)':f.verdict==='Good'?'var(--green)':f.verdict==='Moderate'?'var(--amber)':'var(--red)'}">${f.drawProbability}%</div>
           <div class="mini-bar-wrap"><div class="mini-bar ${bc}" style="width:${f.drawProbability}%"></div></div>
         </div>
         <div class="vtag ${vc}">${f.verdict}</div>
