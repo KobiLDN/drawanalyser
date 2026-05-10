@@ -21,6 +21,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.15** — Fixture list now has aligned headings for Fixture, League, Research, Draw Probability, and Draw Signal; table width, expanded details, and small text sizing were tuned for readability.
 - **v2.14** — Verdict colours now follow a traffic-light scale: Low red, Moderate amber, Good green, Strong blue; matching percentage text and mini-bars improve scanability.
 - **v2.13** — `CHANGELOG.md` first column uses **date + time** (`YYYY-MM-DD HH:MM BST`); docs updated for prepend workflow field.
 - **v2.12** — `CHANGELOG.md` reordered **newest-first** with the column format line at the top; prepend workflow documented in `AGENTS.md`, `README.md`, `FEATURES.md`.

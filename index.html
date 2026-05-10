@@ -119,19 +119,44 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
   margin-bottom: 7px;
   cursor: pointer;
   overflow: hidden;
+  max-width: 1280px;
 }
 .fixture:hover { border-color: var(--border2); }
 .fixture.open { border-color: var(--gold-dim); }
 
+.fixture-list-head {
+  display: grid;
+  grid-template-columns: minmax(360px, 520px) 116px 92px 150px 96px 16px;
+  align-items: end;
+  gap: 16px;
+  justify-content: start;
+  padding: 0 16px;
+  margin: 0 0 10px;
+  max-width: 1280px;
+}
+.fixture-list-col {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.fixture-list-col.metric,
+.fixture-list-col.signal,
+.fixture-list-col.research { text-align: center; }
+
 .fixture-row {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  grid-template-columns: minmax(360px, 520px) 116px 92px 150px 96px 16px;
   align-items: center;
   gap: 16px;
+  justify-content: start;
   padding: 13px 16px;
 }
-.teams { font-size: 14px; font-weight: 600; }
-.kick-time { font-size: 11px; color: var(--text2); margin-top: 3px; }
+.teams { font-size: 15px; font-weight: 600; }
+.fixture-tag-cell { min-height: 22px; display: flex; align-items: center; }
+.kick-time { font-size: 12px; color: var(--text2); margin-top: 3px; }
+.draw-probability-cell { display: flex; align-items: center; justify-content: center; gap: 8px; }
 .pct-display { font-size: 20px; font-weight: 700; min-width: 48px; text-align: right; }
 .mini-bar-wrap { width: 70px; height: 3px; background: var(--border2); border-radius: 99px; overflow: hidden; }
 .mini-bar { height: 100%; }
@@ -153,7 +178,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .bar-mod    { background: var(--amber); }
 .bar-good   { background: var(--green); }
 .bar-strong { background: var(--blue);  }
-.chevron { font-size: 11px; color: var(--text3); margin-left: 2px; }
+.chevron { font-size: 11px; color: var(--text3); margin-left: 2px; text-align: center; }
 .fixture.open .chevron { transform: rotate(180deg); }
 
 .analysis {
@@ -161,25 +186,27 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
   border-top: 1px solid var(--border);
   background: var(--surface2);
   padding: 18px 16px;
+  overflow: hidden;
 }
 .fixture.open .analysis { display: block; }
 
-.deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.deep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 16px; }
 .deep-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 12px 14px;
+  min-width: 0;
 }
 .deep-label {
   font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em;
   margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
 }
 .deep-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-.deep-content { font-size: 12px; color: var(--text); line-height: 1.6; }
+.deep-content { font-size: 13px; color: var(--text); line-height: 1.6; overflow-wrap: anywhere; }
 .deep-content ul { list-style: none; padding: 0; }
 .deep-content li {
-  font-size: 11px; color: var(--text2); padding: 3px 0;
+  font-size: 12px; color: var(--text2); padding: 3px 0;
   padding-left: 10px; position: relative;
 }
 .deep-content li::before {
@@ -190,21 +217,22 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 .deep-content .doubt { color: var(--amber); font-weight: 500; }
 .deep-content .key { color: var(--gold); font-weight: 500; }
 
-.factors-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 16px; }
+.factors-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-bottom: 16px; }
 .factor {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 10px 11px;
+  min-width: 0;
 }
 .fn { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
 .fbar-wrap { height: 3px; background: var(--border2); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
 .fbar { height: 100%; background: var(--gold); }
 .fnum { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-.fdetail { font-size: 10px; color: var(--text2); line-height: 1.5; }
+.fdetail { font-size: 11px; color: var(--text2); line-height: 1.5; }
 
 .summary-grid { display: grid; grid-template-columns: 1fr 140px; gap: 16px; align-items: start; }
-.summary-text { font-size: 13px; color: var(--text2); line-height: 1.7; }
+.summary-text { font-size: 14px; color: var(--text2); line-height: 1.7; min-width: 0; overflow-wrap: anywhere; }
 .odds-box {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 4px; padding: 12px; text-align: center;
@@ -218,10 +246,10 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
   display: inline-block; font-size: 9px; padding: 2px 6px;
   background: rgba(74, 126, 201, 0.1); border: 1px solid rgba(74, 126, 201, 0.3);
   color: var(--blue); border-radius: 3px; letter-spacing: 0.05em;
-  margin-left: 8px; vertical-align: middle;
+  vertical-align: middle;
 }
 .result-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
-.league-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; background: #1a1a2e; color: #6a8fc8; border: 1px solid #2a3a5a; letter-spacing: 0.04em; }
+.league-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 3px; vertical-align: middle; background: #1a1a2e; color: #6a8fc8; border: 1px solid #2a3a5a; letter-spacing: 0.04em; }
 .value-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-left: 6px; vertical-align: middle; background: #001a08; color: var(--green); border: 1px solid #003018; letter-spacing: 0.08em; animation: pulse-value 2s ease-in-out infinite; }
 @keyframes pulse-value { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
 .book-row { display: flex; gap: 12px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
@@ -241,8 +269,12 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
   .sidebar-item { border-left: none; border-radius: 4px; border: 1px solid var(--border); padding: 7px 12px; font-size: 12px; }
   .factors-row { grid-template-columns: repeat(2, 1fr); }
   .deep-grid { grid-template-columns: 1fr; }
-  .fixture-row { grid-template-columns: 1fr auto auto; }
+  .fixture-list-head { display: none; }
+  .fixture-row { grid-template-columns: minmax(0, 1fr) auto auto; }
+  .fixture-tag-cell { display: none; }
   .mini-bar-wrap { display: none; }
+  .draw-probability-cell { justify-content: flex-end; }
+  .chevron { display: none; }
   .summary-grid { grid-template-columns: 1fr; }
 }
 </style>
@@ -250,10 +282,10 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 <body>
 
 <div class="topbar">
-  <div class="logo">Draw Analyzer <span>v2.14 · 2025–26</span></div>
+  <div class="logo">Draw Analyzer <span>v2.15 · 2025–26</span></div>
   <div class="topbar-right">
     <div class="updated-stack">
-      <div class="updated-tag">Page · 10 May 2026 20:26 BST</div>
+      <div class="updated-tag">Page · 10 May 2026 20:54 BST</div>
       <div class="updated-tag">Data · 10 May 2026 17:58 BST</div>
     </div>
     <div class="depth-badge">DEEP RESEARCH MODE</div>
@@ -2366,6 +2398,18 @@ function renderTeamNews(items) {
   `).join('')}</ul>`;
 }
 
+function renderFixtureListHead() {
+  return `
+    <div class="fixture-list-head">
+      <div class="fixture-list-col">Fixture</div>
+      <div class="fixture-list-col">League</div>
+      <div class="fixture-list-col research">Research</div>
+      <div class="fixture-list-col metric">Draw Probability</div>
+      <div class="fixture-list-col signal">Draw Signal</div>
+      <div></div>
+    </div>`;
+}
+
 function renderAll() {
   // Collect all fixtures with league info attached
   const allFixtures = [];
@@ -2404,6 +2448,7 @@ function renderAll() {
         <div><div class="stat-val">${topPick}%</div><div class="stat-label">Top pick</div></div>
       </div>
     </div>
+    ${Object.keys(grouped).length ? renderFixtureListHead() : ''}
     ${Object.keys(grouped).length ? Object.entries(grouped).map(([day, fixtures]) => `
       <div class="day-label">${day}</div>
       ${fixtures.map((f, idx) => renderFixture(f, day + idx, f._leagueName)).join('')}
@@ -2441,6 +2486,7 @@ function renderMain() {
         <div><div class="stat-val">${topPick}%</div><div class="stat-label">Top pick</div></div>
       </div>
     </div>
+    ${Object.keys(grouped).length ? renderFixtureListHead() : ''}
     ${Object.keys(grouped).length ? Object.entries(grouped).map(([day, fixtures]) => `
       <div class="day-label">${day}</div>
       ${fixtures.map((f, idx) => renderFixture(f, day + idx)).join('')}
@@ -2481,8 +2527,8 @@ function renderFixture(f, key, leagueName) {
     </div>` : ''}
   ` : '';
 
-  const researchBadge = f.teamNews ? '<span class="research-tag">RESEARCHED</span>' : '';
   const leagueTag = leagueName ? `<span class="league-tag">${leagueName}</span>` : '';
+  const researchBadge = f.teamNews ? '<span class="research-tag">RESEARCHED</span>' : '';
   const edge = calcEdge(f.fairOdds, f.bookOdds);
   const valueBadge = (f.bookOdds && edge !== null && edge >= 5) ? `<span class="value-badge">VALUE ${f.bookOdds.toFixed(2)}</span>` : (f.bookOdds && edge !== null && edge > 0) ? `<span class="value-badge" style="opacity:0.7;">EDGE ${f.bookOdds.toFixed(2)}</span>` : '';
 
@@ -2504,10 +2550,12 @@ function renderFixture(f, key, leagueName) {
     <div class="fixture" id="fix-${key}" onclick="toggleFixture('fix-${key}')">
       <div class="fixture-row">
         <div>
-          <div class="teams">${f.home} vs ${f.away} ${researchBadge}${leagueTag}${valueBadge}</div>
+          <div class="teams">${f.home} vs ${f.away}${valueBadge}</div>
           ${bottomLine}
         </div>
-        <div style="display:flex;align-items:center;gap:8px;">
+        <div class="fixture-tag-cell">${leagueTag}</div>
+        <div class="fixture-tag-cell">${researchBadge}</div>
+        <div class="draw-probability-cell">
           <div class="pct-display" style="color:${f.verdict==='Strong'?'var(--blue)':f.verdict==='Good'?'var(--green)':f.verdict==='Moderate'?'var(--amber)':'var(--red)'}">${f.drawProbability}%</div>
           <div class="mini-bar-wrap"><div class="mini-bar ${bc}" style="width:${f.drawProbability}%"></div></div>
         </div>
