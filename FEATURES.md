@@ -21,6 +21,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.19** — Auto-marked 3 results (Celta 2-3 Levante; Real Betis 2-1 Elche; Osasuna 1-2 Atleti).
 - **v2.18** — Auto-marked 4 results (Tottenham Hotspur 1-1 Leeds United; Tottenham 1-1 Leeds United; Rayo Vallecano 1-1 Girona, +1 more).
 - **v2.17** — Auto-fetched 2 upcoming fixture stubs (Premier League 2). Pending deep research.
 - **v2.16** — Auto-marked 16 results (West Ham 1-1 Arsenal; Real Oviedo 0-0 Getafe; Barcelona 2-0 Real Madrid, +13 more).
