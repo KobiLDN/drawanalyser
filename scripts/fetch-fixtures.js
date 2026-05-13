@@ -21,8 +21,13 @@ const TZ = {
   bundesliga: 'Europe/Berlin', ligue1: 'Europe/Paris', ucl: 'Europe/London'
 };
 
+const MONTHS = {
+  January:0, February:1, March:2, April:3, May:4, June:5,
+  July:6, August:7, September:8, October:9, November:10, December:11
+};
+
 function escapeRegex(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-function escapeJs(s) { return s.replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
+function escapeJs(s) { return (s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
 
 function loadLeagues(html) {
   const m = html.match(/const LEAGUES = (\[[\s\S]*?\n\]);\s*\n\s*\n\s*\/\/ ═══/);
@@ -63,18 +68,31 @@ async function fetchScheduled(comp, dateFrom, dateTo) {
 }
 
 function formatFixtureLiteral(f) {
+  const rs = f.result === null ? 'null' : `'${escapeJs(f.result)}'`;
+  const dp = f.drawProbability ?? 25;
+  const verd = f.verdict ? `'${escapeJs(f.verdict)}'` : "'Low'";
+  const odds = f.fairOdds ? `'${escapeJs(f.fairOdds)}'` : "'4.00–4.50'";
+
+  const fb = f.factors?.formBalance || { score: 50, detail: 'Pending research.' };
+  const dr = f.factors?.drawRates || { score: 50, detail: 'Pending research.' };
+  const h2h = f.factors?.headToHead || { score: 50, detail: 'Pending research.' };
+  const gt = f.factors?.goalTendency || { score: 50, detail: 'Pending research.' };
+  const lc = f.factors?.leagueContext || { score: 50, detail: 'Pending research.' };
+
+  const sum = f.summary ? `'${escapeJs(f.summary)}'` : "'Pending deep research.'";
+
   return `      {
         day: '${escapeJs(f.day)}',
         home: '${escapeJs(f.home)}', away: '${escapeJs(f.away)}', time: '${f.time}',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
+        result: ${rs}, drawProbability: ${dp}, verdict: ${verd}, fairOdds: ${odds},
         factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
+          formBalance:   { score: ${fb.score}, detail: '${escapeJs(fb.detail)}' },
+          drawRates:     { score: ${dr.score}, detail: '${escapeJs(dr.detail)}' },
+          headToHead:    { score: ${h2h.score}, detail: '${escapeJs(h2h.detail)}' },
+          goalTendency:  { score: ${gt.score}, detail: '${escapeJs(gt.detail)}' },
+          leagueContext: { score: ${lc.score}, detail: '${escapeJs(lc.detail)}' }
         },
-        summary: 'Pending deep research.'
+        summary: ${sum}
       }`;
 }
 
@@ -113,21 +131,20 @@ function findFixturesClose(html, leagueId) {
   return -1;
 }
 
-function appendFixtures(html, leagueId, newFixtures) {
-  if (!newFixtures.length) return html;
+function replaceFixtures(html, leagueId, newFixturesArray) {
+  const idMatch = html.match(new RegExp(`id: '${escapeRegex(leagueId)}'`));
+  if (!idMatch) throw new Error(`Could not find league id ${leagueId}`);
+  const fixIdx = html.indexOf('fixtures: [', idMatch.index);
+  if (fixIdx === -1) throw new Error(`Could not find fixtures array for ${leagueId}`);
+  const startPos = fixIdx + 'fixtures: ['.length;
+  
   const closeIdx = findFixturesClose(html, leagueId);
-  if (closeIdx === -1) throw new Error(`Could not locate fixtures close for league ${leagueId}`);
-  // Walk backwards from closeIdx to find the last non-whitespace character before ']'
-  let i = closeIdx - 1;
-  while (i > 0 && /\s/.test(html[i])) i--;
-  // i now points to the last meaningful char. If it's '[', the array is empty.
-  // Otherwise, we need a comma after it.
-  const isEmpty = html[i] === '[';
-  const fixturesText = newFixtures.map(formatFixtureLiteral).join(',\n\n');
-  const insertion = isEmpty
-    ? `\n\n${fixturesText}\n    `
-    : `,\n\n${fixturesText}\n    `;
-  return html.slice(0, i + 1) + insertion + html.slice(closeIdx);
+  if (closeIdx === -1) throw new Error(`Could not find close for ${leagueId}`);
+  
+  const fixturesText = newFixturesArray.map(formatFixtureLiteral).join(',\n\n');
+  const insertion = newFixturesArray.length ? `\n\n${fixturesText}\n    ` : '';
+  
+  return html.slice(0, startPos) + insertion + html.slice(closeIdx);
 }
 
 function bumpVersion(html) {
@@ -151,11 +168,32 @@ function refreshDataTimestamp(html) {
   return html.replace(/<div class="updated-tag">Data · [^<]+<\/div>/, `<div class="updated-tag">Data · ${ts}</div>`);
 }
 
-function addFeaturesEntry(features, version, perLeague) {
-  const summary = perLeague.map(p => `${p.league} ${p.count}`).join(', ');
-  const total = perLeague.reduce((s, p) => s + p.count, 0);
-  const entry = `- **${version}** — Auto-fetched ${total} upcoming fixture stubs (${summary}). Pending deep research.\n`;
+function addFeaturesEntry(features, version, totalAdded, totalPruned) {
+  const msgAdded = totalAdded ? `Auto-fetched ${totalAdded} upcoming fixture stubs.` : '';
+  const msgPruned = totalPruned ? `Pruned ${totalPruned} old fixtures.` : '';
+  const msg = [msgAdded, msgPruned].filter(Boolean).join(' ');
+  const entry = `- **${version}** — ${msg}\n`;
   return features.replace(/(## Done\n\n)/, `$1${entry}`);
+}
+
+function isTooOld(dayStr) {
+  const parts = dayStr.split(/\\s+/);
+  if (parts.length < 3) return false;
+  const dd = +parts[1];
+  const m = MONTHS[parts[2]];
+  if (m === undefined) return false;
+  
+  const today = new Date();
+  const year = today.getFullYear();
+  let fixDate = new Date(Date.UTC(year, m, dd));
+  
+  // Wrap around for year boundaries
+  if (fixDate > new Date(today.getTime() + 180 * 24 * 60 * 60 * 1000)) {
+    fixDate = new Date(Date.UTC(year - 1, m, dd));
+  }
+  
+  const diffDays = (today.getTime() - fixDate.getTime()) / (1000 * 60 * 60 * 24);
+  return diffDays > 7;
 }
 
 (async () => {
@@ -179,12 +217,27 @@ function addFeaturesEntry(features, version, perLeague) {
   console.log(`Fetching fixtures from ${dateFrom} → ${dateTo}`);
 
   const perLeague = [];
+  let totalPruned = 0;
 
   for (const league of LEAGUES) {
     const comp = COMP[league.id];
     const tz = TZ[league.id];
+    
+    // 1. Prune existing old fixtures
+    const keptFixtures = [];
+    let prunedInLeague = 0;
+    for (const f of league.fixtures) {
+      if (isTooOld(f.day)) {
+        prunedInLeague++;
+      } else {
+        keptFixtures.push(f);
+      }
+    }
+    totalPruned += prunedInLeague;
+
     if (!comp) {
-      console.log(`-- skip ${league.name} (not on free tier)`);
+      console.log(`-- skip ${league.name} (not on free tier). Pruned ${prunedInLeague}.`);
+      html = replaceFixtures(html, league.id, keptFixtures);
       continue;
     }
 
@@ -193,47 +246,46 @@ function addFeaturesEntry(features, version, perLeague) {
       api = await fetchScheduled(comp, dateFrom, dateTo);
     } catch (e) {
       console.error(`✗ ${league.name}: ${e.message}`);
-      continue;
-    }
-    if (!api.length) {
-      console.log(`-- ${league.name}: no upcoming fixtures in window`);
+      html = replaceFixtures(html, league.id, keptFixtures);
       continue;
     }
 
-    // Build a Set of existing (home|away|day) keys to dedupe
-    const existing = new Set(league.fixtures.map(f => `${f.home}|${f.away}|${f.day}`));
+    // Build a Set of kept (home|away|day) keys to dedupe
+    const existing = new Set(keptFixtures.map(f => `${f.home}|${f.away}|${f.day}`));
 
     const fresh = [];
-    for (const m of api) {
-      const parts = localParts(m.utcDate, tz);
-      const home = teamLabel(m.homeTeam);
-      const away = teamLabel(m.awayTeam);
-      const key = `${home}|${away}|${parts.day}`;
-      if (existing.has(key)) continue;
-      fresh.push({ home, away, day: parts.day, time: parts.time });
-      existing.add(key);
+    if (api.length) {
+      for (const m of api) {
+        const parts = localParts(m.utcDate, tz);
+        const home = teamLabel(m.homeTeam);
+        const away = teamLabel(m.awayTeam);
+        const key = `${home}|${away}|${parts.day}`;
+        if (existing.has(key)) continue;
+        fresh.push({ home, away, day: parts.day, time: parts.time });
+        existing.add(key);
+      }
     }
 
-    if (!fresh.length) {
-      console.log(`-- ${league.name}: all ${api.length} already in repo`);
-      continue;
+    console.log(`+ ${league.name}: ${fresh.length} new fixtures, ${prunedInLeague} pruned.`);
+    if (fresh.length) {
+      fresh.forEach(f => console.log(`    ${f.day} ${f.time}  ${f.home} vs ${f.away}`));
     }
 
-    console.log(`+ ${league.name}: ${fresh.length} new fixtures`);
-    fresh.forEach(f => console.log(`    ${f.day} ${f.time}  ${f.home} vs ${f.away}`));
-
-    html = appendFixtures(html, league.id, fresh);
+    const mergedFixtures = keptFixtures.concat(fresh);
+    html = replaceFixtures(html, league.id, mergedFixtures);
     perLeague.push({ league: league.name, count: fresh.length });
   }
 
-  if (!perLeague.length) {
-    console.log('\nNothing new to add.');
+  const totalAdded = perLeague.reduce((s, p) => s + p.count, 0);
+
+  if (totalAdded === 0 && totalPruned === 0) {
+    console.log('\nNothing new to add or prune.');
     return;
   }
 
   const bumped = bumpVersion(html);
   html = refreshDataTimestamp(bumped.html);
-  features = addFeaturesEntry(features, bumped.version, perLeague);
+  features = addFeaturesEntry(features, bumped.version, totalAdded, totalPruned);
 
   fs.writeFileSync(indexPath, html);
   fs.writeFileSync(featuresPath, features);

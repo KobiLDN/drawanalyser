@@ -282,11 +282,11 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', syste
 <body>
 
 <div class="topbar">
-  <div class="logo">Draw Analyzer <span>v2.19 · 2025–26</span></div>
+  <div class="logo">Draw Analyzer <span>v2.21 · 2025–26</span></div>
   <div class="topbar-right">
     <div class="updated-stack">
-      <div class="updated-tag">Page · 10 May 2026 20:54 BST</div>
-      <div class="updated-tag">Data · 13 May 2026 00:08 BST</div>
+      <div class="updated-tag">Page · 13 May 2026 22:45 BST</div>
+      <div class="updated-tag">Data · 13 May 2026 23:06 BST</div>
     </div>
     <div class="depth-badge">DEEP RESEARCH MODE</div>
   </div>
@@ -311,336 +311,6 @@ const LEAGUES = [
   round: 'Gameweek 36',
   drawRate: 26,
   fixtures: [
-
-    // ───── LIVERPOOL vs CHELSEA ─────
-    {
-      day: 'Saturday 9 May',
-      home: 'Liverpool', away: 'Chelsea', time: '12:30',
-      result: '1-1', drawProbability: 26, verdict: 'Moderate', fairOdds: '3.50–3.90', bookOdds: 3.50,
-      teamNews: {
-        home: [
-          { tag: 'out', text: 'Salah, Endo, Leoni, Bradley, Ekitike (Achilles, season)' },
-          { tag: 'doubt', text: 'Isak (groin), Wirtz, Konate, Alisson, Mamardashvili — all missed training' },
-          { tag: 'key', text: '4th, only 4pts from confirming UCL' },
-          { tag: 'key', text: 'Lost 3-2 at Man Utd last MD; 3-game win run ended' }
-        ],
-        away: [
-          { tag: 'out', text: 'Jesse Derry (head injury)' },
-          { tag: 'doubt', text: 'Robert Sanchez (head injury vs Forest)' },
-          { tag: 'key', text: 'SIX consecutive PL defeats — full crisis mode' },
-          { tag: 'key', text: '9th place; lost 3-1 to Forest last time' },
-          { tag: 'key', text: 'Garnacho and Neto returning from minor injuries' }
-        ]
-      },
-      context: 'Reassessed downward significantly. Models give Liverpool 55.6% win probability vs 20.4% draw. Liverpool injury crisis is severe but Chelsea are in their own crisis (6 consecutive PL defeats, 1 point from last 9). At Anfield, even a depleted Liverpool side should be too strong for a Chelsea team with collapsed confidence. Liverpool are 4 points from securing UCL and need the win.',
-      factors: {
-        formBalance:   { score: 35, detail: 'Liverpool 4pts off UCL spot; Chelsea on 6-game losing streak.' },
-        drawRates:     { score: 38, detail: 'Models give just 20.4% draw probability — Liverpool clear favs.' },
-        headToHead:    { score: 40, detail: 'Anfield typically produces decisive results, not stalemates.' },
-        goalTendency:  { score: 45, detail: 'Both attacks compromised but Liverpool have superior backups.' },
-        leagueContext: { score: 38, detail: 'Liverpool need points for UCL; Chelsea desperate to stop the bleeding.' }
-      },
-      summary: 'Reassessed sharply downward. Liverpool injury crisis is real but Chelsea are in even worse form — six consecutive PL defeats and just one point from their last nine. At Anfield, Liverpool should win comfortably even with backups. Models give 20.4% draw probability — significantly lower than initially assessed.'
-    },
-
-    // ───── SUNDERLAND vs MAN UTD ─────
-    {
-      day: 'Saturday 9 May',
-      home: 'Sunderland', away: 'Manchester United', time: '15:00',
-      result: '0-0', drawProbability: 24, verdict: 'Low', fairOdds: '4.00–4.50',
-      teamNews: {
-        home: [
-          { tag: 'out', text: 'Ballard (3-game ban — FA appeal rejected)' },
-          { tag: 'out', text: 'Mundle (hamstring), Moore (injury)' },
-          { tag: 'key', text: 'Angulo and Traore back in training but late call' }
-        ],
-        away: [
-          { tag: 'out', text: 'De Ligt (back — missed last 22 PL games)' },
-          { tag: 'doubt', text: 'Šeško (shin from Liverpool clash)' },
-          { tag: 'key', text: 'Bruno Fernandes back (was tactical sub)' },
-          { tag: 'key', text: 'Carrick: 10W in 14; UCL secured after 3-2 vs Liverpool' },
-          { tag: 'key', text: 'Won 5 of last 6 vs Sunderland' }
-        ]
-      },
-      context: 'Confirmed assessment. Carrick has transformed United and just beat Liverpool 3-2 to secure UCL. Sunderland missing Ballard (suspended) and Mundle. United are in superb form and have dominated this fixture historically. Models give 23.9% draw probability — confirmed Low.',
-      factors: {
-        formBalance:   { score: 35, detail: 'United on 3-game win streak; Sunderland conceding heavily.' },
-        drawRates:     { score: 40, detail: 'Neither standout draw team this season.' },
-        headToHead:    { score: 30, detail: 'United have won 5 of last 6 in this fixture.' },
-        goalTendency:  { score: 35, detail: 'Sunderland leaking goals; United scoring in last 23 PL games.' },
-        leagueContext: { score: 38, detail: 'United firmly in form; Sunderland lacking attacking firepower.' }
-      },
-      summary: 'Reassessed downward after research. United are in superb form under Carrick (10W in 14), have qualified for the Champions League, and won the reverse 2-0. Sunderland have dropped points in 3 straight games and lost Ballard to suspension. United heavily favoured.'
-    },
-
-    // ───── FULHAM vs BOURNEMOUTH ─────
-    {
-      day: 'Saturday 9 May',
-      home: 'Fulham', away: 'AFC Bournemouth', time: '15:00',
-      result: '0-1', drawProbability: 44, verdict: 'Strong', fairOdds: '2.85–3.10', bookOdds: 3.10,
-      teamNews: {
-        home: [
-          { tag: 'out', text: 'Sessegnon (thigh), Iwobi (thigh), Kevin (toe)' },
-          { tag: 'key', text: 'Berge back (was illness vs Arsenal)' },
-          { tag: 'key', text: 'Smith Rowe expected fit (cramp at Emirates)' },
-          { tag: 'key', text: 'Comprehensively beaten by Arsenal last MD' }
-        ],
-        away: [
-          { tag: 'out', text: 'Kluivert (knee), Soler (thigh), Cook (thigh)' },
-          { tag: 'key', text: 'UNBEATEN IN 15 PL GAMES — strongest run in the league' },
-          { tag: 'key', text: 'Just beat Crystal Palace; in control of own destiny' }
-        ]
-      },
-      context: 'Even stronger draw signal than last week. Bournemouth are now unbeaten in 15 Premier League games — the longest current unbeaten run in the league. They lead the PL with 16 draws (47% of fixtures). Fulham are mid-table without major stakes. Bournemouth\'s no fresh injury concerns means they arrive at full strength relative to last week. The draw at the right price remains the standout pick.',
-      factors: {
-        formBalance:   { score: 78, detail: 'Bournemouth unbeaten in 15; Fulham steady mid-table.' },
-        drawRates:     { score: 90, detail: 'Bournemouth lead PL with 16 draws (47%); the most draw-prone side.' },
-        headToHead:    { score: 78, detail: 'Last 3 H2H meetings between these sides all drawn.' },
-        goalTendency:  { score: 72, detail: 'Both teams average 1.3-1.5 goals per game; cautious encounters.' },
-        leagueContext: { score: 78, detail: 'Bournemouth\'s 15-game unbeaten run is built on draws and tight wins.' }
-      },
-      summary: 'Standout draw pick of the weekend reaffirmed. Bournemouth are now UNBEATEN IN 15 PL games (longest current run in the league) and statistically the most draw-prone team with 16 draws. Last 3 H2H all drawn. Both sides similar mid-table positions, no major stakes. Excellent value at 3.10+ on Betfair.'
-    },
-
-    // ───── BRIGHTON vs WOLVES ─────
-    {
-      day: 'Saturday 9 May',
-      home: 'Brighton', away: 'Wolves', time: '15:00',
-      result: '3-0', drawProbability: 28, verdict: 'Moderate', fairOdds: '3.40–3.80',
-      teamNews: {
-        home: [
-          { tag: 'out', text: 'Wieffer (ankle), Webster (knee), Tzimas (knee)' },
-          { tag: 'out', text: 'Diego Gomez (knee), Solly March, Milner (muscle)' },
-          { tag: 'key', text: 'Pushing for European football' }
-        ],
-        away: [
-          { tag: 'out', text: 'José Sá (ankle), Johnstone (shoulder), E. Gonzalez (knee)' },
-          { tag: 'doubt', text: 'Krejci (neck — late call)' },
-          { tag: 'key', text: 'Already relegated, nothing to play for' }
-        ]
-      },
-      context: 'Brighton injuries are mounting — six players out including Wieffer, Webster, Tzimas, Gomez, March and Milner. Wolves are already relegated, missing both senior goalkeepers (Sá, Johnstone) plus Gonzalez. Brighton need wins for Europe but their depleted squad combined with Wolves having no pressure (and possibly playing more freely with relegation confirmed) keeps the draw in play. Slight upgrade based on Brighton\'s injury list.',
-      factors: {
-        formBalance:   { score: 45, detail: 'Brighton injury-hit (6 out); Wolves relegated, playing for pride.' },
-        drawRates:     { score: 58, detail: 'Brighton draw-prone (32%); Wolves often draw end-of-season games.' },
-        headToHead:    { score: 52, detail: 'Several recent draws between these sides.' },
-        goalTendency:  { score: 48, detail: 'Brighton missing key creators; Wolves missing both keepers.' },
-        leagueContext: { score: 50, detail: 'Brighton motivated but depleted; Wolves relaxed but hopeless defensively.' }
-      },
-      summary: 'Slight upgrade. Brighton are missing 6 players to injury (Wieffer, Webster, Tzimas, Gomez, March, Milner). Wolves are already relegated and missing both first-choice goalkeepers. Brighton still favoured but the squad depletion narrows the gap. Worth a small interest at 3.40+.'
-    },
-
-    // ───── MAN CITY vs BRENTFORD ─────
-    {
-      day: 'Saturday 9 May',
-      home: 'Manchester City', away: 'Brentford', time: '17:30',
-      result: '3-0', drawProbability: 18, verdict: 'Low', fairOdds: '5.00–5.80',
-      teamNews: {
-        home: [
-          { tag: 'out', text: 'Gvardiol (tibial fracture)' },
-          { tag: 'doubt', text: 'Dias (hamstring) — back in training' },
-          { tag: 'doubt', text: 'Rodri — not in matchday squad vs Everton' },
-          { tag: 'key', text: 'Just drew 3-3 at Everton — title race blow' },
-          { tag: 'key', text: '5 points behind Arsenal in title race' }
-        ],
-        away: [
-          { tag: 'out', text: 'Milambo (ACL, long-term)' },
-          { tag: 'out', text: 'Carvalho (ACL, long-term)' },
-          { tag: 'out', text: 'Henry (hamstring)' }
-        ]
-      },
-      context: 'City just dropped two points in a 3-3 thriller at Everton, leaving them 5 behind Arsenal with limited games left. Rodri remains a doubt (not in squad vs Everton). Brentford have major long-term injury issues (two ACLs). City need to win at all costs — but the 3-3 draw at Everton shows they\'re not invincible. Brentford likely sit deep but City\'s firepower at home should prevail.',
-      factors: {
-        formBalance:   { score: 28, detail: 'City stunned by 3-3 at Everton — title race nearly over.' },
-        drawRates:     { score: 32, detail: 'City missing Rodri/Gvardiol; Etihad still strong but uncertain.' },
-        headToHead:    { score: 30, detail: 'City have dominated recent meetings convincingly.' },
-        goalTendency:  { score: 22, detail: 'Haaland scoring freely; low-scoring draws very unlikely.' },
-        leagueContext: { score: 28, detail: 'City must win to keep slim title hopes alive.' }
-      },
-      summary: 'City need this win desperately after their 3-3 at Everton. Rodri remains a doubt. Brentford have two ACL injuries. The Etihad firepower should win out but the Everton draw shows City are vulnerable — slight upgrade from previous assessment, but still a strong avoid.'
-    },
-
-    // ───── NOTTINGHAM FOREST vs NEWCASTLE ─────
-    {
-      day: 'Sunday 10 May',
-      home: 'Nottingham Forest', away: 'Newcastle United', time: '14:00',
-      result: '1-1', drawProbability: 30, verdict: 'Moderate', fairOdds: '3.50–3.90',
-      teamNews: {
-        home: [
-          { tag: 'key', text: 'Pushing for European football' },
-          { tag: 'key', text: '5-0 win at Sunderland recent' },
-          { tag: 'key', text: 'Defensively organised under Pereira' }
-        ],
-        away: [
-          { tag: 'key', text: 'Want top 5 finish' },
-          { tag: 'doubt', text: 'PL home form patchy lately' }
-        ]
-      },
-      context: 'Forest had a 5-0 win at Sunderland recently. They\'re chasing European spots and Pereira has them defensively organised. Newcastle want to secure top 5 and Champions League football. Both motivated to win — both push for 3 points.',
-      factors: {
-        formBalance:   { score: 45, detail: 'Both sides motivated to win for European places.' },
-        drawRates:     { score: 45, detail: 'Both teams more focused on wins than draws.' },
-        headToHead:    { score: 50, detail: 'Recent meetings tight but neither side dominant.' },
-        goalTendency:  { score: 50, detail: 'Forest defensively solid; Newcastle decent on the road.' },
-        leagueContext: { score: 50, detail: 'High stakes for both reduce draw probability slightly.' }
-      },
-      summary: 'Both sides have European motivations, which works against the draw narrative. Forest are in good defensive form under Pereira, and Newcastle are pushing for a top-5 finish. A draw is possible but both teams will be going for the win.'
-    },
-
-    // ───── CRYSTAL PALACE vs EVERTON ─────
-    {
-      day: 'Sunday 10 May',
-      home: 'Crystal Palace', away: 'Everton', time: '14:00',
-      result: '2-2', drawProbability: 38, verdict: 'Good', fairOdds: '3.00–3.30',
-      teamNews: {
-        home: [
-          { tag: 'doubt', text: 'Winless in last 8 PL games' },
-          { tag: 'key', text: 'Conference League semi this week' },
-          { tag: 'key', text: 'May rotate for European tie' }
-        ],
-        away: [
-          { tag: 'out', text: 'Branthwaite (hamstring)' },
-          { tag: 'out', text: 'Grealish (foot)' },
-          { tag: 'doubt', text: 'Beto returning from concussion' },
-          { tag: 'doubt', text: 'Successive defeats' }
-        ]
-      },
-      context: 'Palace are winless in 8 PL games and prioritising the Conference League — Glasner could rotate heavily. Everton have lost their last two but won their last away trip to St James\' Park. Both safe from relegation, both comfortably mid-table.',
-      factors: {
-        formBalance:   { score: 65, detail: 'Both safe from relegation; both struggling for form.' },
-        drawRates:     { score: 72, detail: 'Palace 10 draws this season; both draw-prone mid-table sides.' },
-        headToHead:    { score: 62, detail: 'Recent meetings have produced draws regularly.' },
-        goalTendency:  { score: 60, detail: 'Palace winless run; both teams low-scoring lately.' },
-        leagueContext: { score: 65, detail: 'Mid-table neutral fixture; Conference League distracts Palace.' }
-      },
-      summary: 'Solid draw pick. Palace are winless in 8 and likely to rotate for their Conference League semi-final. Everton have nothing significant to play for. Two mid-table sides with no major stakes — a tight, low-scoring stalemate is on the cards.'
-    },
-
-    // ───── BURNLEY vs ASTON VILLA ─────
-    {
-      day: 'Sunday 10 May',
-      home: 'Burnley', away: 'Aston Villa', time: '14:00',
-      result: '2-2', drawProbability: 18, verdict: 'Low', fairOdds: '4.50–5.20',
-      teamNews: {
-        home: [
-          { tag: 'out', text: 'Already relegated' },
-          { tag: 'out', text: 'Manager-less (Parker departed)' },
-          { tag: 'doubt', text: 'Conceding heavily since April' }
-        ],
-        away: [
-          { tag: 'key', text: 'Pushing for European places' },
-          { tag: 'key', text: 'Burnley failed to score 4 of last 5 home' }
-        ]
-      },
-      context: 'Burnley are relegated and managerless after Scott Parker left by mutual consent. Mike Jackson is interim coach. Villa are in the European race and have every reason to push for 3 points. Massive motivation gap.',
-      factors: {
-        formBalance:   { score: 22, detail: 'Burnley relegated, no manager; Villa chasing Europe.' },
-        drawRates:     { score: 30, detail: 'Neither standout draw team; Burnley collapsed since relegation.' },
-        headToHead:    { score: 30, detail: 'Villa have dominated recent meetings.' },
-        goalTendency:  { score: 30, detail: 'Villa attack strong; Burnley conceding heavily.' },
-        leagueContext: { score: 35, detail: 'Vast motivation gap; Villa heavy favourites.' }
-      },
-      summary: 'Burnley are relegated and managerless. Aston Villa are pushing for European football and have every incentive to take 3 points. The motivation gap is enormous — strong avoid for draw betting.'
-    },
-
-    // ───── WEST HAM vs ARSENAL ─────
-    {
-      day: 'Sunday 10 May',
-      home: 'West Ham', away: 'Arsenal', time: '16:30',
-      result: '1-1', drawProbability: 30, verdict: 'Moderate', fairOdds: '3.50–3.90',
-      teamNews: {
-        home: [
-          { tag: 'key', text: 'New manager Nuno (defensive setup)' },
-          { tag: 'key', text: 'None of last 5 vs Arsenal won by home' },
-          { tag: 'key', text: 'Lost just 1 of last 5 PL away games' }
-        ],
-        away: [
-          { tag: 'key', text: 'UCL semi vs Atletico midweek (won)' },
-          { tag: 'doubt', text: 'Gabriel injury concern' },
-          { tag: 'doubt', text: 'Arteta likely to rotate' },
-          { tag: 'key', text: '6 pts clear at top, UCL final pending' }
-        ]
-      },
-      context: 'Major shift in analysis. Arsenal beat Atletico in the UCL semi midweek to reach the final on May 30 — Arteta will rotate heavily. West Ham have new manager Nuno Espirito Santo who plays defensive, compact football. None of the last 5 PL meetings between these sides have been won by the home team. West Ham have lost just 1 of their last 5 PL away games.',
-      factors: {
-        formBalance:   { score: 58, detail: 'Arsenal fatigued from UCL semi; West Ham defensive under Nuno.' },
-        drawRates:     { score: 55, detail: 'Arsenal draw rate 21% but UCL final on horizon means rotation.' },
-        headToHead:    { score: 65, detail: 'Last 5 PL meetings: home side never won; tight matches.' },
-        goalTendency:  { score: 50, detail: 'Arsenal still potent; West Ham defensively organised under Nuno.' },
-        leagueContext: { score: 58, detail: 'Arsenal\'s focus on UCL final could see them not at full intensity.' }
-      },
-      summary: 'Reassessed up significantly. Arsenal played Atletico in the UCL semi 5 days before and have the final on May 30 — Arteta will heavily rotate. New West Ham boss Nuno plays defensive football. None of the last 5 PL meetings here have been won by the home side. A draw is genuinely live.'
-    },
-
-    // ───── TOTTENHAM vs LEEDS ─────
-    {
-      day: 'Monday 11 May',
-      home: 'Tottenham Hotspur', away: 'Leeds United', time: '20:00',
-      result: '1-1', drawProbability: 25, verdict: 'Low', fairOdds: '3.80–4.20',
-      teamNews: {
-        home: [
-          { tag: 'key', text: 'Out of relegation zone' },
-          { tag: 'key', text: 'Won 4 of last 5 under De Zerbi' },
-          { tag: 'key', text: 'Beat Aston Villa 2-1 last MD' },
-          { tag: 'key', text: 'Won last 4 H2H vs Leeds' }
-        ],
-        away: [
-          { tag: 'doubt', text: 'On 43pts, not yet mathematically safe' },
-          { tag: 'key', text: '13 draws (2nd most in PL)' }
-        ]
-      },
-      context: 'Major reassessment. Spurs have escaped the relegation zone after beating Aston Villa 2-1, won 4 of last 5 under De Zerbi. They\'ve also won the last 4 PL meetings with Leeds. Leeds are draw-prone (13 draws this season) but Spurs have momentum and tactical edge.',
-      factors: {
-        formBalance:   { score: 38, detail: 'Spurs in form under De Zerbi; Leeds steady but stagnating.' },
-        drawRates:     { score: 60, detail: 'Leeds draw a lot but Spurs are now in win-mode.' },
-        headToHead:    { score: 30, detail: 'Spurs won last 4 PL meetings vs Leeds.' },
-        goalTendency:  { score: 45, detail: 'De Zerbi\'s Spurs are scoring; Leeds defensively decent.' },
-        leagueContext: { score: 42, detail: 'Spurs momentum + H2H dominance argues against draw.' }
-      },
-      summary: 'Major downward reassessment. Spurs are now out of the drop zone after beating Villa 2-1 and have won 4 of their last 5 under De Zerbi. They\'ve also won the last 4 PL meetings with Leeds. Earlier draw call was wrong — Spurs have momentum and tactical edge here.'
-    },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Nottingham', away: 'Newcastle', time: '14:00',
-        result: '1-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Monday 11 May',
-        home: 'Tottenham', away: 'Leeds United', time: '20:00',
-        result: '1-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Wednesday 13 May',
-        home: 'Man City', away: 'Crystal Palace', time: '20:00',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
 
       {
         day: 'Friday 15 May',
@@ -794,389 +464,6 @@ const LEAGUES = [
     round: 'Matchday 35',
     drawRate: 24,
     fixtures: [
-      {
-        day: 'Friday 8 May',
-        home: 'Levante', away: 'Osasuna', time: '21:00',
-        result: '3-2', drawProbability: 36, verdict: 'Good', fairOdds: '3.10–3.50',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Elgezabal (knee)' },
-            { tag: 'out', text: 'Arriaga (suspended)' },
-            { tag: 'out', text: 'de la Fuente (muscle), Primo (shoulder), Romero (knee)' },
-            { tag: 'key', text: '19th — in relegation zone, desperate for points' },
-            { tag: 'key', text: 'Strong home form: W4 D1 in last 5 at home' }
-          ],
-          away: [
-            { tag: 'out', text: 'Munoz (muscle)' },
-            { tag: 'key', text: '10th — no pressure, comfortable mid-table' },
-            { tag: 'key', text: 'Awful away form: 4th-worst road record in La Liga' }
-          ]
-        },
-        context: 'A relegation six-pointer for Levante. They sit 19th with injuries to five first-team players but have been strong at home — 4 wins and 1 draw in their last 5 at the Ciutat de Valencia. Osasuna lost 2-1 to Barcelona last time out but have nothing to play for. Crucially, Osasuna have the 4th worst away record in La Liga, picking up just 2 wins and 10 points on the road all season. Multiple models predict 1-1. Levante\'s desperation at home vs Osasuna\'s travel aversion makes a draw very live.',
-        factors: {
-          formBalance:   { score: 62, detail: 'Levante strong at home despite poor season; Osasuna inconsistent on road.' },
-          drawRates:     { score: 65, detail: 'Osasuna among the worst away teams in La Liga; cautious visitors expected.' },
-          headToHead:    { score: 58, detail: 'Recent H2H between these clubs has been tight and competitive.' },
-          goalTendency:  { score: 60, detail: 'Levante missing attacking options; Osasuna defensive away from home.' },
-          leagueContext: { score: 62, detail: 'Relegated team at home vs comfortable visitors — nervy, attritional game likely.' }
-        },
-        summary: 'Better draw pick than initially assessed. Levante are in the relegation zone with five players out but have excellent home form (4W 1D last 5). Osasuna have the 4th worst away record in La Liga all season. Multiple prediction models land on a 1-1. A nervy, attritional game that could easily end level.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'Elche', away: 'Alavés', time: '14:00',
-        result: '1-1', drawProbability: 30, verdict: 'Moderate', fairOdds: '3.30–3.70',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Boayar (muscle)' },
-            { tag: 'doubt', text: 'Yago Santiago (physical discomfort)' },
-            { tag: 'key', text: '14th — 2pts above relegation zone' },
-            { tag: 'key', text: 'Lost just twice at home all season — fortress' }
-          ],
-          away: [
-            { tag: 'out', text: 'Garcés (suspension), Toni Martínez (injury)' },
-            { tag: 'out', text: 'Boyé (injury), Protesoni (injury)' },
-            { tag: 'key', text: '18th — relegation zone, 1pt behind 17th Sevilla' }
-          ]
-        },
-        context: 'A relegation six-pointer at the Martinez Valero. Elche have been excellent at home — losing just twice all season — and sit 14th, two points clear of relegation. Alavés are 18th in the drop zone and travel without their top scorer Toni Martínez (11 goals) plus Boyé and Protesoni. Garcés is suspended. Elche should win at home given their home form and Alavés\' depleted attack.',
-        factors: {
-          formBalance:   { score: 50, detail: 'Both fighting relegation; Elche stronger at home, Alavés depleted upfront.' },
-          drawRates:     { score: 55, detail: 'Tense relegation battle — both desperate but cautious.' },
-          headToHead:    { score: 50, detail: 'Tight historical matchups between these clubs.' },
-          goalTendency:  { score: 50, detail: 'Alavés missing 4 attackers including top scorer T. Martínez.' },
-          leagueContext: { score: 52, detail: 'Relegation six-pointer — usually decisive but can produce nervy draws.' }
-        },
-        summary: 'Relegation six-pointer between 14th vs 18th. Elche have lost just twice at home all season, while Alavés travel without top scorer Toni Martínez (11 goals), Boyé, Protesoni and suspended Garcés. Elche should win — Alavés\' depleted attack makes a draw less likely than the tense fixture suggests.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'Sevilla', away: 'Espanyol', time: '16:15',
-        result: '2-1', drawProbability: 26, verdict: 'Low', fairOdds: '3.70–4.20',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Marcao (out for season)' },
-            { tag: 'doubt', text: 'Isaac Romero, Manu Bueno — late fitness tests' },
-            { tag: 'key', text: '17th, 37 pts — in relegation zone' },
-            { tag: 'key', text: '2 consecutive home wins; UNBEATEN at home vs Espanyol since 2011' }
-          ],
-          away: [
-            { tag: 'key', text: '17 consecutive matches without a win' },
-            { tag: 'key', text: '13th, but no 2026 win at all' }
-          ]
-        },
-        context: 'Sevilla are unbeaten at home vs Espanyol since 2011 and on a 2-game home winning streak. Espanyol are in historic form — 17 consecutive matches without a win and zero wins in 2026. Even with Marcao out for the season, Sevilla should win comfortably at home. Down to 26% — Sevilla win is the strong play.',
-        factors: {
-          formBalance:   { score: 35, detail: 'Sevilla picking up wins; Espanyol in 17-game winless run.' },
-          drawRates:     { score: 40, detail: 'Sevilla unbeaten at home vs Espanyol since 2011 — fixture is one-sided.' },
-          headToHead:    { score: 35, detail: 'Sevilla 14 years unbeaten at home in this fixture.' },
-          goalTendency:  { score: 42, detail: 'Sevilla scoring at home; Espanyol struggling to keep clean sheets.' },
-          leagueContext: { score: 38, detail: 'Sevilla need points for survival; Espanyol unable to win in 2026.' }
-        },
-        summary: 'Sevilla unbeaten at home vs Espanyol since 2011 and on a 2-game home winning streak. Espanyol have not won in 17 matches and have zero 2026 wins. Sevilla should comfortably take 3 points. Reduced to Low — avoid the draw here.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'Atletico Madrid', away: 'Celta Vigo', time: '18:30',
-        result: '0-1', drawProbability: 25, verdict: 'Low', fairOdds: '3.80–4.20',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Cardoso (NEW muscular injury), Barrios (thigh), N. Gonzalez (thigh)' },
-            { tag: 'out', text: 'Julián Álvarez (unavailable)' },
-            { tag: 'key', text: '4th, 63 pts — needs to mathematically secure UCL' },
-            { tag: 'key', text: 'UCL semi exit to Arsenal; Betis 10 pts back' }
-          ],
-          away: [
-            { tag: 'out', text: 'Starfelt, Vecino, Miguel Román — injured' },
-            { tag: 'out', text: 'Javi Rueda — suspended' },
-            { tag: 'key', text: '6th — fighting for European football' },
-            { tag: 'key', text: 'Halted 5-game losing streak with 3-1 vs Elche' },
-            { tag: 'key', text: 'Have not won in Madrid since 2007' }
-          ]
-        },
-        context: 'Atletico have a midfield crisis — Cardoso injured this week joins Barrios and Gonzalez out, plus Álvarez. They\'re unbeaten in 14 vs Celta. However, with Atletico\'s midfield significantly depleted and Celta in 6th fighting for Europe (just halted 5-game losing streak), this isn\'t the cake walk it appeared. Models give 25% draw probability — slight bump.',
-        factors: {
-          formBalance:   { score: 42, detail: 'Atletico midfield crisis (Cardoso, Barrios, Gonzalez out); Celta improving.' },
-          drawRates:     { score: 40, detail: 'Models give 25% draw — Atletico still favoured but less convincingly.' },
-          headToHead:    { score: 32, detail: 'Atletico unbeaten in 14 H2H; Celta haven\'t won here since 2007.' },
-          goalTendency:  { score: 40, detail: 'Atletico without Álvarez and key midfielders; Celta\'s defensive injuries help them.' },
-          leagueContext: { score: 38, detail: 'Both pushing for Europe — Atletico CL spot, Celta European place.' }
-        },
-        summary: 'Slight upgrade. Atletico\'s midfield is in crisis — Cardoso\'s new injury joins Barrios, Gonzalez and Álvarez. Celta have just halted a 5-game losing streak. The 17-year H2H record at the Metropolitano keeps Atletico favoured but the injury context and Celta\'s European push lifts the draw probability to 25%.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'Real Sociedad', away: 'Betis', time: '21:00',
-        result: '2-2', drawProbability: 38, verdict: 'Good', fairOdds: '3.00–3.30',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Odriozola (knee — season over), Zubeldia, Karrikaburu (injuries)' },
-            { tag: 'doubt', text: 'Ruperez, Guedes (fitness doubts)' },
-            { tag: 'out', text: 'Aramburu (suspended — yellow card accumulation)' },
-            { tag: 'key', text: 'Just 1 point from last 3 league games (1-0 loss at Sevilla)' },
-            { tag: 'key', text: '9th — no major stakes' }
-          ],
-          away: [
-            { tag: 'out', text: 'Ortiz (injury), Bartra (injury)' },
-            { tag: 'key', text: 'Unbeaten in last 5; 5th place secured (6 pts ahead of 6th)' },
-            { tag: 'key', text: 'Beat Sociedad 3-1 in reverse fixture (September)' }
-          ]
-        },
-        context: 'Sociedad in poor form — just 1 point from their last 3 league games and beaten 1-0 at Sevilla. They\'re 9th with nothing major at stake. Betis are unbeaten in 5 and 5th place is secured (6 points clear of 6th). Both teams have multiple absentees. The motivation is reduced for both — classic end-of-season stalemate territory.',
-        factors: {
-          formBalance:   { score: 68, detail: 'Sociedad in poor form (1pt from 3); Betis comfortable in 5th.' },
-          drawRates:     { score: 72, detail: 'Both sides at end of season with multiple absentees and no pressure.' },
-          headToHead:    { score: 60, detail: 'Betis won the reverse fixture 3-1 in September.' },
-          goalTendency:  { score: 65, detail: 'Sociedad missing 5+ players; low-intensity affair likely.' },
-          leagueContext: { score: 68, detail: 'Both teams without major stakes — typical late-season cautious football.' }
-        },
-        summary: 'Solid draw pick. Sociedad have just 1 point from their last 3 games and are 9th with nothing major to play for. Betis are unbeaten in 5 with 5th place secured. Both sides missing players. Classic end-of-season fixture where neither team has serious incentive to push for a win.'
-      },
-      {
-        day: 'Sunday 10 May',
-        home: 'Real Oviedo', away: 'Getafe', time: '18:30',
-        result: '0-0', drawProbability: 24, verdict: 'Low', fairOdds: '4.00–4.50',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Dendoncker (injury), Jaime Vázquez (injury)' },
-            { tag: 'key', text: '20th (28pts) — bottom of the table, basically relegated' },
-            { tag: 'key', text: 'Lost 3-0 at Betis last time out' }
-          ],
-          away: [
-            { tag: 'out', text: 'Juanmi (injury)' },
-            { tag: 'key', text: '7th (44pts) — comfortable mid-table' },
-            { tag: 'key', text: 'Lost 0-2 to Rayo Vallecano last time' }
-          ]
-        },
-        context: 'Oviedo are bottom of the table at 28 points — virtually impossible to escape relegation now. Getafe are 7th and safe with no European hopes either. Both lost their last games. Getafe are the better team and should win, though both teams have limited motivation. Low draw probability.',
-        factors: {
-          formBalance:   { score: 38, detail: 'Oviedo bottom of table; Getafe comfortable in 7th.' },
-          drawRates:     { score: 45, detail: 'Limited motivation but Getafe quality should tell.' },
-          headToHead:    { score: 40, detail: 'Last meeting Getafe won 2-0.' },
-          goalTendency:  { score: 42, detail: 'Both lost last games; Getafe stronger attacking output.' },
-          leagueContext: { score: 40, detail: 'Almost-relegated home side vs comfortable mid-table visitors.' }
-        },
-        summary: 'Oviedo are bottom of La Liga and effectively relegated. Getafe sit safely in 7th with nothing major to play for. Getafe won the reverse 2-0 and are the stronger side. Low draw probability — Getafe should win comfortably.'
-      },
-      {
-        day: 'Sunday 10 May',
-        home: 'Barcelona', away: 'Real Madrid', time: '21:00',
-        result: '2-0', drawProbability: 36, verdict: 'Good', fairOdds: '3.10–3.50',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Lamine Yamal (muscle — season over)' },
-            { tag: 'out', text: 'Gavi (knee), ter Stegen (injury), Christensen (knee)' },
-            { tag: 'key', text: '11 points clear — Barcelona are La Liga champions' }
-          ],
-          away: [
-            { tag: 'out', text: 'Militao (hamstring surgery — 5 months), Rodrygo (ACL — 6 months+)' },
-            { tag: 'out', text: 'Carvajal (fractured toe), Mendy (thigh — season), Guler (hamstring — season)' },
-            { tag: 'doubt', text: 'Mbappe (hamstring — fitness test required)' },
-            { tag: 'key', text: 'Courtois may return from thigh injury' }
-          ]
-        },
-        context: 'El Clasico with a twist — Barcelona are already La Liga champions (11-point lead, 3 games left). They are playing for a home celebration, not a title. Madrid are catastrophically injury-hit: Militao, Rodrygo, Carvajal, Mendy and Guler are all out for the season, and Mbappe is a fitness doubt with a hamstring issue. Without their key attackers and defenders, Madrid cannot mount their usual threat. Barcelona missing Yamal (season over) reduces their own attacking edge. A low-key Clasico with a genuine draw angle.',
-        factors: {
-          formBalance:   { score: 65, detail: 'Barca champions and relaxed; Madrid decimated by injuries across all areas.' },
-          drawRates:     { score: 62, detail: 'Neither side at full strength; both have reason to settle for a point.' },
-          headToHead:    { score: 55, detail: 'Clasicos are rarely dull but injury context dampens both attacks.' },
-          goalTendency:  { score: 60, detail: 'Yamal (Barca) and Mbappe/Rodrygo (Madrid) all absent — goals reduced.' },
-          leagueContext: { score: 65, detail: 'Barca already crowned champions — a draw is entirely acceptable for them.' }
-        },
-        summary: 'Significant draw upgrade. Barcelona are already champions and have no pressure, while Madrid are missing Militao, Rodrygo, Carvajal, Mendy and Guler (all season-ending injuries) with Mbappe a fitness doubt. Yamal is also out for Barca. Both attacks are compromised, Barca will be happy with a draw to celebrate at home. The most injury-hit Clasico in years — draw has real credentials.'
-      },
-      {
-        day: 'Sunday 10 May',
-        home: 'Mallorca', away: 'Villarreal', time: '14:00',
-        result: '1-1', drawProbability: 26, verdict: 'Moderate', fairOdds: '3.80–4.20',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Salas (cruciate), Raillo (ankle surgery), Joseph (cruciate)' },
-            { tag: 'key', text: '15th — safe from relegation, no major stakes' },
-            { tag: 'key', text: 'Won last game 1-0 vs Girona' }
-          ],
-          away: [
-            { tag: 'out', text: 'Foyth (cruciate), Cabanes (cruciate)' },
-            { tag: 'doubt', text: 'Mouriño (doubt)' },
-            { tag: 'key', text: '3rd place — pushing hard for Champions League football' },
-            { tag: 'key', text: 'Won 5-1 vs Levante last time; 68 points from 34 games' }
-          ]
-        },
-        context: 'The context here has changed significantly from initial assessment. Villarreal sit 3rd with 68 points and are pushing for Champions League qualification — they desperately need points and arrive in brilliant form (5-1 win vs Levante). Mallorca are a comfortable 15th with nothing to play for and three key defenders injured. The motivation gap is large. Villarreal win is most likely.',
-        factors: {
-          formBalance:   { score: 35, detail: 'Villarreal 3rd and in brilliant form; Mallorca safe with nothing at stake.' },
-          drawRates:     { score: 40, detail: 'Villarreal need a win for UCL — will not settle for a draw.' },
-          headToHead:    { score: 45, detail: 'Villarreal won the reverse fixture 2-1; strong recent record here.' },
-          goalTendency:  { score: 38, detail: 'Villarreal scored 5-1 last game; Mallorca missing three key defenders.' },
-          leagueContext: { score: 40, detail: 'Huge motivation gap — Champions League chasing side vs safe, inert home team.' }
-        },
-        summary: 'Reassessed downward. Villarreal are 3rd with 68 points and chasing Champions League football — they arrive in tremendous form (5-1 last game) and will not settle for a draw. Mallorca are safe in 15th with three defenders injured. The motivation gap is stark. Avoid for draw betting.'
-      },
-      {
-        day: 'Sunday 10 May',
-        home: 'Athletic Bilbao', away: 'Valencia', time: '16:15',
-        result: '0-1', drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Lekue (injury), Sannadi (injury), Prados (injury)' },
-            { tag: 'key', text: '8th — 3 points behind 6th; European qualification battle' },
-            { tag: 'key', text: 'Won 4-2 at Alaves last time out' }
-          ],
-          away: [
-            { tag: 'key', text: 'Fighting to stay clear of relegation zone' },
-            { tag: 'key', text: 'Failed to win in 4 of last 5 La Liga games' }
-          ]
-        },
-        context: 'Athletic Bilbao are three points off 6th and fighting hard for European football — they need points and won 4-2 at Alaves recently. Valencia are struggling in the lower reaches of the table, winless in 4 of their last 5. San Mames is a fortress and the crowd will drive Athletic forward. Valencia may sit deep and grind, making a 1-0 home win the most likely outcome. A draw is possible if Valencia defend well but Athletic have momentum and incentive.',
-        factors: {
-          formBalance:   { score: 52, detail: 'Athletic in form (4-2 win) and motivated for Europe; Valencia winless in 4 of 5.' },
-          drawRates:     { score: 55, detail: 'Valencia may sit deep; Athletic typically push forward at San Mames.' },
-          headToHead:    { score: 52, detail: 'Athletic vs Valencia has been competitive historically.' },
-          goalTendency:  { score: 48, detail: 'Valencia can be dogged defensively; Athletic playing open football.' },
-          leagueContext: { score: 55, detail: 'European push vs relegation fight — both have skin in the game.' }
-        },
-        summary: 'Athletic Bilbao are three points off a European spot and arrived in fine form (4-2 away win). Valencia are battling to stay clear of the drop and will likely park the bus at San Mames. A nervy home win is most probable but Valencia\'s defensive resilience keeps a draw in play. Moderate credentials.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Athletic', away: 'Valencia', time: '16:15',
-        result: '0-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Barça', away: 'Real Madrid', time: '21:00',
-        result: '2-0', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Monday 11 May',
-        home: 'Rayo Vallecano', away: 'Girona', time: '21:00',
-        result: '1-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Tuesday 12 May',
-        home: 'Celta', away: 'Levante', time: '19:00',
-        result: '2-3', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Tuesday 12 May',
-        home: 'Real Betis', away: 'Elche', time: '20:00',
-        result: '2-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Tuesday 12 May',
-        home: 'Osasuna', away: 'Atleti', time: '21:30',
-        result: '1-2', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Wednesday 13 May',
-        home: 'Espanyol', away: 'Athletic', time: '19:00',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Wednesday 13 May',
-        home: 'Villarreal', away: 'Sevilla FC', time: '19:00',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Wednesday 13 May',
-        home: 'Alavés', away: 'Barça', time: '21:30',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Wednesday 13 May',
-        home: 'Getafe', away: 'Mallorca', time: '21:30',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
 
       {
         day: 'Thursday 14 May',
@@ -1372,189 +659,10 @@ const LEAGUES = [
     round: 'Matchday 36',
     drawRate: 27,
     fixtures: [
-      {
-        day: 'Saturday 9 May',
-        home: 'Cagliari', away: 'Udinese', time: '15:00',
-        result: '0-2', drawProbability: 44, verdict: 'Strong', fairOdds: '2.90–3.20', bookOdds: 3.10,
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Borrelli, Mazzitelli, Pavoletti, Idrissi, Felici — all injured' },
-            { tag: 'doubt', text: 'Deiola, Rodriguez, Liteta on treatment table' },
-            { tag: 'key', text: 'Need win to mathematically seal survival' },
-            { tag: 'key', text: '2 consecutive home wins; recently beat Atalanta 3-2, drew 0-0 at Bologna' }
-          ],
-          away: [
-            { tag: 'out', text: 'Bertola, Davis, Zemura, Zanoli — all injured' },
-            { tag: 'key', text: 'Mid-table, no pressure' },
-            { tag: 'key', text: 'Unbeaten in 4 away games — scoring 2+ in each' }
-          ]
-        },
-        context: 'Reaffirmed analysis. Cagliari need a win to mathematically seal survival and have won 2 in a row at home. However, they\'ve failed to win any of their last 6 home fixtures vs Udinese (H2H lopsided: Udinese 13W vs Cagliari 7W, 8 draws). Udinese travel unbeaten in 4 away games scoring 2+ in each, but with 4 first-teamers out. The H2H pattern of tight, low-scoring games combined with the safe-vs-safe context keeps this as the top draw pick.',
-        factors: {
-          formBalance:   { score: 68, detail: 'Cagliari needing win for survival; Udinese unbeaten in 4 away.' },
-          drawRates:     { score: 80, detail: 'Cagliari winless in last 6 home vs Udinese; H2H heavily favours stalemates.' },
-          headToHead:    { score: 78, detail: 'Cagliari winless in last 6 home meetings vs Udinese — extraordinary record.' },
-          goalTendency:  { score: 72, detail: 'Both sides depleted; Cagliari drew 0-0 at Bologna last week.' },
-          leagueContext: { score: 70, detail: 'Safe vs safe with Cagliari just needing the point for survival.' }
-        },
-        summary: 'Reaffirmed top Serie A draw pick. Cagliari are winless in their last 6 home games against Udinese — extraordinary H2H record. Udinese unbeaten in 4 away. Both sides depleted by injuries. At Betfair\'s 21/10 (3.10) the value is marginal, but the bet remains sound based on the H2H pattern.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'Lazio', away: 'Inter Milan', time: '18:00',
-        result: '0-3', drawProbability: 32, verdict: 'Moderate', fairOdds: '3.30–3.70',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Cataldi, Gila, Furlanetto, Provedel — all injured' },
-            { tag: 'key', text: 'Coppa Italia finalists — recovered from Atalanta penalties' },
-            { tag: 'key', text: 'Sarri\'s side won come-from-behind vs Cremonese on Mon' },
-            { tag: 'key', text: 'Cancellieri back from ban; Zaccagni recently returned' }
-          ],
-          away: [
-            { tag: 'out', text: 'Calhanoglu (thigh)' },
-            { tag: 'doubt', text: 'Pio Esposito (back)' },
-            { tag: 'key', text: 'CHAMPIONS — 21st Scudetto secured (12 pts clear)' },
-            { tag: 'key', text: 'Lautaro and Thuram are Serie A\'s top 2 scorers' },
-            { tag: 'key', text: 'Coppa Italia final dress rehearsal vs Lazio' }
-          ]
-        },
-        context: 'Inter were crowned Serie A champions last weekend — they have nothing left to play for in the league and this is a "dress rehearsal" for the upcoming Coppa Italia final between the same two sides. Lazio are pushing for European places while preserving energy for the cup final. Both teams might rotate or play with reduced intensity. With Inter relaxed (champions) and both sides eyeing the cup final, draw probability bumps up.',
-        factors: {
-          formBalance:   { score: 55, detail: 'Inter champions and relaxed; Lazio preparing for Coppa final.' },
-          drawRates:     { score: 60, detail: 'Inter rotation likely; Lazio cautious — favours a tight game.' },
-          headToHead:    { score: 55, detail: 'Lazio vs Inter often tight, especially with Coppa final pending.' },
-          goalTendency:  { score: 52, detail: 'Inter still has firepower (Lautaro/Thuram); Lazio missing keeper Provedel.' },
-          leagueContext: { score: 60, detail: 'Coppa final dress rehearsal — neither side wants to show their hand.' }
-        },
-        summary: 'Inter are already champions and this is a dress rehearsal for the Coppa Italia final between these two sides. Both will likely rotate or play at reduced intensity to preserve energy for the cup. Inter missing Calhanoglu; Lazio with multiple injuries. Moderate draw credentials.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'Lecce', away: 'Juventus', time: '20:45',
-        result: '0-1', drawProbability: 26, verdict: 'Moderate', fairOdds: '3.70–4.20',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Fofana, Sottil, Gaspar, Berisha — all injured' },
-            { tag: 'key', text: 'Fighting relegation — desperately need points' }
-          ],
-          away: [
-            { tag: 'out', text: 'Milik (season), Cabal (season)' },
-            { tag: 'key', text: 'One yellow from suspension: Bremer, Kelly, Locatelli' },
-            { tag: 'key', text: '4th, chasing Champions League — 3 games left' },
-            { tag: 'key', text: 'Vlahovic likely starts alongside Yildiz and Conceição' }
-          ]
-        },
-        context: 'Juventus need wins for Champions League qualification with just 3 games to go. Lecce are battling relegation. Juve\'s squad is fitter than Napoli\'s right now (only Milik and Cabal long-term out) but they have three players one yellow card away from suspension — slight caution required. Lecce are home and desperate but missing 4 players. Juve favoured.',
-        factors: {
-          formBalance:   { score: 38, detail: 'Juve in form chasing CL; Lecce fighting relegation but injury-hit.' },
-          drawRates:     { score: 42, detail: 'Juve typically decisive vs lower table; Lecce\'s home form patchy.' },
-          headToHead:    { score: 45, detail: 'Recent meetings have been tight (Juve 1-1 Lecce earlier this season).' },
-          goalTendency:  { score: 42, detail: 'Vlahovic potentially starting; Lecce missing key creators.' },
-          leagueContext: { score: 45, detail: 'Massive motivation gap but Lecce home is desperate.' }
-        },
-        summary: 'Juventus need wins for Champions League. Lecce desperate at home but missing 4 players. Three Juve players one yellow from suspension which may make Juve cautious in challenges. Most likely a Juve win but Lecce\'s home desperation could keep it tight. Moderate draw credentials.'
-      },
-      {
-        day: 'Sunday 10 May',
-        home: 'Parma', away: 'Roma', time: '18:00',
-        result: '2-3', drawProbability: 28, verdict: 'Moderate', fairOdds: '3.50–3.90',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Cremaschi (injury), Frigan (long-term)' },
-            { tag: 'key', text: '12th — top-flight survival sealed (back-to-back wins to nil)' },
-            { tag: 'key', text: 'Lost 0-2 at Inter last time (ended 4-game unbeaten run)' }
-          ],
-          away: [
-            { tag: 'out', text: 'Dovbyk (injury), Pellegrini (injury), Çelik (injury)' },
-            { tag: 'out', text: 'Koné (injury), Ferguson (injury)' },
-            { tag: 'key', text: '6 wins from last 7 — beat Fiorentina 4-0 last time' },
-            { tag: 'key', text: 'Battling Juve and Como for final UCL spot — 1pt off top 4' }
-          ]
-        },
-        context: 'Roma are flying — 6 wins from last 7 with a 4-0 demolition of Fiorentina last time. Just 1 point off top 4 with 3 games left. However, they are missing top scorer Dovbyk, captain Pellegrini, plus Koné, Ferguson and Çelik. Parma have sealed survival and with nothing major at stake. Roma\'s injury list opens a small draw window but their form is too good to ignore.',
-        factors: {
-          formBalance:   { score: 45, detail: 'Roma in fine form (6W in 7); Parma comfortable post-survival.' },
-          drawRates:     { score: 50, detail: 'Roma without Dovbyk, Pellegrini and 3 others — attack threat reduced.' },
-          headToHead:    { score: 35, detail: 'Roma have won 8 of last 10; on a 3-match winning H2H streak.' },
-          goalTendency:  { score: 50, detail: 'Roma still scoring (4-0 last) but missing key players.' },
-          leagueContext: { score: 48, detail: 'Roma chasing UCL — wins critical; Parma relaxed in survival mode.' }
-        },
-        summary: 'Roma are flying (6W in 7) but missing five key players including Dovbyk and Pellegrini. Parma are safe and relaxed after sealing survival. Roma should still win given their form and Parma\'s lack of motivation, but the injury list keeps a draw mildly interesting. Moderate credentials.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Verona', away: 'Como 1907', time: '12:30',
-        result: '0-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Fiorentina', away: 'Genoa', time: '15:00',
-        result: '0-0', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Cremonese', away: 'AC Pisa', time: '15:00',
-        result: '3-0', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Milan', away: 'Atalanta', time: '20:45',
-        result: '2-3', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Monday 11 May',
-        home: 'Napoli', away: 'Bologna', time: '20:45',
-        result: '2-3', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
 
       {
         day: 'Sunday 17 May',
-        home: 'Roma', away: 'Lazio', time: '02:00',
+        home: 'Roma', away: 'Lazio', time: '12:30',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1568,7 +676,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'Atalanta', away: 'Bologna', time: '02:00',
+        home: 'Genoa', away: 'Milan', time: '12:30',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1582,7 +690,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'Cagliari', away: 'Torino', time: '02:00',
+        home: 'Como 1907', away: 'Parma', time: '12:30',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1596,7 +704,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'Genoa', away: 'Milan', time: '02:00',
+        home: 'Juventus', away: 'Fiorentina', time: '12:30',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1610,7 +718,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'Como 1907', away: 'Parma', time: '02:00',
+        home: 'AC Pisa', away: 'Napoli', time: '12:30',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1624,7 +732,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'Inter', away: 'Verona', time: '02:00',
+        home: 'Inter', away: 'Verona', time: '15:00',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1638,7 +746,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'Juventus', away: 'Fiorentina', time: '02:00',
+        home: 'Atalanta', away: 'Bologna', time: '18:00',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1652,7 +760,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'AC Pisa', away: 'Napoli', time: '02:00',
+        home: 'Cagliari', away: 'Torino', time: '20:45',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1666,7 +774,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'Sassuolo', away: 'Lecce', time: '02:00',
+        home: 'Sassuolo', away: 'Lecce', time: '20:45',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1680,7 +788,7 @@ const LEAGUES = [
 
       {
         day: 'Sunday 17 May',
-        home: 'Udinese', away: 'Cremonese', time: '02:00',
+        home: 'Udinese', away: 'Cremonese', time: '20:45',
         result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
         factors: {
           formBalance:   { score: 50, detail: 'Pending research.' },
@@ -1704,126 +812,6 @@ const LEAGUES = [
     round: 'Matchday 33',
     drawRate: 22,
     fixtures: [
-      {
-        day: 'Saturday 9 May',
-        home: 'Stuttgart', away: 'Bayer Leverkusen', time: '15:30',
-        result: '3-1', drawProbability: 26, verdict: 'Moderate', fairOdds: '3.50–3.90',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Karazor (suspended) — Chema Andres deputises' },
-            { tag: 'key', text: '5th, 58pts — defeat almost certainly costs CL spot' },
-            { tag: 'key', text: 'Winless in 3 (3-3 vs Hoffenheim last)' },
-            { tag: 'key', text: 'Undav has not scored in 4 league games' }
-          ],
-          away: [
-            { tag: 'key', text: '4th, 58pts (level with Stuttgart) — defeat almost certainly costs CL' },
-            { tag: 'key', text: 'Schick scored hat-trick in 4-1 win vs Leipzig last MD' },
-            { tag: 'key', text: 'Maza, Tella, Schick all available' }
-          ]
-        },
-        context: 'Massive Champions League decider — both 4th and 5th on 58 points each, with defeat almost certainly costing the loser their CL spot. Stuttgart winless in 3 and Karazor suspended. Leverkusen at full strength after Schick\'s hat-trick last week. Both teams need the win which usually compresses draw probability — but if both play cautiously to avoid losing, a draw is possible.',
-        factors: {
-          formBalance:   { score: 50, detail: 'Stuttgart winless in 3; Leverkusen in form (4-1 last game).' },
-          drawRates:     { score: 42, detail: 'Both desperately need win for CL — typically reduces draw chance.' },
-          headToHead:    { score: 50, detail: 'Bundesliga 22% draw rate; CL stakes mean both push for win.' },
-          goalTendency:  { score: 45, detail: 'Schick on form, Undav out of form; goals expected from Leverkusen.' },
-          leagueContext: { score: 48, detail: 'CL playoff-style match — fear of losing may cancel attacking intent.' }
-        },
-        summary: 'Champions League decider — both teams 4th and 5th on 58 points. Defeat almost certainly costs the loser CL football. Stuttgart winless in 3, Leverkusen flying with Schick on a hat-trick. High stakes typically reduce draws but this could equally go to a cautious, point-taking conclusion. Worth a small interest.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'RB Leipzig', away: 'St. Pauli', time: '15:30',
-        result: '2-1', drawProbability: 18, verdict: 'Low', fairOdds: '5.00–6.00',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Bakayoko, Lukeba (knee), Gebel (cruciate), Ouedraogo (knee)' },
-            { tag: 'key', text: 'Pushing for Champions League football' },
-            { tag: 'key', text: 'Lost 4-1 to Leverkusen last MD — needs response' }
-          ],
-          away: [
-            { tag: 'out', text: 'Dzwigala (suspended), Spari (syndesmotic), Hountondji (foot)' },
-            { tag: 'out', text: 'Pereira Lage (knee), Sands (ankle), Nemeth (muscle), Metcalfe (knock)' },
-            { tag: 'key', text: 'In automatic relegation zone after 2-1 loss to Mainz' }
-          ]
-        },
-        context: 'Leipzig\'s final home game — pushing hard for Champions League football after being humiliated 4-1 by Leverkusen last week. St. Pauli are in the automatic relegation zone with seven players unavailable through injury or suspension. Leipzig at home should win comfortably. Low draw probability.',
-        factors: {
-          formBalance:   { score: 28, detail: 'Leipzig at home pushing for CL; St. Pauli in relegation crisis.' },
-          drawRates:     { score: 30, detail: 'Bundesliga 22% draw rate; massive motivation gap reduces it further.' },
-          headToHead:    { score: 32, detail: 'Leipzig clear favourites at home vs depleted St. Pauli.' },
-          goalTendency:  { score: 25, detail: 'St. Pauli missing 7 players; Leipzig scoring at home.' },
-          leagueContext: { score: 30, detail: 'Massive motivation gap with Leipzig in much stronger position.' }
-        },
-        summary: 'Strong avoid for the draw. Leipzig push hard at home for CL after embarrassing 4-1 loss at Leverkusen. St. Pauli have SEVEN players out and sit in the automatic relegation zone. Leipzig should comfortably win their final home game.'
-      },
-      {
-        day: 'Saturday 9 May',
-        home: 'VfL Wolfsburg', away: 'Bayern Munich', time: '18:30',
-        result: '0-1', drawProbability: 22, verdict: 'Low', fairOdds: '4.20–4.80',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Wind, Arnold, Dardai, Seelt, Cleiton, Rogerio, Fischer — long-term' },
-            { tag: 'key', text: '17th — fighting to escape relegation playoff' }
-          ],
-          away: [
-            { tag: 'out', text: 'Gnabry (adductor), Davies (hamstring)' },
-            { tag: 'key', text: 'CHAMPIONS — title clinched (final away fixture)' },
-            { tag: 'key', text: 'Urbig in goal due to Neuer/Ulreich injuries' }
-          ]
-        },
-        context: 'Bayern are champions and have nothing to play for in their final away fixture. Wolfsburg are 17th and fighting desperately to escape relegation playoff. Bayern\'s goalkeeping situation remains delicate (Urbig starting). Despite Bayern\'s relaxed motivation, Wolfsburg\'s many long-term injuries leave them weak. Bayern likely wins comfortably.',
-        factors: {
-          formBalance:   { score: 35, detail: 'Bayern champions, relaxed; Wolfsburg in relegation playoff fight.' },
-          drawRates:     { score: 35, detail: 'Bayern away games rarely draws even when relaxed.' },
-          headToHead:    { score: 32, detail: 'Bayern dominant in this fixture historically.' },
-          goalTendency:  { score: 30, detail: 'Wolfsburg defensively vulnerable; Bayern still attacks.' },
-          leagueContext: { score: 35, detail: 'Wolfsburg desperate but missing 7 players to long-term injury.' }
-        },
-        summary: 'Bayern champions and relaxed but still too strong for a Wolfsburg side missing 7 long-term injured. Bayern are likely to dominate even with rotation. Strong avoid for draw betting.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'HSV', away: 'Freiburg', time: '15:30',
-        result: '3-2', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: '1. FC Köln', away: 'Heidenheim', time: '17:30',
-        result: '1-3', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Mainz', away: 'Union Berlin', time: '19:30',
-        result: '1-3', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
 
       {
         day: 'Saturday 16 May',
@@ -1963,159 +951,6 @@ const LEAGUES = [
     round: 'Matchday 33',
     drawRate: 25,
     fixtures: [
-      {
-        day: 'Sunday 10 May',
-        home: 'PSG', away: 'Brest', time: '21:05',
-        result: '1-0', drawProbability: 18, verdict: 'Low', fairOdds: '5.50–7.00',
-        teamNews: {
-          home: [
-            { tag: 'out', text: 'Chevalier (injury), Hakimi (injury), Ndjantou (injury)' },
-            { tag: 'key', text: 'IN UCL FINAL vs Arsenal on May 30 — heavy rotation expected' },
-            { tag: 'key', text: 'Goncalo Ramos returns from suspension to lead attack' },
-            { tag: 'key', text: 'Win clinches 5th successive Ligue 1 title' }
-          ],
-          away: [
-            { tag: 'out', text: 'Kenny Lala (suspended)' },
-            { tag: 'key', text: 'Daouda Guindo back from muscle injury' },
-            { tag: 'key', text: '12th — drew blanks in 3 of last 4 away games' }
-          ]
-        },
-        context: 'PSG are 1st and victory mathematically clinches a 5th successive Ligue 1 title. With the UCL final vs Arsenal on May 30, Luis Enrique is expected to heavily rotate — likely starting Barcola, Mbaye and Ramos with younger players (Zaire-Emery, Mayulu, Dro Fernandez). Despite rotation, PSG have kept clean sheets in their last 3 H2H meetings vs Brest, who have struggled badly for goals away (drew blanks in 3 of last 4 road outings).',
-        factors: {
-          formBalance:   { score: 30, detail: 'PSG champions-elect; Brest 12th and toothless away from home.' },
-          drawRates:     { score: 32, detail: 'PSG kept clean sheets in last 3 H2H — Brest struggle to score on road.' },
-          headToHead:    { score: 30, detail: 'PSG dominant H2H; Brest haven\'t threatened Paris recently.' },
-          goalTendency:  { score: 28, detail: 'Brest scored in only 1 of last 4 away games; PSG depth still scores.' },
-          leagueContext: { score: 32, detail: 'Even rotated PSG are too strong for an away-shy Brest.' }
-        },
-        summary: 'PSG can clinch the Ligue 1 title with a win and will heavily rotate ahead of the UCL final. Brest are 12th and have failed to score in 3 of their last 4 away games. PSG kept 3 clean sheets in last 3 H2H meetings. Even a rotated PSG should comfortably win. Strong avoid.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Le Havre', away: 'Marseille', time: '21:00',
-        result: '0-2', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Auxerre', away: 'Nice', time: '21:00',
-        result: '2-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Monaco', away: 'Lille', time: '21:00',
-        result: '0-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'FC Metz', away: 'Lorient', time: '21:00',
-        result: '0-4', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Toulouse', away: 'Olympique Lyon', time: '21:00',
-        result: '2-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Angers SCO', away: 'Strasbourg', time: '21:00',
-        result: '1-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Sunday 10 May',
-        home: 'Stade Rennais', away: 'Paris FC', time: '21:00',
-        result: '2-1', drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Wednesday 13 May',
-        home: 'Brest', away: 'Strasbourg', time: '19:00',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
-
-      {
-        day: 'Wednesday 13 May',
-        home: 'RC Lens', away: 'PSG', time: '21:00',
-        result: null, drawProbability: 25, verdict: 'Low', fairOdds: '4.00–4.50',
-        factors: {
-          formBalance:   { score: 50, detail: 'Pending research.' },
-          drawRates:     { score: 50, detail: 'Pending research.' },
-          headToHead:    { score: 50, detail: 'Pending research.' },
-          goalTendency:  { score: 50, detail: 'Pending research.' },
-          leagueContext: { score: 50, detail: 'Pending research.' }
-        },
-        summary: 'Pending deep research.'
-      },
 
       {
         day: 'Sunday 17 May',
@@ -2254,34 +1089,7 @@ const LEAGUES = [
     country: 'UEFA',
     round: 'Semi-Final 2nd Legs',
     drawRate: 18,
-    fixtures: [
-      {
-        day: 'Tuesday 5 May',
-        home: 'Arsenal', away: 'Atletico Madrid', time: '20:00',
-        result: '1-0', drawProbability: 20, verdict: 'Low', fairOdds: '4.80–5.50',
-        factors: {
-          formBalance:   { score: 38, detail: 'Arsenal at home; Atletico defending a 1-1 first leg draw.' },
-          drawRates:     { score: 25, detail: 'UCL knockouts produce fewer draws — teams push for results.' },
-          headToHead:    { score: 40, detail: 'Arsenal won 2-1 on aggregate — second leg played.' },
-          goalTendency:  { score: 30, detail: 'High stakes UCL semi — one team pushes, other protects.' },
-          leagueContext: { score: 30, detail: 'UCL semi-finals almost always have a decisive outcome.' }
-        },
-        summary: 'Arsenal beat Atletico Madrid 1-0 in the second leg (2-1 on aggregate) to reach the UCL final for the first time in 20 years. Result recorded — Arsenal through to the Budapest final on 30 May.'
-      },
-      {
-        day: 'Wednesday 6 May',
-        home: 'Bayern Munich', away: 'PSG', time: '20:00',
-        result: '1-1', drawProbability: 22, verdict: 'Low', fairOdds: '4.50–5.20',
-        factors: {
-          formBalance:   { score: 40, detail: 'PSG lead 5-4 on aggregate from first leg — defending advantage.' },
-          drawRates:     { score: 28, detail: 'UCL knockout ties rarely end in draws — extra time settles it.' },
-          headToHead:    { score: 42, detail: 'PSG hold narrow first-leg advantage after 5-4 thriller.' },
-          goalTendency:  { score: 35, detail: 'Both sides attack-minded — goals expected but a decisive result more likely.' },
-          leagueContext: { score: 32, detail: 'Bayern need to overturn a 1-goal deficit — they will attack from the off.' }
-        },
-        summary: 'PSG advance to the UCL final. Dembélé scored early, Kane equalised in stoppage time — 1-1 on the night (6-5 on aggregate). PSG face Arsenal in the Budapest final on May 30.'
-      }
-    ]
+    fixtures: []
   },
 
   // ─────────────────────────────────
@@ -2293,34 +1101,7 @@ const LEAGUES = [
     country: 'UEFA',
     round: 'Semi-Final 2nd Legs',
     drawRate: 20,
-    fixtures: [
-      {
-        day: 'Thursday 7 May',
-        home: 'Freiburg', away: 'Braga', time: '21:00',
-        result: 'home', drawProbability: 28, verdict: 'Moderate', fairOdds: '3.80–4.40',
-        factors: {
-          formBalance:   { score: 50, detail: 'Braga lead 2-1 from the first leg — Freiburg need to attack.' },
-          drawRates:     { score: 40, detail: 'Europa League knockouts produce moderate draw rates over 90 minutes.' },
-          headToHead:    { score: 48, detail: 'Braga edged the first leg 2-1 — close tie overall.' },
-          goalTendency:  { score: 45, detail: 'Freiburg at home need a goal — open game expected.' },
-          leagueContext: { score: 42, detail: 'UEL semi with tight aggregate — draws after 90 mins do happen here.' }
-        },
-        summary: 'Freiburg win 3-1 (4-3 agg) — through to their first European final! Braga had Dorgeles sent off in the 6th minute. Kübler and Manzambi scored. Freiburg face Aston Villa in Istanbul on May 20.'
-      },
-      {
-        day: 'Thursday 7 May',
-        home: 'Aston Villa', away: 'Nottingham Forest', time: '21:00',
-        result: 'home', drawProbability: 30, verdict: 'Moderate', fairOdds: '3.50–4.00',
-        factors: {
-          formBalance:   { score: 52, detail: 'Forest lead 1-0 from the first leg — Villa must attack at Villa Park.' },
-          drawRates:     { score: 42, detail: 'UEL semi-final 2nd legs tend to be open and decisive.' },
-          headToHead:    { score: 48, detail: 'Forest edged the first leg 1-0 — tight tie with roles reversed.' },
-          goalTendency:  { score: 45, detail: 'Villa Park will be rocking — Villa will push hard for the early goal.' },
-          leagueContext: { score: 48, detail: 'All-English European semi-final — rare and highly competitive.' }
-        },
-        summary: 'Villa demolished Forest 4-0 (4-1 agg) — an emphatic turnaround! Watkins, Buendia (pen) and McGinn (×2) scored. Villa face Freiburg in the UEL final in Istanbul on May 20.'
-      }
-    ]
+    fixtures: []
   },
 
   // ─────────────────────────────────
@@ -2332,21 +1113,7 @@ const LEAGUES = [
     country: 'UEFA',
     round: 'Semi-Final 2nd Legs',
     drawRate: 22,
-    fixtures: [
-      {
-        day: 'Thursday 7 May',
-        home: 'Rapid Vienna', away: 'Gent', time: '21:00',
-        result: null, drawProbability: 35, verdict: 'Good', fairOdds: '3.10–3.50',
-        factors: {
-          formBalance:   { score: 58, detail: 'Closely matched European sides at a similar level of competition.' },
-          drawRates:     { score: 60, detail: 'UECL semi-finals produce competitive, tight two-legged affairs.' },
-          headToHead:    { score: 55, detail: 'Limited recent meetings but both sides play structured football.' },
-          goalTendency:  { score: 55, detail: 'Neither team prolific; tight, organised football expected.' },
-          leagueContext: { score: 58, detail: 'Conference League produces more evenly-matched ties than UCL or UEL.' }
-        },
-        summary: 'Conference League semi-finals tend to be tight and competitive. Rapid Vienna and Gent are evenly matched and a draw over 90 minutes is a real possibility, especially if one side holds a first leg lead and looks to preserve it.'
-      }
-    ]
+    fixtures: []
   }
 
 ];

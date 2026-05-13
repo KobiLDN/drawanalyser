@@ -21,13 +21,15 @@ Each fixture is annotated with:
 
 ## Updating each gameweek
 
-Fixtures live in the `LEAGUES` array in `index.html`. Open this folder in Claude Code and run:
+Fixtures are now fetched automatically via the API through the `.github/workflows/fetch-fixtures.yml` GitHub Action. Do not add fixtures manually.
+
+Once fixtures are fetched, you can run AI tools to add deep research:
 
 ```
-Research the upcoming gameweeks across the listed leagues. For each fixture:
+Research the upcoming gameweek fixtures listed in index.html. For each fixture:
 - Search for team news, injuries, form
 - Check H2H and motivation context
-- Update the LEAGUES array in index.html
+- Update the factors and teamNews objects
 - Commit and push
 ```
 

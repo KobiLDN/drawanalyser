@@ -21,6 +21,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.20** — Removed hardcoded fixtures to transition entirely to API-fetched data via GitHub Actions.
 - **v2.19** — Auto-marked 3 results (Celta 2-3 Levante; Real Betis 2-1 Elche; Osasuna 1-2 Atleti).
 - **v2.18** — Auto-marked 4 results (Tottenham Hotspur 1-1 Leeds United; Tottenham 1-1 Leeds United; Rayo Vallecano 1-1 Girona, +1 more).
 - **v2.17** — Auto-fetched 2 upcoming fixture stubs (Premier League 2). Pending deep research.
