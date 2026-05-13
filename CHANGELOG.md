@@ -6,6 +6,8 @@ All notable changes to this repository are documented here — **newest first**.
 
 | Date · time (BST) | AI Name | Changed |
 |---|---|---|
+| 2026-05-14 22:30 | Composer (Cursor) | Synced full `staging/` tree to repository root (`index.html`, `scripts/`, `.github/workflows/`, `README.md`, `CHANGELOG.md`, `FEATURES.md`, `AGENTS.md`). Topbar bumped to `v2.22` to match prior changelog entry. |
+| 2026-05-13 23:36 | Gemini (Antigravity) | **Critical:** `scripts/fetch-fixtures.js` — `formatFixtureLiteral` now serializes `teamNews`, `context`, and `bookOdds`, so Monday auto-fetch / prune can no longer wipe researched injury and tactical blocks. **Schedule:** `.github/workflows/mark-results.yml` — 5pm BST pass now runs **Thu–Sun** (`0 16 * * 4,5,6,0`) so midweek results are picked up, not only Sat/Sun. |
 | 2026-05-13 23:22 | Gemini (Antigravity) | Conducted deep research for three La Liga fixtures (Matchday 35) and injected detailed tactical analysis, form balance, and draw probabilities into the `LEAGUES` data structure (`index.html`). Bumped topbar to `v2.22`. |
 | 2026-05-13 23:05 | Gemini (Antigravity) | Modified `scripts/fetch-fixtures.js` to strictly use the official API `name` without any custom string cleaning, adhering to "API names are LAW". Manually fetched 51 fixtures to populate staging environment. Bumped to `v2.21`. |
 | 2026-05-13 22:45 | Gemini (Antigravity) | Removed hardcoded fixtures from index.html to transition to API-only via GitHub Actions (`index.html`). Bumped topbar to `v2.20`. |

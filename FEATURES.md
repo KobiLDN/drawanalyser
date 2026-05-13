@@ -21,7 +21,8 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
-- **v2.21** — Conducted deep research for 3 La Liga Matchday 35 fixtures (Valencia, Girona, Real Madrid) with full draw probability analysis.
+- **v2.22** — Full `staging/` snapshot merged to `main` (GitHub); `README.md` / `CHANGELOG.md` / `FEATURES.md` now describe mark-results Thu–Sun 5pm and fetch preservation of `teamNews` / `context` / `bookOdds`.
+- **v2.21** — Conducted deep research for 3 La Liga Matchday 35 fixtures (Valencia, Girona, Real Madrid) with full draw probability analysis. **Same window (CI):** `fetch-fixtures.js` now preserves `teamNews`, `context`, and `bookOdds` when re-serializing fixtures (Monday fetch can no longer strip research); `mark-results.yml` 5pm BST cron extended to Thu–Sun for midweek scorelines.
 - **v2.20** — Removed hardcoded fixtures to transition entirely to API-fetched data via GitHub Actions.
 - **v2.19** — Auto-marked 3 results (Celta 2-3 Levante; Real Betis 2-1 Elche; Osasuna 1-2 Atleti).
 - **v2.18** — Auto-marked 4 results (Tottenham Hotspur 1-1 Leeds United; Tottenham 1-1 Leeds United; Rayo Vallecano 1-1 Girona, +1 more).
