@@ -21,6 +21,7 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
+- **v2.25** — Top bar matches staging: removed the DEEP RESEARCH MODE pill that had been incorrectly re-added to root `index.html`.
 - **v2.24** — Full promotion from `staging/`: app data, GitHub Actions workflows, scripts, and documentation now match the staging tree (main repo is the single source going forward).
 - **v2.21** — Conducted deep research for 3 La Liga Matchday 35 fixtures (Valencia, Girona, Real Madrid) with full draw probability analysis.
 - **v2.20** — Removed hardcoded fixtures to transition entirely to API-fetched data via GitHub Actions.
