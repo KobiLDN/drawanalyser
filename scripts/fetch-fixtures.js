@@ -71,7 +71,7 @@ function formatFixtureLiteral(f) {
   const rs = f.result === null ? 'null' : `'${escapeJs(f.result)}'`;
   const dp = f.drawProbability ?? 25;
   const verd = f.verdict ? `'${escapeJs(f.verdict)}'` : "'Low'";
-  const odds = f.fairOdds ? `'${escapeJs(f.fairOdds)}'` : "'4.00–4.50'";
+  const odds = f.fairOdds ? `'${escapeJs(f.fairOdds)}'` : "'4.00\u20134.50'";
 
   const fb = f.factors?.formBalance || { score: 50, detail: 'Pending research.' };
   const dr = f.factors?.drawRates || { score: 50, detail: 'Pending research.' };
@@ -80,6 +80,22 @@ function formatFixtureLiteral(f) {
   const lc = f.factors?.leagueContext || { score: 50, detail: 'Pending research.' };
 
   const sum = f.summary ? `'${escapeJs(f.summary)}'` : "'Pending deep research.'";
+
+  // Serialize teamNews if present
+  let teamNewsBlock = '';
+  if (f.teamNews) {
+    const serializeItems = items => {
+      if (!items || !items.length) return '[]';
+      return `[\n${items.map(i => `              { tag: '${escapeJs(i.tag)}', text: '${escapeJs(i.text)}' }`).join(',\n')}\n            ]`;
+    };
+    teamNewsBlock = `,\n        teamNews: {\n          home: ${serializeItems(f.teamNews.home)},\n          away: ${serializeItems(f.teamNews.away)}\n        }`;
+  }
+
+  // Serialize context if present
+  const contextBlock = f.context ? `,\n        context: '${escapeJs(f.context)}'` : '';
+
+  // Serialize bookOdds if present
+  const bookOddsBlock = f.bookOdds != null ? `,\n        bookOdds: ${f.bookOdds}` : '';
 
   return `      {
         day: '${escapeJs(f.day)}',
@@ -91,7 +107,7 @@ function formatFixtureLiteral(f) {
           headToHead:    { score: ${h2h.score}, detail: '${escapeJs(h2h.detail)}' },
           goalTendency:  { score: ${gt.score}, detail: '${escapeJs(gt.detail)}' },
           leagueContext: { score: ${lc.score}, detail: '${escapeJs(lc.detail)}' }
-        },
+        }${teamNewsBlock}${contextBlock}${bookOddsBlock},
         summary: ${sum}
       }`;
 }

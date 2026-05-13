@@ -21,8 +21,8 @@ Running list of ideas, things in progress, and things shipped. Pick from the Bac
 
 ## Done
 
-- **v2.23** — Re-copied `staging/index.html` over root `index.html` so the file opened in the browser is identical to staging (plus topbar badge/version).
-- **v2.22** — Promoted deep-researched `staging/index.html` into production `index.html` (GW36 / MD35–33 domestic fixtures: refreshed draw scores, factor breakdowns, summaries, and team news blocks where completed).
+- **v2.24** — Full promotion from `staging/`: app data, GitHub Actions workflows, scripts, and documentation now match the staging tree (main repo is the single source going forward).
+- **v2.21** — Conducted deep research for 3 La Liga Matchday 35 fixtures (Valencia, Girona, Real Madrid) with full draw probability analysis.
 - **v2.20** — Removed hardcoded fixtures to transition entirely to API-fetched data via GitHub Actions.
 - **v2.19** — Auto-marked 3 results (Celta 2-3 Levante; Real Betis 2-1 Elche; Osasuna 1-2 Atleti).
 - **v2.18** — Auto-marked 4 results (Tottenham Hotspur 1-1 Leeds United; Tottenham 1-1 Leeds United; Rayo Vallecano 1-1 Girona, +1 more).
