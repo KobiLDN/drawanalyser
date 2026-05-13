@@ -6,6 +6,7 @@ All notable changes to this repository are documented here — **newest first**.
 
 | Date · time (BST) | AI Name | Changed |
 |---|---|---|
+| 2026-05-14 19:45 | Composer (Cursor) | Overwrote root `index.html` from `staging/index.html` again so local `file://` matches the staging canonical copy; restored DEEP RESEARCH topbar badge. Bumped to `v2.23`. |
 | 2026-05-14 18:00 | Composer (Cursor) | Merged researched fixture data and analysis from `staging/index.html` into root `index.html` (draw probabilities, factors, summaries, team news where present). Restored topbar DEEP RESEARCH badge. Bumped to `v2.22`. |
 | 2026-05-13 23:05 | Gemini (Antigravity) | Modified `scripts/fetch-fixtures.js` to strictly use the official API `name` without any custom string cleaning, adhering to "API names are LAW". Manually fetched 51 fixtures to populate staging environment. Bumped to `v2.21`. |
 | 2026-05-13 22:45 | Gemini (Antigravity) | Removed hardcoded fixtures from index.html to transition to API-only via GitHub Actions (`index.html`). Bumped topbar to `v2.20`. |
